@@ -1339,6 +1339,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5684868951745258883, guid: 86ad0647c34fb4528b92869c072278d5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d87a4cb1ceed4436abca8d72f706de0, type: 2}
     - target: {fileID: -4216859302048453862, guid: 86ad0647c34fb4528b92869c072278d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1399,6 +1404,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceGate
       objectReference: {fileID: 0}
+    - target: {fileID: 1489620291577671872, guid: 86ad0647c34fb4528b92869c072278d5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b936ebf0782745aa992343d0e0e2584, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86ad0647c34fb4528b92869c072278d5, type: 3}
 --- !u!1001 &1728470948
