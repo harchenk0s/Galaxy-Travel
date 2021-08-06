@@ -1,46 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Pointer : MonoBehaviour
 {
-    public GameObject ObjectOfControl;
-
     private float _leftBorderX = -10000f;
     private float _rightBorderX = 10000f;
-    private float x;
-
-    public PointerBorder[] borders;
-
-    public float X
-    {
-        get { return transform.position.x; }
-        set
-        {
-            if (value > _leftBorderX && value <= _rightBorderX)
-            {
-                transform.position = new Vector3(value, 0, 0);
-            }
-
-            if (transform.position.x > _rightBorderX)
-                transform.position = new Vector3(_rightBorderX, 0, 0);
-
-            if (transform.position.x < _leftBorderX)
-                transform.position = new Vector3(_leftBorderX, 0, 0);
-                
-        }
-    }
+    private PointerBorder[] _borders;
 
     private void Start()
     {
-        borders = FindObjectsOfType<PointerBorder>();
+        _borders = FindObjectsOfType<PointerBorder>();
 
-        if (borders.Length != 0)
+        if (_borders.Length > 0)
         {
             float leftBorder = float.MaxValue;
             float rightBorder = float.MinValue;
 
-            foreach (PointerBorder border in borders)
+            foreach (PointerBorder border in _borders)
             {
                 float borderX = border.transform.position.x;
 
@@ -54,6 +29,22 @@ public class Pointer : MonoBehaviour
             _leftBorderX = leftBorder;
             _rightBorderX = rightBorder;
         }
-        
+    }
+
+    public void Move(float delta)
+    {
+        float resultX;
+        float deltaSum = transform.position.x + delta;
+
+        if (deltaSum > _rightBorderX || deltaSum < _leftBorderX)
+        {
+            resultX = deltaSum < _leftBorderX ? _leftBorderX : _rightBorderX;
+        }
+        else
+        {
+            resultX = deltaSum;
+        }
+
+        transform.position = new Vector3(resultX, 0, 0);
     }
 }
