@@ -2,9 +2,16 @@
 
 public class Pointer : MonoBehaviour
 {
+    [SerializeField] private GameObject _ship = null;
+
     private float _leftBorderX = -10000f;
     private float _rightBorderX = 10000f;
     private PointerBorder[] _borders;
+
+    private void Awake()
+    {
+        _ship = FindObjectOfType<Ship>().gameObject;
+    }
 
     private void Start()
     {
@@ -46,5 +53,11 @@ public class Pointer : MonoBehaviour
         }
 
         transform.position = new Vector3(resultX, 0, 0);
+    }
+
+    public void ResetPointer()
+    {
+        if (_ship != null)
+            transform.position = _ship.transform.position;
     }
 }

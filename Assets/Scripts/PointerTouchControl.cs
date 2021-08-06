@@ -5,7 +5,6 @@ public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandle
 {
     [Range(0.01f,0.1f)]
     [SerializeField] private float _sentivity = 0.05f;
-    [SerializeField] private GameObject _objectOfControl = null;
 
     private Pointer _pointer = null;
     private Transform pointerTransform;
@@ -35,6 +34,6 @@ public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        pointerTransform.position = _objectOfControl.transform.position;
+        _pointer.ResetPointer();
     }
 }
