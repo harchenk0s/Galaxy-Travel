@@ -6,27 +6,34 @@ using UnityEngine.EventSystems;
 
 public class TouchControl : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public GameObject pointer;
     public GameObject ship;
+    public float Sentivity = 0.05f;
+    Transform pointerTransform;
 
     private void Start()
     {
-        Debug.LogError("START!");
+        pointerTransform = pointer.transform;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Begin");
+
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Drag");
-        ship.transform.position += new Vector3(eventData.delta.x, 0, 0) * 0.05f;
+        pointerTransform.position += new Vector3(eventData.delta.x, 0, 0) * Sentivity;
 
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End");
+        pointerTransform.position = ship.transform.position;
+    }
+
+    void Move(float delta)
+    {
+
     }
 }
