@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class TouchControl : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    public GameObject pointer;
+    public Pointer pointer;
     public GameObject ship;
     public float Sentivity = 0.05f;
     Transform pointerTransform;
@@ -23,8 +23,7 @@ public class TouchControl : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
-        pointerTransform.position += new Vector3(eventData.delta.x, 0, 0) * Sentivity;
-
+        pointer.X += eventData.delta.x * Sentivity;
     }
 
     public void OnEndDrag(PointerEventData eventData)
