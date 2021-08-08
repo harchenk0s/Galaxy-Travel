@@ -21,7 +21,7 @@ public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        _pointer.Move(eventData.delta * _sentivity);
+        _pointer.StartMove();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -31,6 +31,6 @@ public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        _pointer.ResetPointer();
+        _pointer.EndMove();
     }
 }

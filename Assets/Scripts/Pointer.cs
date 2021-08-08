@@ -29,15 +29,17 @@ public class Pointer : MonoBehaviour
         InitializeBorders();
     }
 
+    public void StartMove()
+    {
+        if (returnToShip != null)
+        {
+            StopCoroutine(returnToShip);
+            returnToShip = null;
+        }
+    }
+
     public void Move(Vector2 delta)
     {
-        if(returnToShip != null)
-        {
-            StopCoroutine("ReturnToShipCourutine");
-            returnToShip = null;
-            transform.position = _ship.transform.position;
-        }
-
         float deltaSumX = transform.position.x + delta.x;
         float deltaSumY = transform.position.y + delta.y;
         float resultX;
@@ -56,10 +58,10 @@ public class Pointer : MonoBehaviour
         transform.position = new Vector3(resultX, resultY, 0);
     }
 
-    public void ResetPointer()
+    public void EndMove()
     {
         returnToShip = ReturnToShipCourutine();
-        StartCoroutine("ReturnToShipCourutine");
+        StartCoroutine(returnToShip);
     }
 
     private IEnumerator ReturnToShipCourutine()
