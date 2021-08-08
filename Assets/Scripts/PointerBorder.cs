@@ -1,32 +1,49 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class PointerBorder : MonoBehaviour
 {
-    public Color GizmoColor = Color.red;
-    private Pointer _pointer = null;
-    private PointerBorder _anotherBorder;
+    public Color PointsColor = Color.red;
+    public Color LinesColor = Color.green;
+    public bool DrawGizmos = true;
 
-    private void Awake()
+    private PointerBorder _anotherBorder = null;
+    private List<PointerBorder> _borders = new List<PointerBorder>();
+
+    private void Start()
     {
-        _pointer = FindObjectOfType<Pointer>();
-        _anotherBorder = FindObjectOfType<PointerBorder>();
+        _borders.AddRange(FindObjectsOfType<PointerBorder>());
+        _borders.Remove(this);
+        _anotherBorder = _borders[0];
     }
 
     private void OnDrawGizmos()
     {
-        if (_anotherBorder == null || _pointer == null)
+        if (DrawGizmos)
         {
-            _anotherBorder = FindObjectOfType<PointerBorder>();
-            _pointer = FindObjectOfType<Pointer>();
-            return;
-        }    
+            if (_anotherBorder == null || _anotherBorder == this)
+            {
+                _borders.Clear();
+                _borders.AddRange(FindObjectsOfType<PointerBorder>());
+                if (_borders.Count >= 2)
+                {
+                    _borders.Remove(this);
+                    _anotherBorder = _borders[0];
+                }
+                return;
+            }
 
-        Gizmos.color = GizmoColor;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(1, 0, 0));
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(-1, 0, 0));
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, 1, 0));
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -1, 0));
-        Gizmos.DrawLine(transform.position, _anotherBorder.transform.position);
+            Gizmos.color = PointsColor;
+            Gizmos.DrawLine(transform.position, transform.position + new Vector3(1, 0, 0));
+            Gizmos.DrawLine(transform.position, transform.position + new Vector3(-1, 0, 0));
+            Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, 1, 0));
+            Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -1, 0));
+            Gizmos.color = LinesColor;
+            Gizmos.DrawLine(transform.position,
+                new Vector3(_anotherBorder.transform.position.x, transform.position.y, transform.position.z));
+            Gizmos.DrawLine(transform.position,
+                new Vector3(transform.position.x, _anotherBorder.transform.position.y, transform.position.z));
 
+        }
     }
 }
