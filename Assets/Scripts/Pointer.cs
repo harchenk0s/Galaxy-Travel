@@ -10,7 +10,7 @@ public class Pointer : MonoBehaviour
     private float _upBorderY = 10000f;
     private float _downBorderY = -10000f;
     private PointerBorder[] _borders;
-    private IEnumerator returnToShip = null;
+    private IEnumerator _returnToShip = null;
 
     private void Awake()
     {
@@ -31,10 +31,11 @@ public class Pointer : MonoBehaviour
 
     public void StartMove()
     {
-        if (returnToShip != null)
+        if (_returnToShip != null)
         {
-            StopCoroutine(returnToShip);
-            returnToShip = null;
+            StopCoroutine(_returnToShip);
+            _returnToShip = null;
+            transform.position = _ship.transform.position;
         }
     }
 
@@ -42,26 +43,17 @@ public class Pointer : MonoBehaviour
     {
         float deltaSumX = transform.position.x + delta.x;
         float deltaSumY = transform.position.y + delta.y;
-        float resultX;
-        float resultY;
 
-        if (deltaSumX > _rightBorderX || deltaSumX < _leftBorderX)
-            resultX = deltaSumX < _leftBorderX ? _leftBorderX : _rightBorderX;
-        else
-            resultX = deltaSumX;
-
-        if (deltaSumY > _upBorderY || deltaSumY < _downBorderY)
-            resultY = deltaSumY < _downBorderY ? _downBorderY : _upBorderY;
-        else
-            resultY = deltaSumY;
+        float resultX = Mathf.Clamp(deltaSumX, _leftBorderX, _rightBorderX);
+        float resultY = Mathf.Clamp(deltaSumY, _downBorderY, _upBorderY);
 
         transform.position = new Vector3(resultX, resultY, 0);
     }
 
     public void EndMove()
     {
-        returnToShip = ReturnToShipCourutine();
-        StartCoroutine(returnToShip);
+        _returnToShip = ReturnToShipCourutine();
+        StartCoroutine(_returnToShip);
     }
 
     private IEnumerator ReturnToShipCourutine()
@@ -71,7 +63,7 @@ public class Pointer : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, _ship.transform.position, 0.5f);
             yield return null;
         }
-        returnToShip = null;
+        _returnToShip = null;
     }
 
     private void InitializeBorders()
