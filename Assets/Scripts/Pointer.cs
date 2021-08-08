@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Pointer : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Pointer : MonoBehaviour
     private float _upBorderY = 10000f;
     private float _downBorderY = -10000f;
     private PointerBorder[] _borders;
+    private IEnumerator returnToShip = null;
 
     private void Awake()
     {
@@ -18,41 +20,56 @@ public class Pointer : MonoBehaviour
 
     private void Start()
     {
+        if(_ship == null)
+        {
+            enabled = false;
+            throw new UnityException("Ship not found");
+        }
+            
         InitializeBorders();
     }
 
     public void Move(Vector2 delta)
     {
-        float resultX;
-        float resultY;
+        if(returnToShip != null)
+        {
+            StopCoroutine("ReturnToShipCourutine");
+            returnToShip = null;
+            transform.position = _ship.transform.position;
+        }
+
         float deltaSumX = transform.position.x + delta.x;
         float deltaSumY = transform.position.y + delta.y;
+        float resultX;
+        float resultY;
 
         if (deltaSumX > _rightBorderX || deltaSumX < _leftBorderX)
-        {
             resultX = deltaSumX < _leftBorderX ? _leftBorderX : _rightBorderX;
-        }
         else
-        {
             resultX = deltaSumX;
-        }
 
         if (deltaSumY > _upBorderY || deltaSumY < _downBorderY)
-        {
             resultY = deltaSumY < _downBorderY ? _downBorderY : _upBorderY;
-        }
         else
-        {
             resultY = deltaSumY;
-        }
 
         transform.position = new Vector3(resultX, resultY, 0);
     }
 
     public void ResetPointer()
     {
-        if (_ship != null)
-            transform.position = _ship.transform.position;
+        returnToShip = ReturnToShipCourutine();
+        StartCoroutine("ReturnToShipCourutine");
+    }
+
+    private IEnumerator ReturnToShipCourutine()
+    {
+        while (transform.position != _ship.transform.position)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _ship.transform.position, 0.5f);
+            yield return null;
+        }
+        returnToShip = null;
     }
 
     private void InitializeBorders()

@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &79369803
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -638,7 +638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmoColor: {r: 1, g: 0, b: 0, a: 1}
-  pointer: {fileID: 0}
 --- !u!4 &913565861
 Transform:
   m_ObjectHideFlags: 0
@@ -683,7 +682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmoColor: {r: 1, g: 0, b: 0, a: 1}
-  pointer: {fileID: 0}
 --- !u!4 &989596272
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,7 +1003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1410453890
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1283,7 +1281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1463578665
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1366,10 +1364,6 @@ MonoBehaviour:
   _maxSpeed: 100
   _handling: 0.1
   _armor: 1
-  rotation: -360
-  x: 0
-  y: 0
-  z: 0
 --- !u!65 &1547919279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1663,7 +1657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1808034904
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1895,7 +1889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &2077362307
 MeshRenderer:
   m_ObjectHideFlags: 0
