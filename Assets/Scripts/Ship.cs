@@ -3,7 +3,7 @@
 public class Ship : MonoBehaviour
 {
     [SerializeField] private int _maxSpeed;
-    [SerializeField] private float _handling;
+    [SerializeField] private float _handling = 0.1f;
     [SerializeField] private int _armor;
 
     private Pointer _pointer = null;
@@ -29,6 +29,8 @@ public class Ship : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, _pointerTransform.position.x, _handling),0,0);
+        transform.position = Vector3.Lerp(transform.position, _pointerTransform.position, _handling);
+        transform.rotation = Quaternion.Euler((transform.position.y - _pointerTransform.position.y) * 5,
+            0, (transform.position.x - _pointerTransform.position.x) * 5);
     }
 }

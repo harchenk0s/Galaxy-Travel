@@ -1,30 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PointerBorder : MonoBehaviour
 {
     public Color GizmoColor = Color.red;
-    public Vector3 GizmoSize = new Vector3(0.01f, 1, 1);
-    public Pointer pointer;
+    private Pointer _pointer = null;
+    private PointerBorder _anotherBorder;
 
     private void Awake()
     {
-        pointer = FindObjectOfType<Pointer>();
-    }
-
-    private void Start()
-    {
-        if(pointer != null)
-        {
-            Vector3 pointerPos = pointer.transform.position;
-            transform.position = new Vector3(transform.position.x, pointerPos.y, pointerPos.z);
-        }
+        _pointer = FindObjectOfType<Pointer>();
+        _anotherBorder = FindObjectOfType<PointerBorder>();
     }
 
     private void OnDrawGizmos()
     {
+        if (_anotherBorder == null || _pointer == null)
+        {
+            _anotherBorder = FindObjectOfType<PointerBorder>();
+            _pointer = FindObjectOfType<Pointer>();
+            return;
+        }    
+
         Gizmos.color = GizmoColor;
-        Gizmos.DrawCube(transform.position, GizmoSize);
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(1, 0, 0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(-1, 0, 0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, 1, 0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -1, 0));
+        Gizmos.DrawLine(transform.position, _anotherBorder.transform.position);
+
     }
 }

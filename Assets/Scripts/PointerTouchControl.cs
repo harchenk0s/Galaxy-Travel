@@ -7,7 +7,6 @@ public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandle
     [SerializeField] private float _sentivity = 0.05f;
 
     private Pointer _pointer = null;
-    private Transform pointerTransform;
 
     private void Start()
     {
@@ -15,21 +14,19 @@ public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandle
 
         if (_pointer == null)
         {
-            this.enabled = false;
+            enabled = false;
             throw new UnityException("Pointer not found");
         }
-
-        pointerTransform = _pointer.transform;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        _pointer.Move(eventData.delta.x * _sentivity);
+        _pointer.Move(eventData.delta * _sentivity);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        _pointer.Move(eventData.delta.x * _sentivity);
+        _pointer.Move(eventData.delta * _sentivity);
     }
 
     public void OnEndDrag(PointerEventData eventData)
