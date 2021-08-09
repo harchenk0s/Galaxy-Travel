@@ -3,7 +3,7 @@
 public class Ship : MonoBehaviour
 {
     [SerializeField] private int _maxSpeed;
-    [SerializeField] private float _handling = 0.1f;
+    [SerializeField] private float _handling = 10f;
     [SerializeField] private int _armor;
     [Range(1,15)]
     [SerializeField] private int _rotationSpeed = 5;
@@ -14,6 +14,7 @@ public class Ship : MonoBehaviour
     private void Awake()
     {
         _pointer = FindObjectOfType<Pointer>();
+        _handling /= 100;
     }
 
     private void Start()

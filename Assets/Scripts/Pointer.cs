@@ -5,17 +5,14 @@ public class Pointer : MonoBehaviour
 {
     [SerializeField] private Ship _ship = null;
 
-    private float _leftBorderX = -10000f;
-    private float _rightBorderX = 10000f;
-    private float _upBorderY = 10000f;
-    private float _downBorderY = -10000f;
+    private float _leftBorderX, _downBorderY = -10000f;
+    private float _rightBorderX, _upBorderY = 10000f;
     private PointerBorder[] _borders;
     private IEnumerator _returnToShip = null;
 
     private void Awake()
     {
         _ship = FindObjectOfType<Ship>();
-        _borders = FindObjectsOfType<PointerBorder>();
     }
 
     private void Start()
