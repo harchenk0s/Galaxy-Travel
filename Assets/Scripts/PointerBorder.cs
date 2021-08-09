@@ -25,6 +25,7 @@ public class PointerBorder : MonoBehaviour
             {
                 _borders.Clear();
                 _borders.AddRange(FindObjectsOfType<PointerBorder>());
+
                 if (_borders.Count >= 2)
                 {
                     _borders.Remove(this);
@@ -38,6 +39,7 @@ public class PointerBorder : MonoBehaviour
             Gizmos.DrawLine(transform.position, transform.position + new Vector3(-1, 0, 0));
             Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, 1, 0));
             Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -1, 0));
+
             Gizmos.color = LinesColor;
             Gizmos.DrawLine(transform.position,
                 new Vector3(_anotherBorder.transform.position.x, transform.position.y, transform.position.z));

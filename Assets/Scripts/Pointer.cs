@@ -4,27 +4,11 @@ using System.Collections;
 public class Pointer : MonoBehaviour
 {
     [SerializeField] private Ship _ship = null;
-
-    private float _leftBorderX, _downBorderY = -10000f;
-    private float _rightBorderX, _upBorderY = 10000f;
     private PointerBorder[] _borders;
     private IEnumerator _returnToShip = null;
 
-    private void Awake()
-    {
-        _ship = FindObjectOfType<Ship>();
-    }
-
-    private void Start()
-    {
-        if(_ship == null)
-        {
-            enabled = false;
-            throw new UnityException("Ship not found");
-        }
-            
-        InitializeBorders();
-    }
+    public Vector2 _minBorders { get; private set; }
+    public Vector2 _maxBorders { get; private set; }
 
     public void StartMove()
     {
@@ -41,8 +25,8 @@ public class Pointer : MonoBehaviour
         float deltaSumX = transform.position.x + delta.x;
         float deltaSumY = transform.position.y + delta.y;
 
-        float resultX = Mathf.Clamp(deltaSumX, _leftBorderX, _rightBorderX);
-        float resultY = Mathf.Clamp(deltaSumY, _downBorderY, _upBorderY);
+        float resultX = Mathf.Clamp(deltaSumX, _minBorders.x, _maxBorders.x);
+        float resultY = Mathf.Clamp(deltaSumY, _minBorders.y, _maxBorders.y);
 
         transform.position = new Vector3(resultX, resultY, 0);
     }
@@ -51,6 +35,24 @@ public class Pointer : MonoBehaviour
     {
         _returnToShip = ReturnToShipCourutine();
         StartCoroutine(_returnToShip);
+    }
+
+    private void Awake()
+    {
+        _minBorders = new Vector2(-10000f, -10000f);
+        _maxBorders = new Vector2(10000f, 10000f);
+        _ship = FindObjectOfType<Ship>();
+    }
+
+    private void Start()
+    {
+        if(_ship == null)
+        {
+            enabled = false;
+            throw new UnityException("Ship not found");
+        }
+            
+        InitializeBorders();
     }
 
     private IEnumerator ReturnToShipCourutine()
@@ -92,10 +94,8 @@ public class Pointer : MonoBehaviour
                     upBorder = borderY;
             }
 
-            _leftBorderX = leftBorder;
-            _rightBorderX = rightBorder;
-            _upBorderY = upBorder;
-            _downBorderY = downBorder;
+            _minBorders = new Vector2(leftBorder, downBorder);
+            _maxBorders = new Vector2(rightBorder, upBorder);
         }
     }
 }
