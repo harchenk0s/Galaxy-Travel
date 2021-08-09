@@ -7,9 +7,20 @@ public class Ship : MonoBehaviour
     [SerializeField] private int _armor;
     [Range(1,15)]
     [SerializeField] private int _rotationSpeed = 5;
-
+    
     private Pointer _pointer = null;
     private Transform _pointerTransform = null;
+    private float _currentSpeed;
+
+    public float CurrentSpeed
+    {
+        get { return _currentSpeed; }
+
+        private set
+        {
+
+        }
+    }
 
     private void Awake()
     {
