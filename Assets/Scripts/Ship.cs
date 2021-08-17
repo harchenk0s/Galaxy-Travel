@@ -18,7 +18,7 @@ public class Ship : MonoBehaviour
 
         private set
         {
-
+            _currentSpeed = value;
         }
     }
 

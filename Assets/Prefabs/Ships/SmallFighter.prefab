@@ -78,7 +78,7 @@ MonoBehaviour:
   _maxSpeed: 100
   _handling: 10
   _armor: 1
-  _rotationSpeed: 5
+  _rotationSpeed: 7
 --- !u!1 &7792294411753092356
 GameObject:
   m_ObjectHideFlags: 0
