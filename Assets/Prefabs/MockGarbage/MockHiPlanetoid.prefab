@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7020765882372593
+--- !u!1 &6530237899611787497
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,57 +8,57 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1018163026086597959}
-  - component: {fileID: 315812086285386132}
-  - component: {fileID: 9026163227612786020}
+  - component: {fileID: 5164311513363596361}
+  - component: {fileID: 467938694837425457}
+  - component: {fileID: 2547476222857849804}
   m_Layer: 0
-  m_Name: default
+  m_Name: pPlatonic1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1018163026086597959
+--- !u!4 &5164311513363596361
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020765882372593}
+  m_GameObject: {fileID: 6530237899611787497}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7372359802893518463}
+  m_Father: {fileID: 6166761722193981853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &315812086285386132
+--- !u!33 &467938694837425457
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020765882372593}
-  m_Mesh: {fileID: -2432090755550338912, guid: b987bf6d84c124cf5b13553e61428184, type: 3}
---- !u!23 &9026163227612786020
+  m_GameObject: {fileID: 6530237899611787497}
+  m_Mesh: {fileID: -2837682660325928517, guid: aaecf972e4a31434191d6dee0a751fc4, type: 3}
+--- !u!23 &2547476222857849804
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020765882372593}
+  m_GameObject: {fileID: 6530237899611787497}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_MotionVectors: 2
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb375360c28eb48d6b8e92f1415e866f, type: 2}
+  - {fileID: 2100000, guid: 92c999bf6d0354da2986d853305a4cc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &5770443691164480620
+--- !u!1 &7192218668557648782
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,73 +87,73 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7372359802893518463}
-  - component: {fileID: -1492087098915106335}
-  - component: {fileID: 8185215699930952858}
-  - component: {fileID: 7388367806848851690}
+  - component: {fileID: 6166761722193981853}
+  - component: {fileID: -6412198493510092344}
+  - component: {fileID: 5455520746434013312}
+  - component: {fileID: 2086928131891584227}
   m_Layer: 0
-  m_Name: Cow
+  m_Name: MockHiPlanetoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7372359802893518463
+--- !u!4 &6166761722193981853
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770443691164480620}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7192218668557648782}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1018163026086597959}
+  - {fileID: 5164311513363596361}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1492087098915106335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770443691164480620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ad742c2b950848f49dbfb2276b1edd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _minRotationSpeed: 10
-  _maxRotationSpeed: 200
-  _speed: 100
---- !u!65 &8185215699930952858
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770443691164480620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.395063, y: 6.3358374, z: 10.004222}
-  m_Center: {x: 0.04547596, y: -0.09095049, z: -0.04548025}
---- !u!54 &7388367806848851690
+--- !u!54 &-6412198493510092344
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770443691164480620}
+  m_GameObject: {fileID: 7192218668557648782}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5455520746434013312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192218668557648782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad742c2b950848f49dbfb2276b1edd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minRotationSpeed: 0
+  _maxRotationSpeed: 300
+  _speed: 200
+--- !u!65 &2086928131891584227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192218668557648782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.314676, y: 10.559229, z: 10.166824}
+  m_Center: {x: 0.07392597, y: 0.038014412, z: 0.07392502}

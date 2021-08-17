@@ -125,9 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minRotationSpeed: -2
-  _maxRotationSpeed: 2
-  _delayBeforeDestroy: 15
-  _speed: 4
+  _maxRotationSpeed: 200
+  _speed: 100
 --- !u!65 &2879513265490728050
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6053443112059562861}
   - component: {fileID: 7539454799037137418}
   - component: {fileID: 2614927262396650976}
+  - component: {fileID: 3002748665562422902}
   m_Layer: 0
   m_Name: Asteroid03
   m_TagString: Untagged
@@ -124,10 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad742c2b950848f49dbfb2276b1edd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minRotationSpeed: -2
-  _maxRotationSpeed: 2
-  _delayBeforeDestroy: 15
-  _speed: 4
+  _minRotationSpeed: 10
+  _maxRotationSpeed: 200
+  _speed: 100
 --- !u!65 &2614927262396650976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -141,3 +141,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.942218, y: 7.4963818, z: 10.617201}
   m_Center: {x: -0.031841755, y: 1.8470087, z: -0.41399002}
+--- !u!54 &3002748665562422902
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086835852299377022}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
