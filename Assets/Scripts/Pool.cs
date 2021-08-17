@@ -4,30 +4,39 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    [SerializeField] private int _maxPoolElements = 20;
+    [SerializeField] private GameObject _objectsParent;
     [SerializeField] private List<GameObject> _prefabs = new List<GameObject>();
+    
 
-    private Queue<GameObject> _pool = new Queue<GameObject>();
+    private List<GameObject> _pool = new List<GameObject>();
 
     public void Push(GameObject poolObject)
     {
         poolObject.gameObject.SetActive(false);
-        _pool.Enqueue(poolObject);
+        _pool.Add(poolObject);
     }
 
     public GameObject Pop()
     {
         if(_pool.Count >= 1)
         {
-            GameObject poolObject = _pool.Dequeue();
+            GameObject poolObject = _pool[Random.Range(0, _pool.Count - 1)];
+            _pool.Remove(poolObject);
             poolObject.SetActive(true);
             return poolObject;
         }
         else
         {
             CreateObject();
-            return _pool.Dequeue();
+            return Pop();
+        }
+    }
 
+    private void Awake()
+    {
+        if(_objectsParent == null)
+        {
+            _objectsParent = gameObject;
         }
     }
 
@@ -37,22 +46,12 @@ public class Pool : MonoBehaviour
         {
             Pop();
         }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-
-        }
-    }
-
-    private void Start()
-    {
-
     }
 
     private GameObject CreateObject()
     {
-        GameObject poolObject = Instantiate(_prefabs[Random.Range(0, _prefabs.Count)], this.transform);
-        _pool.Enqueue(poolObject);
+        GameObject poolObject = Instantiate(_prefabs[Random.Range(0, _prefabs.Count)], _objectsParent.transform);
+        _pool.Add(poolObject);
         return poolObject;
     }
 }

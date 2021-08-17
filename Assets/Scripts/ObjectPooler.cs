@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooller : MonoBehaviour
+public class ObjectPooler : MonoBehaviour
 {
     private Pool _pool;
 
@@ -22,6 +22,7 @@ public class ObjectPooller : MonoBehaviour
 
         if(collision.gameObject.TryGetComponent<Garbage>(out poolObject))
         {
+            poolObject.gameObject.SetActive(false);
             poolObject.ResetValues();
             _pool.Push(collision.gameObject);
         }
