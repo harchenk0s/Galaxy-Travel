@@ -22,8 +22,6 @@ public class ObjectPooler : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<Garbage>(out poolObject))
         {
-            poolObject.gameObject.SetActive(false);
-            poolObject.ResetValues();
             _pool.Push(other.gameObject);
         }
     }

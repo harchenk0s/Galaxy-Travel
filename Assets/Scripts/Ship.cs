@@ -54,9 +54,11 @@ public class Ship : MonoBehaviour
             0, (transform.position.x - _pointerTransform.position.x) * _rotationSpeed);
     }
 
+    //
     private void OnTriggerEnter(Collider other)
     {
         col++;
         _colls.text = col.ToString();
     }
+    //
 }

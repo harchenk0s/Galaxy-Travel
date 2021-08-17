@@ -23,7 +23,7 @@ public class Garbage : MonoBehaviour
 
     private void Start()
     {
-        ResetValues();
+        OnEnable();
     }
 
     private void OnEnable()
@@ -32,17 +32,5 @@ public class Garbage : MonoBehaviour
         _rotationVector = new Vector3(Random.value, Random.value, Random.value);
         _rotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
         _rigidbody.velocity = new Vector3(0, 0, -1) * _speed;
-    }
-
-    private void OnDisable()
-    {
-        ResetValues();
-    }
-
-    public void ResetValues()
-    {
-        
-        
-        
     }
 }

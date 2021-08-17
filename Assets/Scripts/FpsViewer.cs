@@ -29,7 +29,7 @@ public class FpsViewer : MonoBehaviour
     {
         while (true)
         {
-            _label.text = _fpsCounter.FPS.ToString();
+            _label.text = _fpsCounter.FPS.ToString() + " fps";
             yield return new WaitForSecondsRealtime(0.5f);
         }
     }

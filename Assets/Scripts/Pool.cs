@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    [SerializeField] private GameObject _objectsParent;
-    [SerializeField] private List<GameObject> _prefabs = new List<GameObject>();
-
     private List<GameObject> _pool = new List<GameObject>();
 
     public void Push(GameObject poolObject)
@@ -26,51 +23,15 @@ public class Pool : MonoBehaviour
         }
         else
         {
-            CreateObject();
-            return Pop();
+            return null;
         }
-    }
-
-    private void Awake()
-    {
-        if(_objectsParent == null)
-        {
-            _objectsParent = gameObject;
-        }
-
-        foreach (GameObject item in _prefabs)
-        {
-            CreateObject(item);
-            CreateObject(item);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Pop();
-        }
-    }
-
-    private GameObject CreateObject()
-    {
-        int rand = Random.Range(0, _prefabs.Count);
-        GameObject poolObject = Instantiate(_prefabs[rand], _objectsParent.transform);
-        _pool.Add(poolObject);
-        return poolObject;
     }
 
     private GameObject CreateObject(GameObject prefab)
     {
-        GameObject poolObject = Instantiate(prefab, _objectsParent.transform);
+        GameObject poolObject = Instantiate(prefab, transform);
         poolObject.SetActive(false);
         _pool.Add(poolObject);
         return poolObject;
-    }
-
-    private void Start()
-    {
-        
     }
 }

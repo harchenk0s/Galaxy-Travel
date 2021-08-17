@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class GarbageGenerator : MonoBehaviour
 {
-    [SerializeField] private float _waveIntervalSec = 5f;
-
     private Pool _pool;
     private Vector2 _minBorders;
     private Vector2 _maxBorders;
     private bool _generating = false;
-
-    public void GenerateWave(float seconds, float timeInterval)
-    {
-
-    }
 
     private IEnumerator GeneratingCycle(float timeInterval)
     {
@@ -41,8 +34,5 @@ public class GarbageGenerator : MonoBehaviour
             _minBorders = pointer._minBorders;
             _maxBorders = pointer._maxBorders;
         }
-        _generating = true;
-
-        StartCoroutine(GeneratingCycle(0.2f));
     }
 }
