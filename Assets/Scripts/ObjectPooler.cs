@@ -16,15 +16,15 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         Garbage poolObject = null;
 
-        if(collision.gameObject.TryGetComponent<Garbage>(out poolObject))
+        if (other.gameObject.TryGetComponent<Garbage>(out poolObject))
         {
             poolObject.gameObject.SetActive(false);
             poolObject.ResetValues();
-            _pool.Push(collision.gameObject);
+            _pool.Push(other.gameObject);
         }
     }
 }

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minRotationSpeed: 10
-  _maxRotationSpeed: 200
-  _speed: 100
+  _maxRotationSpeed: 20
+  _speed: 250
 --- !u!65 &3569398349400201043
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2178887764464535006}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.028461, y: 8.563995, z: 9.691963}

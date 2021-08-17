@@ -6,7 +6,6 @@ public class Pool : MonoBehaviour
 {
     [SerializeField] private GameObject _objectsParent;
     [SerializeField] private List<GameObject> _prefabs = new List<GameObject>();
-    
 
     private List<GameObject> _pool = new List<GameObject>();
 
@@ -38,6 +37,12 @@ public class Pool : MonoBehaviour
         {
             _objectsParent = gameObject;
         }
+
+        foreach (GameObject item in _prefabs)
+        {
+            CreateObject(item);
+            CreateObject(item);
+        }
     }
 
     private void Update()
@@ -50,8 +55,22 @@ public class Pool : MonoBehaviour
 
     private GameObject CreateObject()
     {
-        GameObject poolObject = Instantiate(_prefabs[Random.Range(0, _prefabs.Count)], _objectsParent.transform);
+        int rand = Random.Range(0, _prefabs.Count);
+        GameObject poolObject = Instantiate(_prefabs[rand], _objectsParent.transform);
         _pool.Add(poolObject);
         return poolObject;
+    }
+
+    private GameObject CreateObject(GameObject prefab)
+    {
+        GameObject poolObject = Instantiate(prefab, _objectsParent.transform);
+        poolObject.SetActive(false);
+        _pool.Add(poolObject);
+        return poolObject;
+    }
+
+    private void Start()
+    {
+        
     }
 }

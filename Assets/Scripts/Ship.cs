@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Ship : MonoBehaviour
 {
@@ -7,6 +8,11 @@ public class Ship : MonoBehaviour
     [SerializeField] private int _armor;
     [Range(1,15)]
     [SerializeField] private int _rotationSpeed = 5;
+
+    //
+    private int col = 0;
+    [SerializeField] private Text _colls;
+    //
     
     private Pointer _pointer = null;
     private Transform _pointerTransform = null;
@@ -46,5 +52,11 @@ public class Ship : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, _pointerTransform.position, _handling);
         transform.rotation = Quaternion.Euler((transform.position.y - _pointerTransform.position.y) * _rotationSpeed,
             0, (transform.position.x - _pointerTransform.position.x) * _rotationSpeed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        col++;
+        _colls.text = col.ToString();
     }
 }

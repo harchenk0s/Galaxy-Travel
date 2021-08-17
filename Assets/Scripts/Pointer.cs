@@ -42,6 +42,7 @@ public class Pointer : MonoBehaviour
         _minBorders = new Vector2(-10000f, -10000f);
         _maxBorders = new Vector2(10000f, 10000f);
         _ship = FindObjectOfType<Ship>();
+        InitializeBorders();
     }
 
     private void Start()
@@ -51,8 +52,6 @@ public class Pointer : MonoBehaviour
             enabled = false;
             throw new UnityException("Ship not found");
         }
-            
-        InitializeBorders();
     }
 
     private IEnumerator ReturnToShipCourutine()
