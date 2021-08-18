@@ -11,18 +11,12 @@ public class ObjectPooler : MonoBehaviour
         _pool = FindObjectOfType<Pool>();
 
         if (_pool == null)
-        {
             throw new UnityException("Pool not found");
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Garbage poolObject = null;
-
-        if (other.gameObject.TryGetComponent<Garbage>(out poolObject))
-        {
+        if (other.gameObject.TryGetComponent<Garbage>(out _))
             _pool.Push(other.gameObject);
-        }
     }
 }

@@ -15,7 +15,7 @@ public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandle
         if (_pointer == null)
         {
             enabled = false;
-            throw new UnityException("Pointer not found");
+            throw new UnityException("Add Pointer on scene");
         }
     }
 

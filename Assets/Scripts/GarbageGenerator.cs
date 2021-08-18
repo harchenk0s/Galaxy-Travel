@@ -7,18 +7,6 @@ public class GarbageGenerator : MonoBehaviour
     private Pool _pool;
     private Vector2 _minBorders;
     private Vector2 _maxBorders;
-    private bool _generating = false;
-
-    private IEnumerator GeneratingCycle(float timeInterval)
-    {
-        while (_generating)
-        {
-            transform.position =
-                new Vector3(Random.Range(_minBorders.x, _maxBorders.x), Random.Range(_minBorders.y, _maxBorders.y), 1000);
-            _pool.Pop().transform.position = transform.position;
-            yield return new WaitForSeconds(timeInterval);
-        }
-    }
 
     private void Awake()
     {
@@ -27,14 +15,16 @@ public class GarbageGenerator : MonoBehaviour
 
     private void Start()
     {
-        Pointer pointer = FindObjectOfType<Pointer>();
+        PointerBorders pointerBorders = FindObjectOfType<PointerBorders>();
 
-        if (pointer != null)
+        if (pointerBorders != null)
         {
-            _minBorders = pointer._minBorders;
-            _maxBorders = pointer._maxBorders;
+            _minBorders = pointerBorders.MinBorders;
+            _maxBorders = pointerBorders.MaxBorders;
         }
-
-        _pool.Pop().transform.position = transform.position;
+        else
+        {
+            throw new UnityException("Add PointerBorders on scene!");
+        }
     }
 }

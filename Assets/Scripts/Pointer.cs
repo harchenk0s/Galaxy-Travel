@@ -3,20 +3,19 @@ using System.Collections;
 
 public class Pointer : MonoBehaviour
 {
-    [SerializeField] private Ship _ship = null;
-    private PointerBorder[] _borders;
-    private IEnumerator _returnToShip = null;
-
-    public Vector2 _minBorders { get; private set; }
-    public Vector2 _maxBorders { get; private set; }
+    [SerializeField] private GameObject _objectOfControl;
+    private IEnumerator _returnToObject = null;
+    private PointerBorders _pointerBorders = null;
+    private Vector2 _minBorders;
+    private Vector2 _maxBorders;
 
     public void StartMove()
     {
-        if (_returnToShip != null)
+        if (_returnToObject != null)
         {
-            StopCoroutine(_returnToShip);
-            _returnToShip = null;
-            transform.position = _ship.transform.position;
+            StopCoroutine(_returnToObject);
+            _returnToObject = null;
+            transform.position = _objectOfControl.transform.position;
         }
     }
 
@@ -33,68 +32,40 @@ public class Pointer : MonoBehaviour
 
     public void EndMove()
     {
-        _returnToShip = ReturnToShipCourutine();
-        StartCoroutine(_returnToShip);
+        _returnToObject = ReturnToObjectCourutine();
+        StartCoroutine(_returnToObject);
     }
 
     private void Awake()
     {
-        _minBorders = new Vector2(-10000f, -10000f);
-        _maxBorders = new Vector2(10000f, 10000f);
-        _ship = FindObjectOfType<Ship>();
-        InitializeBorders();
+        _pointerBorders = FindObjectOfType<PointerBorders>();
     }
 
     private void Start()
     {
-        if(_ship == null)
+        if(_objectOfControl == null)
         {
-            enabled = false;
-            throw new UnityException("Ship not found");
+            throw new UnityException("Object of control not choose");
+        }
+
+        if(_pointerBorders == null)
+        {
+            throw new UnityException("Add PointerBorders on scene");
+        }
+        else
+        {
+            _minBorders = _pointerBorders.MinBorders;
+            _maxBorders = _pointerBorders.MaxBorders;
         }
     }
 
-    private IEnumerator ReturnToShipCourutine()
+    private IEnumerator ReturnToObjectCourutine()
     {
-        while (transform.position != _ship.transform.position)
+        while (transform.position != _objectOfControl.transform.position)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _ship.transform.position, 0.5f);
+            transform.position = Vector3.MoveTowards(transform.position, _objectOfControl.transform.position, 0.5f);
             yield return null;
         }
-        _returnToShip = null;
-    }
-
-    private void InitializeBorders()
-    {
-        _borders = FindObjectsOfType<PointerBorder>();
-
-        if (_borders.Length > 1)
-        {
-            float leftBorder = float.MaxValue;
-            float rightBorder = float.MinValue;
-            float downBorder = float.MaxValue;
-            float upBorder = float.MinValue;
-
-            foreach (PointerBorder border in _borders)
-            {
-                float borderX = border.transform.position.x;
-                float borderY = border.transform.position.y;
-
-                if (borderX < leftBorder)
-                    leftBorder = borderX;
-
-                if (borderX > rightBorder)
-                    rightBorder = borderX;
-
-                if (borderY < downBorder)
-                    downBorder = borderY;
-
-                if (borderY > upBorder)
-                    upBorder = borderY;
-            }
-
-            _minBorders = new Vector2(leftBorder, downBorder);
-            _maxBorders = new Vector2(rightBorder, upBorder);
-        }
+        _returnToObject = null;
     }
 }

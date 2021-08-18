@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class PointerBorder : MonoBehaviour
+public class BorderPoint : MonoBehaviour
 {
     public int VerticalCount = 3;
     public int HorisontalCount = 3;
-    public PointerBorder _anotherBorder = null;
-    public List<PointerBorder> _borders = new List<PointerBorder>();
+    public BorderPoint _anotherBorder = null;
+    public List<BorderPoint> _borders = new List<BorderPoint>();
 
     public Color PointsColor = Color.red;
     public Color LinesColor = Color.green;
@@ -18,7 +18,7 @@ public class PointerBorder : MonoBehaviour
 
     public void Refresh()
     {
-        _borders.AddRange(FindObjectsOfType<PointerBorder>());
+        _borders.AddRange(FindObjectsOfType<BorderPoint>());
         _borders.Remove(this);
         _anotherBorder = _borders[0];
         HOSpoints = new float[HorisontalCount];
@@ -30,7 +30,7 @@ public class PointerBorder : MonoBehaviour
 
     public void Refresh(bool f)
     {
-        _borders.AddRange(FindObjectsOfType<PointerBorder>());
+        _borders.AddRange(FindObjectsOfType<BorderPoint>());
         _borders.Remove(this);
         _anotherBorder = _borders[0];
         HOSpoints = new float[HorisontalCount];
@@ -47,7 +47,7 @@ public class PointerBorder : MonoBehaviour
         if (_anotherBorder == null || _anotherBorder == this)
         {
             _borders.Clear();
-            _borders.AddRange(FindObjectsOfType<PointerBorder>());
+            _borders.AddRange(FindObjectsOfType<BorderPoint>());
 
             if (_borders.Count >= 2)
             {
