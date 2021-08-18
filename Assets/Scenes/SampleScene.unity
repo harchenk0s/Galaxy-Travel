@@ -662,7 +662,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 913565861}
-  - component: {fileID: 913565860}
   m_Layer: 0
   m_Name: PointerBorderRightUp
   m_TagString: Untagged
@@ -670,60 +669,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &913565860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913565859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43b81020251f64a788b60dc02243af4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VerticalCount: 3
-  HorisontalCount: 4
-  _anotherBorder: {fileID: 989596271}
-  _borders:
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  - {fileID: 989596271}
-  PointsColor: {r: 1, g: 0, b: 0, a: 1}
-  LinesColor: {r: 0, g: 1, b: 0, a: 1}
-  HOSpoints:
-  - -9.75
-  - -3.25
-  - 3.25
-  - 9.75
-  VERpoints:
-  - 3.6666667
-  - 11
-  - 18.333334
 --- !u!4 &913565861
 Transform:
   m_ObjectHideFlags: 0
@@ -804,7 +749,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 989596272}
-  - component: {fileID: 989596271}
   m_Layer: 0
   m_Name: PointerBorderLeftDown
   m_TagString: Untagged
@@ -812,60 +756,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &989596271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989596270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43b81020251f64a788b60dc02243af4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VerticalCount: 3
-  HorisontalCount: 4
-  _anotherBorder: {fileID: 913565860}
-  _borders:
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  - {fileID: 913565860}
-  PointsColor: {r: 1, g: 0, b: 0, a: 1}
-  LinesColor: {r: 0, g: 1, b: 0, a: 1}
-  HOSpoints:
-  - -9.75
-  - -3.25
-  - 3.25
-  - 9.75
-  VERpoints:
-  - 3.6666667
-  - 11
-  - 18.333334
 --- !u!4 &989596272
 Transform:
   m_ObjectHideFlags: 0
@@ -1337,6 +1227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1463636677}
   - component: {fileID: 1463636676}
+  - component: {fileID: 1463636678}
   m_Layer: 0
   m_Name: PointerBorders
   m_TagString: Untagged
@@ -1375,6 +1266,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463636678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463636675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9a13d886e4b41cb87364dd0852e653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DrawGizmos: 1
+  Point1: {fileID: 989596270}
+  Point2: {fileID: 913565859}
+  VerticalCount: 3
+  HorisontalCount: 4
+  PointsColor: {r: 1, g: 0, b: 0, a: 1}
+  LinesColor: {r: 0, g: 1, b: 0, a: 1}
+  HOSpoints:
+  - -9.75
+  - -3.25
+  - 3.25
+  - 9.75
+  VERpoints:
+  - 3.6666667
+  - 11
+  - 18.333334
 --- !u!1 &1615331473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2353968562978425913, guid: 52ff34a70d23045cd9f70ad84a01ebec,

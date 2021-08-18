@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PointerBorders : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _borderPoints = new List<GameObject>(2);
+    [SerializeField] private List<GameObject> _borderPoints  = new List<GameObject>(2);
 
     public Vector2 MinBorders { get; private set; } = Vector2.zero;
     public Vector2 MaxBorders { get; private set; } = Vector2.zero;
@@ -43,6 +43,10 @@ public class PointerBorders : MonoBehaviour
 
             MinBorders = new Vector2(leftBorder, downBorder);
             MaxBorders = new Vector2(rightBorder, upBorder);
+        }
+        else
+        {
+            throw new UnityException("Add 2 GameObject in BorderPoints List");
         }
     }
 }
