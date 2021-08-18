@@ -34,5 +34,7 @@ public class GarbageGenerator : MonoBehaviour
             _minBorders = pointer._minBorders;
             _maxBorders = pointer._maxBorders;
         }
+
+        _pool.Pop().transform.position = transform.position;
     }
 }

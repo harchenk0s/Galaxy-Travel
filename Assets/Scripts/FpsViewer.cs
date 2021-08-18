@@ -19,12 +19,6 @@ public class FpsViewer : MonoBehaviour
         StartCoroutine(SetFPS());
     }
 
-    private void Update()
-    {
-        //_label.text = Mathf.Clamp(_fpsCounter.FPS, 0, 99).ToString();
-        
-    }
-
     private IEnumerator SetFPS()
     {
         while (true)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
+    [SerializeField] List<GameObject> _prefabs = new List<GameObject>();
     private List<GameObject> _pool = new List<GameObject>();
 
     public void Push(GameObject poolObject)
@@ -14,7 +15,7 @@ public class Pool : MonoBehaviour
 
     public GameObject Pop()
     {
-        if(_pool.Count >= 1)
+        if(_pool.Count > 0)
         {
             GameObject poolObject = _pool[Random.Range(0, _pool.Count - 1)];
             _pool.Remove(poolObject);
@@ -23,11 +24,20 @@ public class Pool : MonoBehaviour
         }
         else
         {
-            return null;
+            if(_prefabs.Count > 0)
+            {
+                CreateObject(_prefabs[Random.Range(0, _prefabs.Count - 1)]);
+                return Pop();
+            }
+            else
+            {
+                return new GameObject();
+                throw new UnityException("Pool is empty!");
+            }
         }
     }
 
-    private GameObject CreateObject(GameObject prefab)
+    public GameObject CreateObject(GameObject prefab)
     {
         GameObject poolObject = Instantiate(prefab, transform);
         poolObject.SetActive(false);

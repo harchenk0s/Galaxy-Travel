@@ -28,9 +28,9 @@ public class Garbage : MonoBehaviour
 
     private void OnEnable()
     {
-        _rigidbody.AddTorque(_rotationVector * _rotationSpeed);
+        _rigidbody.velocity = -Vector3.forward * _speed;
         _rotationVector = new Vector3(Random.value, Random.value, Random.value);
         _rotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
-        _rigidbody.velocity = new Vector3(0, 0, -1) * _speed;
+        _rigidbody.AddTorque(_rotationVector * _rotationSpeed);
     }
 }
