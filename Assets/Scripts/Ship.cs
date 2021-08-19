@@ -62,4 +62,9 @@ public class Ship : MonoBehaviour
         transform.rotation = Quaternion.Euler((transform.position.y - _pointerTransform.position.y) * _rotationSpeed,
             0, (transform.position.x - _pointerTransform.position.x) * _rotationSpeed);
     }
+
+    private void OnDestroy()
+    {
+        ChangeSpeedEvent.RemoveAllListeners();
+    }
 }

@@ -12,9 +12,11 @@ public class Garbage : MonoBehaviour
     private float _rotationSpeed;
     private Vector3 _rotationVector;
     private Rigidbody _rigidbody;
+    private Ship _ship;
 
     private void Awake()
     {
+        _ship = FindObjectOfType<Ship>();
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.useGravity = false;
         _rigidbody.angularDrag = 0;
@@ -24,6 +26,8 @@ public class Garbage : MonoBehaviour
     private void Start()
     {
         OnEnable();
+        _ship.ChangeSpeedEvent.AddListener(OnChangeSpeed);
+        _speed = _ship.CurrentSpeed;
     }
 
     private void OnEnable()
@@ -32,5 +36,16 @@ public class Garbage : MonoBehaviour
         _rotationVector = new Vector3(Random.value, Random.value, Random.value);
         _rotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
         _rigidbody.AddTorque(_rotationVector * _rotationSpeed);
+    }
+
+    private void OnChangeSpeed(float speed)
+    {
+        _speed = speed;
+        _rigidbody.velocity = -Vector3.forward * _speed;
+    }
+
+    private void OnDestroy()
+    {
+        _ship.ChangeSpeedEvent.RemoveListener(OnChangeSpeed);
     }
 }
