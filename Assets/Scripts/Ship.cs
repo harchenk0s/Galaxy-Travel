@@ -35,6 +35,11 @@ public class Ship : MonoBehaviour
 
     private void LateUpdate()
     {
+        MoveToPointer();
+    }
+
+    private void MoveToPointer()
+    {
         transform.position = Vector3.Lerp(transform.position, _pointerTransform.position, _handling);
         transform.rotation = Quaternion.Euler((transform.position.y - _pointerTransform.position.y) * _rotationSpeed,
             0, (transform.position.x - _pointerTransform.position.x) * _rotationSpeed);
