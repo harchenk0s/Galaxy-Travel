@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using System;
+
+[Serializable]
+public class ChangeSpeedEvent : UnityEvent<float> { }
 
 public class Ship : MonoBehaviour
 {
@@ -11,13 +16,26 @@ public class Ship : MonoBehaviour
     
     private Pointer _pointer = null;
     private Transform _pointerTransform = null;
+    private float _currentSpeed = 0;
 
-    public float CurrentSpeed { get; private set; } = 0;
+    public ChangeSpeedEvent ChangeSpeedEvent;
+
+    public float CurrentSpeed
+    {
+        get { return _currentSpeed; }
+
+        private set
+        {
+            _currentSpeed = Mathf.Clamp(value, 0, _maxSpeed);
+            ChangeSpeedEvent.Invoke(_currentSpeed);
+        }
+    }
 
     private void Awake()
     {
         _pointer = FindObjectOfType<Pointer>();
         _handling /= 100;
+        CurrentSpeed = _maxSpeed / 2;
     }
 
     private void Start()

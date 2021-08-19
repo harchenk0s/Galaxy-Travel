@@ -1766,6 +1766,10 @@ PrefabInstance:
       propertyPath: _colls
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1547919278, guid: 52ff34a70d23045cd9f70ad84a01ebec, type: 3}
+      propertyPath: _maxSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 1547919279, guid: 52ff34a70d23045cd9f70ad84a01ebec, type: 3}
       propertyPath: m_IsTrigger
       value: 1
