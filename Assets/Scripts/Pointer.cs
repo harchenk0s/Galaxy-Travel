@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Pointer : MonoBehaviour
 {
-    [SerializeField] private GameObject _objectOfControl;
+    [SerializeField] private GameObject _objectOfControl = null;
     private IEnumerator _returnToObject = null;
     private PointerBorders _pointerBorders = null;
     private Vector2 _minBorders;

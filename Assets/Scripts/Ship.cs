@@ -10,7 +10,7 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] private int _maxSpeed = 300;
     [SerializeField] private float _handling = 10f;
-    [SerializeField] private int _armor = 10;
+    //[SerializeField] private int _armor = 10;
     [Range(1,15)]
     [SerializeField] private int _rotationSpeed = 5;
     
@@ -35,7 +35,7 @@ public class Ship : MonoBehaviour
     {
         _pointer = FindObjectOfType<Pointer>();
         _handling /= 100;
-        CurrentSpeed = _maxSpeed / 2;
+        CurrentSpeed = 0;
     }
 
     private void Start()
@@ -67,4 +67,5 @@ public class Ship : MonoBehaviour
     {
         ChangeSpeedEvent.RemoveAllListeners();
     }
+
 }
