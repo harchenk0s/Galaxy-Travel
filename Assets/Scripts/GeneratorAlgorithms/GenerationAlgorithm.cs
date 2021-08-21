@@ -29,7 +29,7 @@ public abstract class GenerationAlgorithm : MonoBehaviour
         return _prefabs;
     }
 
-    private void Awake()
+    protected void Awake()
     {
         _generator = GetComponent<GarbageGenerator>();
         

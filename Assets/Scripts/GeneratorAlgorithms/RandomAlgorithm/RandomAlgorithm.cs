@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class RandomAlgorithm : GenerationAlgorithm
 {
+    [SerializeField] private RandomAlgParameters _parameters;
+
+    private new void Awake()
+    {
+        base.Awake();
+        _parameters = Resources.Load("RandomParameters") as RandomAlgParameters;
+        Debug.Log(_parameters);
+        _prefabs = _parameters.Prefabs;
+    }
     protected override IEnumerator GenerationCorutine()
     {
         while (true)

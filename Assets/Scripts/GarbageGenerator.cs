@@ -33,7 +33,7 @@ public class GarbageGenerator : MonoBehaviour
             Destroy(_algorithm);
             _algorithm = (GenerationAlgorithm)gameObject.AddComponent(newAlgorithm);
             _pool.Clear();
-           // _pool.CreateObjects(_algorithm.GetPrefabsList());
+            _pool.CreateObjects(_algorithm.GetPrefabsList());
         }
     }
 
