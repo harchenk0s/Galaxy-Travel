@@ -12,7 +12,6 @@ public class GarbageGenerator : MonoBehaviour
     private Vector2 _minBorders = Vector2.zero;
     private Vector2 _maxBorders = Vector2.zero;
     private IEnumerator _generationCorutine;
-
     public UnityEvent EndWaveEvent;
 
     public void GenerateWave(float duration)
@@ -21,18 +20,21 @@ public class GarbageGenerator : MonoBehaviour
         StartCoroutine(_generationCorutine);
     }
 
-    public void ChangeAlgorithm(GenerationAlgorithm newAlgorithm)
+    public void ChangeAlgorithm(Type newAlgorithm)
     {
-        if(_generationCorutine != null)
+        if(newAlgorithm.BaseType == typeof(GenerationAlgorithm))
         {
-            StopCoroutine(_generationCorutine);
-            _algorithm.StopGenerate();
-        }
+            if (_generationCorutine != null)
+            {
+                StopCoroutine(_generationCorutine);
+                _algorithm.StopGenerate();
+            }
 
-        Destroy(_algorithm);
-        _algorithm = (GenerationAlgorithm)gameObject.AddComponent(newAlgorithm.GetType());
-        _pool.Clear();
-        _pool.CreateObjects(_algorithm.GetPrefabsList());
+            Destroy(_algorithm);
+            _algorithm = (GenerationAlgorithm)gameObject.AddComponent(newAlgorithm);
+            _pool.Clear();
+           // _pool.CreateObjects(_algorithm.GetPrefabsList());
+        }
     }
 
     public void Spawn(Vector2 position)

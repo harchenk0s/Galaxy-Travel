@@ -35,7 +35,7 @@ public class Ship : MonoBehaviour
     {
         _pointer = FindObjectOfType<Pointer>();
         _handling /= 100;
-        CurrentSpeed = 0;
+        CurrentSpeed = _maxSpeed / 2;
     }
 
     private void Start()

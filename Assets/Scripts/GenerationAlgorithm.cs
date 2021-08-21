@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class GenerationAlgorithm : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> prefabs = new List<GameObject>();
+    [SerializeField] private List<GameObject> _prefabs = new List<GameObject>();
 
     protected GarbageGenerator _generator;
     protected Vector2 _minBorders = Vector2.zero;
@@ -26,7 +26,7 @@ public abstract class GenerationAlgorithm : MonoBehaviour
 
     public List<GameObject> GetPrefabsList()
     {
-        return prefabs;
+        return _prefabs;
     }
 
     private void Awake()
