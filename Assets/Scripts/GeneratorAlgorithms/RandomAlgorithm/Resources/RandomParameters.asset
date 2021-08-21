@@ -32,4 +32,4 @@ MonoBehaviour:
   - {fileID: 3272851907140073649, guid: 02ecc5331c6a14b678fa2969af655d7e, type: 3}
   - {fileID: 7928224115587361211, guid: ad35a7af7a1cc4f57a81b4bd0221d847, type: 3}
   - {fileID: 3727773805799532628, guid: 355899cee0558497793417ebf7d8e4ce, type: 3}
-  jojo: HArOS
+  _rangeDelay: {x: 0.2, y: 0.7}
