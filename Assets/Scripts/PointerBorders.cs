@@ -5,24 +5,26 @@ using UnityEngine;
 public class PointerBorders : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _borderPoints  = new List<GameObject>(2);
+    private Vector2 _minBorders = new Vector2();
+    private Vector2 _maxBorders = new Vector2();
 
-    public Vector2 MinBorders { get; private set; } = Vector2.zero;
-    public Vector2 MaxBorders { get; private set; } = Vector2.zero;
-
-    private void Awake()
+    public void GetBorders(out Vector2 minBorders, out Vector2 maxBorders)
     {
         InitializeBorders();
+        minBorders = _minBorders;
+        maxBorders = _maxBorders;
     }
 
     private void InitializeBorders()
     {
-        if(_borderPoints.Count > 1)
+        if (_borderPoints.Count > 1)
         {
             float leftBorder = float.MaxValue;
             float rightBorder = float.MinValue;
             float downBorder = float.MaxValue;
             float upBorder = float.MinValue;
 
+            Debug.Log(_borderPoints.Count);
             foreach (GameObject border in _borderPoints)
             {
                 float borderX = border.transform.position.x;
@@ -41,8 +43,8 @@ public class PointerBorders : MonoBehaviour
                     upBorder = borderY;
             }
 
-            MinBorders = new Vector2(leftBorder, downBorder);
-            MaxBorders = new Vector2(rightBorder, upBorder);
+            _minBorders = new Vector2(leftBorder, downBorder);
+            _maxBorders = new Vector2(rightBorder, upBorder);
         }
         else
         {

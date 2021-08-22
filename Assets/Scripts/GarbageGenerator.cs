@@ -9,8 +9,6 @@ public class GarbageGenerator : MonoBehaviour
 {
     public GenerationAlgorithm _algorithm;
     private Pool _pool;
-    private Vector2 _minBorders = Vector2.zero;
-    private Vector2 _maxBorders = Vector2.zero;
     private IEnumerator _generationCorutine;
 
     public UnityEvent EndWaveEvent;
@@ -51,8 +49,16 @@ public class GarbageGenerator : MonoBehaviour
 
     public void GetBorders(out Vector2 minBorders, out Vector2 maxBorders)
     {
-        minBorders = _minBorders;
-        maxBorders = _maxBorders;
+        PointerBorders pointerBorders = FindObjectOfType<PointerBorders>();
+
+        if (pointerBorders != null)
+        {
+            pointerBorders.GetBorders(out minBorders, out maxBorders);
+        }
+        else
+        {
+            throw new UnityException("Add PointerBorders on scene!");
+        }
     }
 
     private void Awake()
@@ -67,21 +73,6 @@ public class GarbageGenerator : MonoBehaviour
         else
         {
             _pool.CreateObjects(_algorithm.GetPrefabsList());
-        }
-    }
-
-    private void Start()
-    {
-        PointerBorders pointerBorders = FindObjectOfType<PointerBorders>();
-
-        if (pointerBorders != null)
-        {
-            _minBorders = pointerBorders.MinBorders;
-            _maxBorders = pointerBorders.MaxBorders;
-        }
-        else
-        {
-            throw new UnityException("Add PointerBorders on scene!");
         }
     }
 

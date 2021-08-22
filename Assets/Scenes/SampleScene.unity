@@ -811,10 +811,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1250969857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 006e71eb1b0c443cba833bfdcfe0cad6, type: 3}
+  m_Script: {fileID: 11500000, guid: 07054b774b5294417b09f143ee0497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameters: {fileID: 11400000, guid: d6b224bd0ea414a85a4001a06872f975, type: 2}
+  _parameters: {fileID: 0}
 --- !u!1 &1294147733
 GameObject:
   m_ObjectHideFlags: 0

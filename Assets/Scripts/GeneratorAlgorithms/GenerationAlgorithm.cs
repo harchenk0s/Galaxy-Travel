@@ -31,6 +31,7 @@ public abstract class GenerationAlgorithm : MonoBehaviour
     {
         _generator = GetComponent<GarbageGenerator>();
         _generator.GetBorders(out _minBorders, out _maxBorders);
+        Debug.Log(_minBorders.ToString() + " " + _maxBorders.ToString());
         _generationCorutine = GenerationCorutine();
     }
 

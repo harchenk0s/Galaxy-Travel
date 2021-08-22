@@ -27,7 +27,7 @@ public class RandomAlgorithm : GenerationAlgorithm
             Vector2 position =
                 new Vector2(Random.Range(_minBorders.x, _maxBorders.x), Random.Range(_minBorders.y, _maxBorders.y));
             _generator.Spawn(position);
-            yield return new WaitForSeconds(Random.Range(_parameters.DelayRange.x, _parameters.DelayRange.y));
+            yield return new WaitForSecondsRealtime(Random.Range(_parameters.DelayRange.x, _parameters.DelayRange.y));
         }
     }
 }

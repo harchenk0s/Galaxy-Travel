@@ -54,8 +54,7 @@ public class Pointer : MonoBehaviour
         }
         else
         {
-            _minBorders = _pointerBorders.MinBorders;
-            _maxBorders = _pointerBorders.MaxBorders;
+            _pointerBorders.GetBorders(out _minBorders, out _maxBorders);
         }
     }
 
