@@ -814,7 +814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e9217a62ead4f8cacb5be679b271e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabs: []
 --- !u!1 &1294147733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1227,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1463636677}
   - component: {fileID: 1463636676}
-  - component: {fileID: 1463636678}
   m_Layer: 0
   m_Name: PointerBorders
   m_TagString: Untagged
@@ -1251,6 +1249,12 @@ MonoBehaviour:
   _borderPoints:
   - {fileID: 989596270}
   - {fileID: 913565859}
+  DrawGizmos: 1
+  LinesColor: {r: 0, g: 1, b: 0, a: 1}
+  PointsColor: {r: 1, g: 0, b: 0, a: 1}
+  DrawGrid: 1
+  VerticalCount: 3
+  HorisontalCount: 4
 --- !u!4 &1463636677
 Transform:
   m_ObjectHideFlags: 0
@@ -1267,34 +1271,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1463636678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463636675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9a13d886e4b41cb87364dd0852e653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DrawGizmos: 1
-  Point1: {fileID: 989596270}
-  Point2: {fileID: 913565859}
-  VerticalCount: 3
-  HorisontalCount: 4
-  PointsColor: {r: 1, g: 0, b: 0, a: 1}
-  LinesColor: {r: 0, g: 1, b: 0, a: 1}
-  HOSpoints:
-  - 0
-  - 0
-  - 0
-  - 0
-  VERpoints:
-  - 0
-  - 0
-  - 0
 --- !u!1 &1615331473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2353968562978425913, guid: 52ff34a70d23045cd9f70ad84a01ebec,

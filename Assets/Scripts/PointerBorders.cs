@@ -49,4 +49,72 @@ public class PointerBorders : MonoBehaviour
             throw new UnityException("Add 2 GameObject in BorderPoints List");
         }
     }
+
+#if UNITY_EDITOR
+
+    public bool DrawGizmos = false;
+    public Color LinesColor = Color.green;
+    public Color PointsColor = Color.red;
+
+    public bool DrawGrid = false;
+    public int VerticalCount = 3;
+    public int HorisontalCount = 3;
+
+    private float _height;
+    private float _width;
+    private float[] _columns;
+    private float[] _rows;
+
+    private void DrawLines(Vector3 point1, Vector3 point2)
+    {
+        Gizmos.color = LinesColor;
+        Gizmos.DrawLine(point1,
+            new Vector3(point2.x, point1.y, 0));
+        Gizmos.DrawLine(point1,
+            new Vector3(point1.x, point2.y, 0));
+    }
+
+    private void DrawGridPoints(Vector3 point1, Vector3 point2)
+    {
+        Gizmos.color = PointsColor;
+        _columns = new float[HorisontalCount];
+        _rows = new float[VerticalCount];
+
+        _height = Mathf.Abs(point1.y - point2.y);
+        _width = Mathf.Abs(point1.x - point2.x);
+
+        _columns[0] = Mathf.Min(point1.x, point2.x) + _width / (_columns.Length * 2);
+        _rows[0] = Mathf.Min(point1.y, point2.y) + _height / (_rows.Length * 2);
+
+        for (int i = 1; i < _columns.Length; i++)
+        {
+            _columns[i] = _columns[0] + _width / _columns.Length * i;
+        }
+
+        for (int i = 1; i < _rows.Length; i++)
+        {
+            _rows[i] = _rows[0] + _height / _rows.Length * i;
+        }
+
+        for (int i = 0; i < _columns.Length; i++)
+        {
+            for (int j = 0; j < _rows.Length; j++)
+            {
+                Gizmos.DrawSphere(new Vector3(_columns[i], _rows[j]), 1);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_borderPoints.Count > 1 && DrawGizmos)
+        {
+            DrawLines(_borderPoints[0].transform.position, _borderPoints[1].transform.position);
+            DrawLines(_borderPoints[1].transform.position, _borderPoints[0].transform.position);
+
+            if (DrawGrid)
+                DrawGridPoints(_borderPoints[0].transform.position, _borderPoints[1].transform.position);
+        }
+    }
+#endif
 }
