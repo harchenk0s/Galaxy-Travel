@@ -69,9 +69,9 @@ public class PointerBorders : MonoBehaviour
     {
         Gizmos.color = LinesColor;
         Gizmos.DrawLine(point1,
-            new Vector3(point2.x, point1.y, 0));
+            new Vector3(point2.x, point1.y, point2.z));
         Gizmos.DrawLine(point1,
-            new Vector3(point1.x, point2.y, 0));
+            new Vector3(point1.x, point2.y, point2.z));
     }
 
     private void DrawGridPoints(Vector3 point1, Vector3 point2)
@@ -107,13 +107,21 @@ public class PointerBorders : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (_borderPoints.Count > 1 && DrawGizmos)
+        if (DrawGizmos)
         {
-            DrawLines(_borderPoints[0].transform.position, _borderPoints[1].transform.position);
-            DrawLines(_borderPoints[1].transform.position, _borderPoints[0].transform.position);
+            try
+            {
+                DrawLines(_borderPoints[0].transform.position, _borderPoints[1].transform.position);
+                DrawLines(_borderPoints[1].transform.position, _borderPoints[0].transform.position);
 
-            if (DrawGrid)
-                DrawGridPoints(_borderPoints[0].transform.position, _borderPoints[1].transform.position);
+                if (DrawGrid)
+                    DrawGridPoints(_borderPoints[0].transform.position, _borderPoints[1].transform.position);
+            }
+            catch
+            {
+                DrawGizmos = false;
+                throw new UnityException("Add 2 GameObject in BorderPoints List");
+            }
         }
     }
 #endif
