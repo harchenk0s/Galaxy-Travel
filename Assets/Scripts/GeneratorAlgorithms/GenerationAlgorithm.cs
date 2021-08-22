@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class GenerationAlgorithm : MonoBehaviour
 {
     protected List<GameObject> _prefabs = new List<GameObject>();
-
     protected GarbageGenerator _generator;
     protected Vector2 _minBorders = Vector2.zero;
     protected Vector2 _maxBorders = Vector2.zero;
+
     private IEnumerator _generationCorutine;
 
     public void StartGenerate()

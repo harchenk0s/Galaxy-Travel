@@ -7,7 +7,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Pool))]
 public class GarbageGenerator : MonoBehaviour
 {
-    public GenerationAlgorithm _algorithm;
+    [SerializeField] private GenerationAlgorithm _algorithm;
+
     private Pool _pool;
     private IEnumerator _generationCorutine;
 
@@ -65,8 +66,11 @@ public class GarbageGenerator : MonoBehaviour
     {
         _pool = GetComponent<Pool>();
         _algorithm = GetComponent<GenerationAlgorithm>();
+    }
 
-        if(_algorithm == null)
+    private void Start()
+    {
+        if (_algorithm == null)
         {
             throw new UnityException("Add GenerationAlgorithm");
         }

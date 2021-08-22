@@ -3,15 +3,17 @@ using UnityEngine.EventSystems;
 
 public class PointerTouchControl : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    [Range(0.01f,0.1f)]
-    [SerializeField] private float _sentivity = 0.05f;
+    [SerializeField] [Range(0.01f, 0.1f)] private float _sentivity = 0.05f;
 
     private Pointer _pointer = null;
 
-    private void Start()
+    private void Awake()
     {
         _pointer = FindObjectOfType<Pointer>();
+    }
 
+    private void Start()
+    {
         if (_pointer == null)
         {
             enabled = false;

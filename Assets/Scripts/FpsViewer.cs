@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(FpsCounter))]
 public class FpsViewer : MonoBehaviour
 {
-   [SerializeField] private Text _label = null;
+
+    [SerializeField] private Text _label = null;
     private FpsCounter _fpsCounter;
 
     private void Awake()
@@ -28,3 +29,4 @@ public class FpsViewer : MonoBehaviour
         }
     }
 }
+#endif

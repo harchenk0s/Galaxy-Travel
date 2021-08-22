@@ -7,10 +7,13 @@ public class PointerBorders : MonoBehaviour
     [SerializeField] private List<GameObject> _borderPoints  = new List<GameObject>(2);
     private Vector2 _minBorders = new Vector2();
     private Vector2 _maxBorders = new Vector2();
+    private bool _isBorderInitialize = false;
 
     public void GetBorders(out Vector2 minBorders, out Vector2 maxBorders)
     {
-        InitializeBorders();
+        if(!_isBorderInitialize)
+            InitializeBorders();
+
         minBorders = _minBorders;
         maxBorders = _maxBorders;
     }
@@ -44,6 +47,7 @@ public class PointerBorders : MonoBehaviour
 
             _minBorders = new Vector2(leftBorder, downBorder);
             _maxBorders = new Vector2(rightBorder, upBorder);
+            _isBorderInitialize = true;
         }
         else
         {

@@ -25,6 +25,7 @@ public class Pool : MonoBehaviour
         {
             poolObject = CreateObject(_allPoolObjects[Random.Range(0, _allPoolObjects.Count - 1)]);
         }
+
         _pool.Remove(poolObject);
         poolObject.SetActive(true);
         return poolObject;

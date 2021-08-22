@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewRandomParam", menuName = "AlgorithmParameters/GridRandom")]
 public class GridRandomParameters : AlgorithmParameters
 {
-    [SerializeField] private int _Columns;
-    [SerializeField] private int _Rows;
+    [SerializeField] [Min(1)] private int _Columns = 1;
+    [SerializeField] [Min(1)] private int _Rows = 1;
     [SerializeField] private Vector2 _delayRange = new Vector2();
     
     public int Columns => _Columns;

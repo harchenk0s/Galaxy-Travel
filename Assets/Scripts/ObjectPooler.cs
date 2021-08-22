@@ -9,7 +9,10 @@ public class ObjectPooler : MonoBehaviour
     private void Awake()
     {
         _pool = FindObjectOfType<Pool>();
+    }
 
+    private void Start()
+    {
         if (_pool == null)
             throw new UnityException("Pool not found");
     }
