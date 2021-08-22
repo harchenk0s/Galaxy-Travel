@@ -57,8 +57,8 @@ public class PointerBorders : MonoBehaviour
     public Color PointsColor = Color.red;
 
     public bool DrawGrid = false;
-    public int VerticalCount = 3;
-    public int HorisontalCount = 3;
+    public int Columns = 3;
+    public int Rows = 3;
 
     private float _height;
     private float _width;
@@ -77,8 +77,8 @@ public class PointerBorders : MonoBehaviour
     private void DrawGridPoints(Vector3 point1, Vector3 point2)
     {
         Gizmos.color = PointsColor;
-        _columns = new float[HorisontalCount];
-        _rows = new float[VerticalCount];
+        _columns = new float[Columns];
+        _rows = new float[Rows];
 
         _height = Mathf.Abs(point1.y - point2.y);
         _width = Mathf.Abs(point1.x - point2.x);
