@@ -24,7 +24,6 @@ public class PointerBorders : MonoBehaviour
             float downBorder = float.MaxValue;
             float upBorder = float.MinValue;
 
-            Debug.Log(_borderPoints.Count);
             foreach (GameObject border in _borderPoints)
             {
                 float borderX = border.transform.position.x;
