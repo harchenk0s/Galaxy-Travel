@@ -21,21 +21,26 @@ public class Garbage : MonoBehaviour
         _rigidbody.useGravity = false;
         _rigidbody.angularDrag = 0;
         _rigidbody.drag = 0;
-    }
-
-    private void Start()
-    {
-        OnEnable();
-        _ship.ChangeSpeedEvent.AddListener(OnChangeSpeed);
         _speed = _ship.CurrentSpeed;
+        _ship.ChangeSpeedEvent.AddListener(OnChangeSpeed);
     }
 
-    private void OnEnable()
+    private void NewParameters()
     {
         _rigidbody.velocity = -Vector3.forward * _speed;
         _rotationVector = new Vector3(Random.value, Random.value, Random.value);
         _rotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
         _rigidbody.AddTorque(_rotationVector * _rotationSpeed);
+    }
+
+    private void OnEnable()
+    {
+        NewParameters();
+    }
+
+    private void OnDisable()
+    {
+        _rigidbody.velocity = Vector3.zero;
     }
 
     private void OnChangeSpeed(float speed)
