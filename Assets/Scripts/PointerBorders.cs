@@ -57,8 +57,9 @@ public class PointerBorders : MonoBehaviour
     public Color PointsColor = Color.red;
 
     public bool DrawGrid = false;
-    public int Columns = 3;
-    public int Rows = 3;
+
+    [Min(1)] public int Columns = 3;
+    [Min(1)] public int Rows = 3;
 
     private float _height;
     private float _width;
