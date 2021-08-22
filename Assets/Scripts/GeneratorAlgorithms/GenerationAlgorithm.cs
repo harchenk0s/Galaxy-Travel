@@ -13,8 +13,6 @@ public abstract class GenerationAlgorithm : MonoBehaviour
 
     public void StartGenerate()
     {
-        _generator.GetBorders(out _minBorders, out _maxBorders);
-        _generationCorutine = GenerationCorutine();
         StartCoroutine(_generationCorutine);
     }
 
@@ -32,7 +30,8 @@ public abstract class GenerationAlgorithm : MonoBehaviour
     protected void Awake()
     {
         _generator = GetComponent<GarbageGenerator>();
-        
+        _generator.GetBorders(out _minBorders, out _maxBorders);
+        _generationCorutine = GenerationCorutine();
     }
 
     protected abstract IEnumerator GenerationCorutine();
