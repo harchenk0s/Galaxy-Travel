@@ -12,10 +12,17 @@ public class GarbageGenerator : MonoBehaviour
     private Vector2 _minBorders = Vector2.zero;
     private Vector2 _maxBorders = Vector2.zero;
     private IEnumerator _generationCorutine;
+
     public UnityEvent EndWaveEvent;
 
     public void GenerateWave(float duration)
     {
+        if (_generationCorutine != null)
+        {
+            StopCoroutine(_generationCorutine);
+            _algorithm.StopGenerate();
+        }
+
         _generationCorutine = GeneratingWaveCorutine(duration);
         StartCoroutine(_generationCorutine);
     }
