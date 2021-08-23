@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 4053168225181847706, guid: 852c68cb61ac24773a226373790be21a, type: 3}
   _Columns: 4
   _Rows: 3
-  _delayRange: {x: 0.1, y: 0.7}
+  _delayRange: {x: 0.1, y: 0.2}
