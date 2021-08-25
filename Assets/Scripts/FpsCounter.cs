@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 
 public class FpsCounter : MonoBehaviour
 {
@@ -9,3 +10,4 @@ public class FpsCounter : MonoBehaviour
         FPS = (int)(1f / Time.unscaledDeltaTime);
     }
 }
+#endif
