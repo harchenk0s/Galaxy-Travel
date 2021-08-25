@@ -15,7 +15,7 @@ public class GridRandomAlg : GenerationAlgorithm
     {
         while (true)
         {
-            Vector2 position = _spawnPoints[Random.Range(0, _spawnPoints.Count - 1)];
+            Vector2 position = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
             _generator.Spawn(position);
             yield return new WaitForSeconds(Random.Range(_parameters.DelayRange.x, _parameters.DelayRange.y));
         }
@@ -46,8 +46,6 @@ public class GridRandomAlg : GenerationAlgorithm
 
         _columns[0] = _minBorders.x + width / (_parameters.Columns * 2);
         _rows[0] = _minBorders.y + height / (_parameters.Rows * 2);
-
-        _spawnPoints.Add(new Vector2(_columns[0], _rows[0]));
 
         for (int i = 1; i < _columns.Length; i++)
         {
