@@ -10,12 +10,13 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] private int _maxSpeed = 300;
     [SerializeField] private float _handling = 10f;
-    //[SerializeField] private int _armor = 10;
+    [SerializeField] private int _maxArmor = 10;
     [SerializeField] [Range(1, 15)] private int _rotationSpeed = 5;
     
     private Pointer _pointer = null;
     private Transform _pointerTransform = null;
     private float _currentSpeed = 0;
+    private int _currentArmor;
 
     public ChangeSpeedEvent ChangeSpeedEvent;
 
@@ -30,11 +31,29 @@ public class Ship : MonoBehaviour
         }
     }
 
+    public int CurrentArmor
+    {
+        get { return _currentArmor; }
+
+        private set
+        {
+            if(value >= 0)
+            {
+                _currentArmor = Mathf.Clamp(value, 0, _maxArmor);
+            }
+            else
+            {
+                ShipHit();
+            }
+        }
+    }
+
     private void Awake()
     {
         _pointer = FindObjectOfType<Pointer>();
         _handling /= 100;
-        CurrentSpeed = 100;
+        CurrentSpeed = 300;
+        _currentArmor = _maxArmor;
     }
 
     private void Start()
@@ -67,4 +86,16 @@ public class Ship : MonoBehaviour
         ChangeSpeedEvent.RemoveAllListeners();
     }
 
+    private void ShipHit()
+    {
+        Debug.LogError("Ship dead!");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent<Garbage>(out _))
+        {
+            CurrentArmor--;
+        }
+    }
 }
