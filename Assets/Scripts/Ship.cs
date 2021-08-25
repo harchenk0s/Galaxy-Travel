@@ -19,6 +19,7 @@ public class Ship : MonoBehaviour
     private int _currentArmor;
 
     public ChangeSpeedEvent ChangeSpeedEvent;
+    public UnityEvent ShipHitEvent;
 
     public float CurrentSpeed
     {
@@ -43,7 +44,7 @@ public class Ship : MonoBehaviour
             }
             else
             {
-                ShipHit();
+                ShipDead();
             }
         }
     }
@@ -88,6 +89,12 @@ public class Ship : MonoBehaviour
 
     private void ShipHit()
     {
+        CurrentArmor--;
+        ShipHitEvent.Invoke();
+    }
+
+    private void ShipDead()
+    {
         Debug.LogError("Ship dead!");
     }
 
@@ -95,7 +102,7 @@ public class Ship : MonoBehaviour
     {
         if(other.TryGetComponent<Garbage>(out _))
         {
-            CurrentArmor--;
+            ShipHit();
         }
     }
 }
