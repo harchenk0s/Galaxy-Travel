@@ -4,21 +4,35 @@ using UnityEngine;
 
 public class PPrefsSetter : MonoBehaviour
 {
-    public int counts;
-
-    void Start()
+    private void Awake()
     {
-        if (PlayerPrefs.HasKey("CountLaunches"))
+        int countLaunches = PlayerPrefs.GetInt("CountLaunches", 0);
+
+        if (countLaunches > 0)
         {
-            int countLaunches = PlayerPrefs.GetInt("CountLaunches") + 1;
+            countLaunches++;
             PlayerPrefs.SetInt("CountLaunches", countLaunches);
-            counts = PlayerPrefs.GetInt("CountLaunches");
+            PlayerPrefs.SetString("GridRandomAlg", "OnlyAsteroids");
             PlayerPrefs.Save();
         }
         else
         {
             PlayerPrefs.SetInt("CountLaunches", 1);
-            counts = PlayerPrefs.GetInt("CountLaunches");
+            PlayerPrefs.SetString("GridRandomAlg", "OnlyCows");
+            PlayerPrefs.Save();
+        }
+    }
+
+    void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
         }
     }

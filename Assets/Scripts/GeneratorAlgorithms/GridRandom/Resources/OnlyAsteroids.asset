@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e797ffa65cd44c4b7aa935223fda17, type: 3}
+  m_Name: OnlyAsteroidss
+  m_EditorClassIdentifier: 
+  _prefabs:
+  - {fileID: 4091703752886643911, guid: 01ec13c573aac461e9ce314eb37c77c7, type: 3}
+  - {fileID: 5492692176541059239, guid: 810c7a2a3150a4b7f94d9990b1810907, type: 3}
+  - {fileID: 7086835852299377022, guid: 2d2b066f950b1478184e59c48eac9d46, type: 3}
+  - {fileID: 4952208929523014288, guid: 1ebea1afc9f094fada26abda27d81d11, type: 3}
+  - {fileID: 2178887764464535006, guid: cb08dc0753c2848c2a32d2a0ba8b10ad, type: 3}
+  - {fileID: 4023295388778839861, guid: df8c75438681b4f77a39277237f11ab0, type: 3}
+  - {fileID: 2400088272590539589, guid: 3d57e4d7e2dd547fba8c5435707cff0b, type: 3}
+  - {fileID: 113629489259856978, guid: 8d5196ceb9344402ab37f4ff70f50c5a, type: 3}
+  _Columns: 3
+  _Rows: 3
+  _delayRange: {x: 0.1, y: 0.3}
