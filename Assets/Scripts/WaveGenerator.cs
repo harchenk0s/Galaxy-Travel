@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveGenerator : MonoBehaviour
 {
-    [SerializeField] private List<GenerationAlgorithm> _algorithms = new List<GenerationAlgorithm>();
-
+    private List<Wave> _waves = new List<Wave>();
     private GarbageGenerator _generator;
+    private IEnumerator _generationCourutine;
+
+    public UnityEvent EndLevelEvent;
 
     private void Awake()
     {
@@ -19,11 +22,51 @@ public class WaveGenerator : MonoBehaviour
         {
             throw new UnityException("No GarbageGenerator on scene");
         }
+
+        if (PlayerPrefs.GetInt("FirstLaunch") == 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCows", 10f, _generator));
+            }
+        }
     }
 
     public void StartGenerate()
     {
-        _generator.ChangeAlgorithm(typeof(GridRandomAlg));
-        _generator.GenerateWave(60);
+        if(_waves.Count == 0)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 4f, _generator));
+            }
+
+            _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyAsteroids", 30f, _generator));
+        }
+        else
+        {
+            PlayerPrefs.SetInt("FirstLaunch", 0);
+            PlayerPrefs.Save();
+        }
+
+        if (_generationCourutine == null)
+            _generationCourutine = GenerationCourutine();
+        else
+            StopCoroutine(_generationCourutine);
+
+        StartCoroutine(_generationCourutine);
+    }
+
+    private IEnumerator GenerationCourutine()
+    {
+        foreach (Wave wave in _waves)
+        {
+            wave.StartWave();
+            yield return new WaitUntil(() => !wave.IsBusy);
+            yield return new WaitForSecondsRealtime(4);
+        }
+
+        EndLevelEvent.Invoke();
+        _generationCourutine = null;
     }
 }
