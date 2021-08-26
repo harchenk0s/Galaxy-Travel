@@ -12,7 +12,7 @@ public class PPrefsSetter : MonoBehaviour
         {
             countLaunches++;
             PlayerPrefs.SetInt("CountLaunches", countLaunches);
-            PlayerPrefs.SetString("GridRandomAlg", "OnlyAsteroids");
+            PlayerPrefs.SetString("GridRandomAlg", "GridRandomAlgDefault");
             PlayerPrefs.Save();
         }
         else
@@ -30,6 +30,7 @@ public class PPrefsSetter : MonoBehaviour
 
     private void Update()
     {
+        //TODO Delete this!
         if (Input.GetKeyDown(KeyCode.H))
         {
             PlayerPrefs.DeleteAll();

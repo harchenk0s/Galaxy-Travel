@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
     GarbageGenerator generator;
     Ship ship;
     RandomAlgorithm ra;
+    public GameObject panel;
 
     private void Start()
     {
         generator = FindObjectOfType<GarbageGenerator>();
-        ship = FindObjectOfType<Ship>();
-        
+    }
 
+    public void Starttt()
+    {
+        generator.GenerateWave(30);
+        panel.SetActive(false);
     }
 
     private void Update()
@@ -32,7 +37,5 @@ public class Test : MonoBehaviour
         {
             generator.GenerateWave(20);
         }
-
-
     }
 }

@@ -1089,8 +1089,8 @@ MonoBehaviour:
   LinesColor: {r: 0, g: 1, b: 0, a: 1}
   PointsColor: {r: 1, g: 0, b: 0, a: 1}
   DrawGrid: 1
-  Columns: 3
-  Rows: 3
+  Columns: 4
+  Rows: 4
 --- !u!4 &1463636677
 Transform:
   m_ObjectHideFlags: 0
