@@ -18,7 +18,7 @@ public class PPrefsSetter : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("CountLaunches", 1);
-            PlayerPrefs.SetString("GridRandomAlg", "OnlyCows");
+            PlayerPrefs.SetInt("FirstLaunch", 1);
             PlayerPrefs.Save();
         }
     }
