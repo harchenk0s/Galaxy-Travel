@@ -33,5 +33,7 @@ public class Wave
     private void EndWave()
     {
         IsWaveEnd = true;
+        _generator.EndWaveEvent.RemoveListener(EndWave);
     }
+
 }

@@ -7,6 +7,7 @@ public class PPrefsSetter : MonoBehaviour
     private void Awake()
     {
         int countLaunches = PlayerPrefs.GetInt("FirstLaunch", 1);
+        PlayerPrefs.SetString("CenterAlh", "CenterAlgDefault");
 
         if (countLaunches != 1)
         {
