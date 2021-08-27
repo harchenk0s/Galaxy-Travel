@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
+using System.Collections;
 
 [Serializable]
 public class ChangeSpeedEvent : UnityEvent<float> { }
@@ -20,6 +21,7 @@ public class Ship : MonoBehaviour
 
     public ChangeSpeedEvent ChangeSpeedEvent;
     public UnityEvent ShipHitEvent;
+    public UnityEvent ShipDeadEvent;
 
     public float CurrentSpeed
     {
@@ -96,13 +98,30 @@ public class Ship : MonoBehaviour
     private void ShipDead()
     {
         Debug.LogError("Ship dead!");
+        ShipDeadEvent.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        SpaceGate spaceGate;
+
         if(other.TryGetComponent<Garbage>(out _))
         {
             ShipHit();
+        }
+        else if (other.TryGetComponent<SpaceGate>(out spaceGate))
+        {
+            float targetSpeed = _maxSpeed * spaceGate.BoostPercent / 100;
+            StartCoroutine(ChangingSpeedCourutine(targetSpeed));
+        }
+    }
+
+    private IEnumerator ChangingSpeedCourutine(float targetSpeed)
+    {
+        while(CurrentSpeed != targetSpeed)
+        {
+            CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, 1);
+            yield return null;
         }
     }
 }
