@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Pool))]
-public class GarbageGenerator : MonoBehaviour
+public class Generator : MonoBehaviour
 {
     [SerializeField] private GenerationAlgorithm _algorithm;
 
@@ -36,7 +36,11 @@ public class GarbageGenerator : MonoBehaviour
                 _algorithm.StopGenerate();
             }
 
-            Destroy(_algorithm);
+            if(TryGetComponent<GenerationAlgorithm>(out _algorithm))
+            {
+                Destroy(_algorithm);
+            }
+            
             _algorithm = (GenerationAlgorithm)gameObject.AddComponent(newAlgorithm);
             _pool.Clear();
             _pool.CreateObjects(_algorithm.GetPrefabsList());
@@ -65,11 +69,11 @@ public class GarbageGenerator : MonoBehaviour
     private void Awake()
     {
         _pool = GetComponent<Pool>();
-        _algorithm = GetComponent<GenerationAlgorithm>();
     }
 
     private void Start()
     {
+        _algorithm = GetComponent<GenerationAlgorithm>();
         if (_algorithm == null)
         {
             throw new UnityException("Add GenerationAlgorithm");

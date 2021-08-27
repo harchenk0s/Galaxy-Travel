@@ -5,29 +5,25 @@ using UnityEngine.Events;
 
 public class WaveGenerator : MonoBehaviour
 {
+    [SerializeField] private Generator _garbageGenerator;
+
     private List<Wave> _waves = new List<Wave>();
-    private GarbageGenerator _generator;
     private IEnumerator _generationCourutine;
 
     public UnityEvent EndLevelEvent;
 
-    private void Awake()
-    {
-        _generator = FindObjectOfType<GarbageGenerator>();
-    }
-
     private void Start()
     {
-        if(_generator == null)
+        if(_garbageGenerator == null)
         {
-            throw new UnityException("No GarbageGenerator on scene");
+            throw new UnityException("No GarbageGenerator");
         }
 
         if (PlayerPrefs.GetInt("FirstLaunch") == 1)
         {
             for (int i = 0; i < 3; i++)
             {
-                _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCows", 10f, _generator));
+                _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCows", 10f, _garbageGenerator));
             }
         }
     }
@@ -38,10 +34,10 @@ public class WaveGenerator : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 4f, _generator));
+                _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 4f, _garbageGenerator));
             }
 
-            _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyAsteroids", 30f, _generator));
+            _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyAsteroids", 30f, _garbageGenerator));
         }
         else
         {

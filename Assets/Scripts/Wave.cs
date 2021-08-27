@@ -8,11 +8,11 @@ public class Wave
     private Type _algorithm;
     private string _parameters;
     private float _duration;
-    private GarbageGenerator _generator;
+    private Generator _generator;
 
     public bool IsWaveEnd { get; private set; } = false;
 
-    public Wave(Type algorithm, string parameters, float duration, GarbageGenerator generator)
+    public Wave(Type algorithm, string parameters, float duration, Generator generator)
     {
         _algorithm = algorithm;
         _parameters = parameters;

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Generator))]
 public abstract class GenerationAlgorithm : MonoBehaviour
 {
     protected List<GameObject> _prefabs = new List<GameObject>();
-    protected GarbageGenerator _generator;
+    protected Generator _generator;
     protected Vector2 _minBorders = Vector2.zero;
     protected Vector2 _maxBorders = Vector2.zero;
 
@@ -29,7 +30,7 @@ public abstract class GenerationAlgorithm : MonoBehaviour
 
     protected void Awake()
     {
-        _generator = GetComponent<GarbageGenerator>();
+        _generator = GetComponent<Generator>();
         _generator.GetBorders(out _minBorders, out _maxBorders);
         _generationCorutine = GenerationCorutine();
     }
