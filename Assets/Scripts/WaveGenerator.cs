@@ -6,11 +6,21 @@ using UnityEngine.Events;
 public class WaveGenerator : MonoBehaviour
 {
     [SerializeField] private Generator _garbageGenerator;
-
     private List<Wave> _waves = new List<Wave>();
+    private Wave _gateWave;
     private IEnumerator _generationCourutine;
 
     public UnityEvent EndLevelEvent;
+
+    private void Awake()
+    {
+        GateWaveReset();
+    }
+
+    private void GateWaveReset()
+    {
+        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 5f, _garbageGenerator);
+    }
 
     private void Start()
     {
@@ -60,7 +70,9 @@ public class WaveGenerator : MonoBehaviour
             wave.StartWave();
             yield return new WaitUntil(() => wave.IsWaveEnd);
             yield return new WaitForSecondsRealtime(4);
-            //TODO: Replace wait for seconds to WaitUntil Gates speed up/down ship
+            _gateWave.StartWave();
+            yield return new WaitUntil(() => _gateWave.IsWaveEnd);
+            GateWaveReset();
         }
 
         EndLevelEvent.Invoke();
