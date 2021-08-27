@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: -3922194116615121834}
   - component: {fileID: 2140120535349598230}
   - component: {fileID: -242964880026186296}
+  - component: {fileID: 2022421935059381342}
   m_Layer: 0
   m_Name: Trashcan
   m_TagString: Untagged
@@ -127,7 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minRotationSpeed: 10
   _maxRotationSpeed: 20
-  _speed: 250
 --- !u!65 &2140120535349598230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,3 +157,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2022421935059381342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928224115587361211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a36a443a2f32456e969e83ec2704822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
