@@ -120,7 +120,7 @@ public class Ship : MonoBehaviour
     {
         while(CurrentSpeed != targetSpeed)
         {
-            CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, 1);
+            CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, 2);
             yield return null;
         }
     }

@@ -2,24 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridRandomAlg : GenerationAlgorithm
+public class ExactPointsAlg : GenerationAlgorithm
 {
-    [SerializeField] private GridRandomParameters _parameters;
+    [SerializeField] private ExactPointsParameters _parameters;
 
     private string _parametersPath;
     private float[] _columns;
     private float[] _rows;
     private List<Vector2> _spawnPoints = new List<Vector2>();
-
-    protected override IEnumerator GenerationCorutine()
-    {
-        while (true)
-        {
-            Vector2 position = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
-            _generator.Spawn(position);
-            yield return new WaitForSeconds(Random.Range(_parameters.DelayRange.x, _parameters.DelayRange.y));
-        }
-    }
 
     private void OnDestroy()
     {
@@ -30,8 +20,8 @@ public class GridRandomAlg : GenerationAlgorithm
     private new void Awake()
     {
         base.Awake();
-        _parametersPath = PlayerPrefs.GetString("GridRandomAlg", "GridRandomAlgDefault");
-        _parameters = Resources.Load(_parametersPath) as GridRandomParameters;
+        _parametersPath = PlayerPrefs.GetString("ExactPointsAlg", "ExactPointsAlgDefault");
+        _parameters = Resources.Load(_parametersPath) as ExactPointsParameters;
         _prefabs = _parameters.Prefabs;
         InitializeGrid();
     }
@@ -64,5 +54,11 @@ public class GridRandomAlg : GenerationAlgorithm
                 _spawnPoints.Add(new Vector2(_columns[i], _rows[j]));
             }
         }
+    }
+
+    protected override IEnumerator GenerationCorutine()
+    {
+        Debug.Log("hi");
+        return null;
     }
 }

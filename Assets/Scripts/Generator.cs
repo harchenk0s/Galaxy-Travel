@@ -74,6 +74,7 @@ public class Generator : MonoBehaviour
     private void Start()
     {
         _algorithm = GetComponent<GenerationAlgorithm>();
+
         if (_algorithm == null)
         {
             throw new UnityException("Add GenerationAlgorithm");
