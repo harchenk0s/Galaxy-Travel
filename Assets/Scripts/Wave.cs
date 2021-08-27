@@ -20,8 +20,9 @@ public class Wave
         _generator = generator;
     }
 
-    public void StartWave()
+    public void StartWave(float speedCorrectionPercent)
     {
+        _duration += _duration * (100 - speedCorrectionPercent) / 100;
         PlayerPrefs.SetString(_algorithm.ToString(), _parameters);
         PlayerPrefs.Save();
 
@@ -35,5 +36,4 @@ public class Wave
         IsWaveEnd = true;
         _generator.EndWaveEvent.RemoveListener(EndWave);
     }
-
 }

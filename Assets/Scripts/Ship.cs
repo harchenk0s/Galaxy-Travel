@@ -51,6 +51,11 @@ public class Ship : MonoBehaviour
         }
     }
 
+    public float CurrentPercentSpeed
+    {
+        get { return CurrentSpeed * 100 / _maxSpeed; }
+    }
+
     private void Awake()
     {
         _pointer = FindObjectOfType<Pointer>();

@@ -9,11 +9,13 @@ public class WaveGenerator : MonoBehaviour
     private List<Wave> _waves = new List<Wave>();
     private Wave _gateWave;
     private IEnumerator _generationCourutine;
+    private Ship _ship;
 
     public UnityEvent EndLevelEvent;
 
     private void Awake()
     {
+        _ship = FindObjectOfType<Ship>();
         GateWaveReset();
     }
 
@@ -29,7 +31,7 @@ public class WaveGenerator : MonoBehaviour
             throw new UnityException("No GarbageGenerator");
         }
 
-        if (PlayerPrefs.GetInt("FirstLaunch") == 1)
+        if (PlayerPrefs.GetInt("FirstLaunch", 1) == 1)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -44,10 +46,8 @@ public class WaveGenerator : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 4f, _garbageGenerator));
+                _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 10f, _garbageGenerator));
             }
-
-            _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyAsteroids", 30f, _garbageGenerator));
         }
         else
         {
@@ -67,15 +67,16 @@ public class WaveGenerator : MonoBehaviour
     {
         foreach (Wave wave in _waves)
         {
-            wave.StartWave();
-            yield return new WaitUntil(() => wave.IsWaveEnd);
-            yield return new WaitForSecondsRealtime(4);
-            _gateWave.StartWave();
+            _gateWave.StartWave(100);
             yield return new WaitUntil(() => _gateWave.IsWaveEnd);
             GateWaveReset();
+            wave.StartWave(_ship.CurrentPercentSpeed);
+            yield return new WaitUntil(() => wave.IsWaveEnd);
+            yield return new WaitForSecondsRealtime(4);
         }
 
         EndLevelEvent.Invoke();
+        Debug.LogError("END!");
         _waves.Clear();
         _generationCourutine = null;
     }
