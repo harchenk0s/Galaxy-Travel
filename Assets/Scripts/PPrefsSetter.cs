@@ -6,26 +6,15 @@ public class PPrefsSetter : MonoBehaviour
 {
     private void Awake()
     {
-        int countLaunches = PlayerPrefs.GetInt("CountLaunches", 0);
+        int countLaunches = PlayerPrefs.GetInt("FirstLaunch", 1);
 
-        if (countLaunches > 0)
+        if (countLaunches != 1)
         {
             countLaunches++;
             PlayerPrefs.SetInt("CountLaunches", countLaunches);
             PlayerPrefs.SetString("GridRandomAlg", "GridRandomAlgDefault");
             PlayerPrefs.Save();
         }
-        else
-        {
-            PlayerPrefs.SetInt("CountLaunches", 1);
-            PlayerPrefs.SetInt("FirstLaunch", 1);
-            PlayerPrefs.Save();
-        }
-    }
-
-    void Start()
-    {
-        
     }
 
     private void Update()

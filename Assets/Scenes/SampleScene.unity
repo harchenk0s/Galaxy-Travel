@@ -1119,6 +1119,7 @@ GameObject:
   - component: {fileID: 1490842822}
   - component: {fileID: 1490842821}
   - component: {fileID: 1490842820}
+  - component: {fileID: 1490842823}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1223,6 +1224,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490842818}
   m_CullTransparentMesh: 0
+--- !u!114 &1490842823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490842818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedf7fe457ccc4023b9a22aa994f423c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndLevelEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1615331473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2353968562978425913, guid: 52ff34a70d23045cd9f70ad84a01ebec,

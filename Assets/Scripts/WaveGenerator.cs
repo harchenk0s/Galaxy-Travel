@@ -62,11 +62,13 @@ public class WaveGenerator : MonoBehaviour
         foreach (Wave wave in _waves)
         {
             wave.StartWave();
-            yield return new WaitUntil(() => !wave.IsBusy);
+            yield return new WaitUntil(() => wave.IsWaveEnd);
             yield return new WaitForSecondsRealtime(4);
+            //TODO: Replace wait for seconds to WaitUntil Gates speed up/down ship
         }
 
         EndLevelEvent.Invoke();
+        _waves.Clear();
         _generationCourutine = null;
     }
 }

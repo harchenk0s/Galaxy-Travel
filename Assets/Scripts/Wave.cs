@@ -10,7 +10,7 @@ public class Wave
     private float _duration;
     private GarbageGenerator _generator;
 
-    public bool IsBusy { get; private set; } = false;
+    public bool IsWaveEnd { get; private set; } = false;
 
     public Wave(Type algorithm, string parameters, float duration, GarbageGenerator generator)
     {
@@ -22,7 +22,6 @@ public class Wave
 
     public void StartWave()
     {
-        IsBusy = true;
         PlayerPrefs.SetString(_algorithm.ToString(), _parameters);
         PlayerPrefs.Save();
 
@@ -33,6 +32,6 @@ public class Wave
 
     private void EndWave()
     {
-        IsBusy = false;
+        IsWaveEnd = true;
     }
 }
