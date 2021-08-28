@@ -19,6 +19,8 @@ public class Ship : MonoBehaviour
     private float _currentSpeed = 0;
     private int _currentArmor;
 
+    public UnityEvent SlowDownEvent;
+    public UnityEvent SpeedUpEvent;
     public ChangeSpeedEvent ChangeSpeedEvent;
     public UnityEvent ShipHitEvent;
     public UnityEvent ShipDeadEvent;
@@ -123,6 +125,11 @@ public class Ship : MonoBehaviour
 
     private IEnumerator ChangingSpeedCourutine(float targetSpeed)
     {
+        if (targetSpeed > CurrentSpeed)
+            SpeedUpEvent.Invoke();
+        else
+            SlowDownEvent.Invoke();
+
         while(CurrentSpeed != targetSpeed)
         {
             CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, 2);
