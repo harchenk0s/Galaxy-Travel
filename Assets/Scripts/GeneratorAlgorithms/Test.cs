@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    GarbageGenerator generator;
+    //TODO: DELETE THIS CLASS
+    [SerializeField] Generator generator;
+    WaveGenerator waveGen;
     Ship ship;
     RandomAlgorithm ra;
     public GameObject panel;
 
     private void Start()
     {
-        generator = FindObjectOfType<GarbageGenerator>();
+        waveGen = FindObjectOfType<WaveGenerator>();
     }
 
     public void Starttt()
     {
-        generator.GenerateWave(30);
+        waveGen.StartGenerate();
         panel.SetActive(false);
     }
 
