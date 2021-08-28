@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomAlgorithm : GenerationAlgorithm
+public class RandomAlg : GenerationAlgorithm
 {
     [SerializeField] private RandomAlgParameters _parameters;
     private string _parametersPath = "RandomParameters";
