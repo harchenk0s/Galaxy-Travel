@@ -6,6 +6,8 @@ public class ClassicMode : GameMode
 {
     private void Awake()
     {
+        _addGates = true;
+
         for (int i = 0; i < 3; i++)
         {
             _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 10f));

@@ -420,6 +420,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521005438}
   m_CullTransparentMesh: 0
+--- !u!1 &532673805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532673807}
+  - component: {fileID: 532673806}
+  m_Layer: 0
+  m_Name: LevelBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &532673806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532673805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedf7fe457ccc4023b9a22aa994f423c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _garbageGenerator: {fileID: 1250969859}
+  EndLevelEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1490842818}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!4 &532673807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532673805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5627494, y: 8.461089, z: 3.5079203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &602104335
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +808,6 @@ GameObject:
   - component: {fileID: 1250969858}
   - component: {fileID: 1250969860}
   - component: {fileID: 1250969859}
-  - component: {fileID: 1250969863}
   m_Layer: 0
   m_Name: GarbageGenerator
   m_TagString: Untagged
@@ -800,33 +857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545dcf265588f40688903c4cbb1a70e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1250969863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250969857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aedf7fe457ccc4023b9a22aa994f423c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _garbageGenerator: {fileID: 1250969859}
-  EndLevelEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1490842818}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!1 &1294147733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1275,7 @@ MonoBehaviour:
   onFinger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1250969863}
+      - m_Target: {fileID: 532673806}
         m_MethodName: StartGenerate
         m_Mode: 2
         m_Arguments:
