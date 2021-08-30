@@ -12,16 +12,16 @@ public class Wave
 
     public bool IsWaveEnd { get; private set; } = false;
 
-    public Wave(Type algorithm, string parameters, float duration, Generator generator)
+    public Wave(Type algorithm, string parameters, float duration)
     {
         _algorithm = algorithm;
         _parameters = parameters;
         _duration = duration;
-        _generator = generator;
     }
 
-    public void StartWave(float speedCorrectionPercent)
+    public void StartWave(float speedCorrectionPercent, Generator generator)
     {
+        _generator = generator;
         _duration += _duration * (100 - speedCorrectionPercent) / 100;
         PlayerPrefs.SetString(_algorithm.ToString(), _parameters);
         PlayerPrefs.Save();
