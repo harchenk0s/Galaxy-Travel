@@ -71,20 +71,6 @@ public class Generator : MonoBehaviour
         _pool = GetComponent<Pool>();
     }
 
-    private void Start()
-    {
-        _algorithm = GetComponent<GenerationAlgorithm>();
-
-        if (_algorithm == null)
-        {
-            throw new UnityException("Add GenerationAlgorithm");
-        }
-        else
-        {
-            _pool.CreateObjects(_algorithm.GetPrefabsList());
-        }
-    }
-
     private IEnumerator GeneratingWaveCorutine(float duration)
     {
         _algorithm.StartGenerate();

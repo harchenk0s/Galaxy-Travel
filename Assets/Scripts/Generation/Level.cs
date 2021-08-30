@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WaveGenerator : MonoBehaviour
+public class Level : MonoBehaviour
 {
     [SerializeField] private Generator _garbageGenerator;
+
     private List<Wave> _waves = new List<Wave>();
     private Wave _gateWave;
     private IEnumerator _generationCourutine;
@@ -21,7 +22,7 @@ public class WaveGenerator : MonoBehaviour
 
     private void GateWaveReset()
     {
-        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 5f, _garbageGenerator);
+        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 5f);
     }
 
     private void Start()
@@ -35,19 +36,18 @@ public class WaveGenerator : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCows", 10f, _garbageGenerator));
+                _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCows", 10f));
             }
         }
     }
 
-    public void StartGenerate()
+    public void StartGenerate(GameMode mode)
     {
+        _waves = mode.GetWaves();
+
         if(_waves.Count == 0)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 10f, _garbageGenerator));
-            }
+            
         }
         else
         {
@@ -67,15 +67,16 @@ public class WaveGenerator : MonoBehaviour
     {
         foreach (Wave wave in _waves)
         {
-            _gateWave.StartWave(100);
+            _gateWave.StartWave(100, _garbageGenerator);
             yield return new WaitUntil(() => _gateWave.IsWaveEnd);
             GateWaveReset();
-            wave.StartWave(_ship.CurrentPercentSpeed);
+            wave.StartWave(_ship.CurrentPercentSpeed, _garbageGenerator);
             yield return new WaitUntil(() => wave.IsWaveEnd);
             yield return new WaitForSecondsRealtime(4);
         }
 
         EndLevelEvent.Invoke();
+        //TODO: Delete debug logs
         Debug.LogError("END!");
         _waves.Clear();
         _generationCourutine = null;
