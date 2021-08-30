@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class Generator : MonoBehaviour
 {
     [SerializeField] private GenerationAlgorithm _algorithm;
+    [SerializeField] private WaveEnder _waveEnder;
 
     private Pool _pool;
     private IEnumerator _generationCorutine;
@@ -52,6 +53,12 @@ public class Generator : MonoBehaviour
         _pool.Pop().transform.position = new Vector3(position.x, position.y, transform.position.z);
     }
 
+    public void SpawnWaveEnder()
+    {
+        _waveEnder.transform.position = transform.position;
+        _waveEnder.gameObject.SetActive(true);
+    }
+
     public void GetBorders(out Vector2 minBorders, out Vector2 maxBorders)
     {
         PointerBorders pointerBorders = FindObjectOfType<PointerBorders>();
@@ -69,15 +76,14 @@ public class Generator : MonoBehaviour
     private void Awake()
     {
         _pool = GetComponent<Pool>();
+        _waveEnder.EndWaveEvent.AddListener(EndWaveEvent.Invoke);
     }
 
     private IEnumerator GeneratingWaveCorutine(float duration)
     {
         _algorithm.StartGenerate();
-        yield return new WaitForSecondsRealtime(duration);
+        yield return new WaitForSeconds(duration);
         _algorithm.StopGenerate();
-        yield return new WaitForSeconds(4);
-        EndWaveEvent.Invoke();
         _generationCorutine = null;
     }
 }

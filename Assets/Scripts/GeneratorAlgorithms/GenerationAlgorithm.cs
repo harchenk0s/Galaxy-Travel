@@ -9,21 +9,22 @@ public abstract class GenerationAlgorithm : MonoBehaviour
     protected Generator _generator;
     protected Vector2 _minBorders = Vector2.zero;
     protected Vector2 _maxBorders = Vector2.zero;
+    protected bool isBusy = false;
 
     private IEnumerator _generationCorutine;
 
     public void StartGenerate()
     {
+        isBusy = true;
         StartCoroutine(_generationCorutine);
     }
 
     public void StopGenerate()
     {
-        if(_generationCorutine != null)
-        {
-            StopCoroutine(_generationCorutine);
-            _generationCorutine = null;
-        }
+        isBusy = false;
+        StopCoroutine(_generationCorutine);
+        _generationCorutine = null;
+        _generator.SpawnWaveEnder();
     }
 
     public List<GameObject> GetPrefabsList()

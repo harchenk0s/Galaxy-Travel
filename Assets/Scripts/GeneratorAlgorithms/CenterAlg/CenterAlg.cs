@@ -13,6 +13,8 @@ public class CenterAlg : GenerationAlgorithm
         Vector2 center = new Vector2((_maxBorders.x + _minBorders.x) / 2, (_maxBorders.y + _minBorders.y) / 2);
 
         _generator.Spawn(center);
+        yield return new WaitForSecondsRealtime(1);
+        _generator.SpawnWaveEnder();
         yield return null;
     }
 

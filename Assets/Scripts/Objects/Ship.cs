@@ -58,12 +58,23 @@ public class Ship : MonoBehaviour
         get { return CurrentSpeed * 100 / _maxSpeed; }
     }
 
+    public void ResetShip()
+    {
+        _currentArmor = _maxArmor;
+        StartCoroutine(ChangingSpeedCourutine(0));
+    }
+
+    public void StartMove()
+    {
+        StartCoroutine(ChangingSpeedCourutine(_maxSpeed / 2));
+    }
+
     private void Awake()
     {
         _pointer = FindObjectOfType<Pointer>();
         _handling /= 100;
-        CurrentSpeed = 300;
         _currentArmor = _maxArmor;
+        _currentSpeed = 0;
     }
 
     private void Start()

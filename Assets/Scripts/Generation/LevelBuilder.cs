@@ -23,7 +23,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void GateWaveReset()
     {
-        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 5f);
+        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 1f);
     }
 
     private void Start()
@@ -54,6 +54,8 @@ public class LevelBuilder : MonoBehaviour
 
     private IEnumerator GenerationCourutine()
     {
+        _ship.StartMove();
+
         foreach (Wave wave in _waves)
         {
             if (_addGates)
@@ -70,6 +72,6 @@ public class LevelBuilder : MonoBehaviour
         EndLevelEvent.Invoke();
         _waves.Clear();
         _generationCourutine = null;
-        StopAllCoroutines();
+        _ship.ResetShip();
     }
 }

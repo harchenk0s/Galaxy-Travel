@@ -13,7 +13,7 @@ public class GridRandomAlg : GenerationAlgorithm
 
     protected override IEnumerator GenerationCorutine()
     {
-        while (true)
+        while (isBusy)
         {
             Vector2 position = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
             _generator.Spawn(position);
