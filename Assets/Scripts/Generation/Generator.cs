@@ -76,6 +76,7 @@ public class Generator : MonoBehaviour
         _algorithm.StartGenerate();
         yield return new WaitForSecondsRealtime(duration);
         _algorithm.StopGenerate();
+        yield return new WaitForSeconds(4);
         EndWaveEvent.Invoke();
         _generationCorutine = null;
     }

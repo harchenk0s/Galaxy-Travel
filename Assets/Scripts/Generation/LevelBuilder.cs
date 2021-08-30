@@ -65,11 +65,11 @@ public class LevelBuilder : MonoBehaviour
 
             wave.StartWave(_ship.CurrentPercentSpeed, _garbageGenerator);
             yield return new WaitUntil(() => wave.IsWaveEnd);
-            yield return new WaitForSecondsRealtime(4);
         }
 
         EndLevelEvent.Invoke();
         _waves.Clear();
         _generationCourutine = null;
+        StopAllCoroutines();
     }
 }

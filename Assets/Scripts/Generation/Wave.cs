@@ -21,6 +21,7 @@ public class Wave
 
     public void StartWave(float speedCorrectionPercent, Generator generator)
     {
+        IsWaveEnd = false;
         _generator = generator;
         _duration += _duration * (100 - speedCorrectionPercent) / 100;
         PlayerPrefs.SetString(_algorithm.ToString(), _parameters);

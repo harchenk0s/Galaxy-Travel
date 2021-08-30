@@ -20,7 +20,10 @@ public abstract class GenerationAlgorithm : MonoBehaviour
     public void StopGenerate()
     {
         if(_generationCorutine != null)
+        {
             StopCoroutine(_generationCorutine);
+            _generationCorutine = null;
+        }
     }
 
     public List<GameObject> GetPrefabsList()
