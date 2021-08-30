@@ -17,12 +17,6 @@ public class Generator : MonoBehaviour
 
     public void GenerateWave(float duration)
     {
-        if (_generationCorutine != null)
-        {
-            StopCoroutine(_generationCorutine);
-            _algorithm.StopGenerate();
-        }
-
         _generationCorutine = GeneratingWaveCorutine(duration);
         StartCoroutine(_generationCorutine);
     }
@@ -31,12 +25,6 @@ public class Generator : MonoBehaviour
     {
         if(newAlgorithm.BaseType == typeof(GenerationAlgorithm))
         {
-            if (_generationCorutine != null)
-            {
-                StopCoroutine(_generationCorutine);
-                _algorithm.StopGenerate();
-            }
-
             if(TryGetComponent<GenerationAlgorithm>(out _algorithm))
             {
                 Destroy(_algorithm);
@@ -84,6 +72,5 @@ public class Generator : MonoBehaviour
         _algorithm.StartGenerate();
         yield return new WaitForSeconds(duration);
         _algorithm.StopGenerate();
-        _generationCorutine = null;
     }
 }

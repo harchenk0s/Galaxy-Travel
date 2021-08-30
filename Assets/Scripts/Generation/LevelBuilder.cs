@@ -43,11 +43,11 @@ public class LevelBuilder : MonoBehaviour
     {
         _waves = _gameMode.GetWaves();
         _addGates = _gameMode.AddGates;
-
-        if (_generationCourutine == null)
-            _generationCourutine = GenerationCourutine();
-        else
-            StopCoroutine(_generationCourutine);
+        _generationCourutine = GenerationCourutine();
+        //if (_generationCourutine == null)
+        //    _generationCourutine = GenerationCourutine();
+        //else
+        //    StopCoroutine(_generationCourutine);
 
         StartCoroutine(_generationCourutine);
     }
@@ -71,7 +71,6 @@ public class LevelBuilder : MonoBehaviour
 
         EndLevelEvent.Invoke();
         _waves.Clear();
-        _generationCourutine = null;
         _ship.ResetShip();
     }
 }

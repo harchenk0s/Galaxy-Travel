@@ -15,6 +15,7 @@ public abstract class GenerationAlgorithm : MonoBehaviour
 
     public void StartGenerate()
     {
+        _generationCorutine = GenerationCorutine();
         isBusy = true;
         StartCoroutine(_generationCorutine);
     }
@@ -23,7 +24,6 @@ public abstract class GenerationAlgorithm : MonoBehaviour
     {
         isBusy = false;
         StopCoroutine(_generationCorutine);
-        _generationCorutine = null;
         _generator.SpawnWaveEnder();
     }
 
