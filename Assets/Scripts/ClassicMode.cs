@@ -6,7 +6,7 @@ public class ClassicMode : GameMode
 {
     private void Awake()
     {
-        _addGates = true;
+        _waves.Add(new Wave(typeof(RandomAlg), "OnlyCowsRandom", 10f));
 
         for (int i = 0; i < 3; i++)
         {

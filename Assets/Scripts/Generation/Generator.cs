@@ -74,7 +74,7 @@ public class Generator : MonoBehaviour
     private IEnumerator GeneratingWaveCorutine(float duration)
     {
         _algorithm.StartGenerate();
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         _algorithm.StopGenerate();
         EndWaveEvent.Invoke();
         _generationCorutine = null;

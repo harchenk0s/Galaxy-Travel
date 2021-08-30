@@ -1228,6 +1228,7 @@ GameObject:
   - component: {fileID: 1490842821}
   - component: {fileID: 1490842820}
   - component: {fileID: 1490842823}
+  - component: {fileID: 1490842824}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -1277,10 +1278,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 532673806}
         m_MethodName: StartGenerate
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1490842823}
-          m_ObjectArgumentAssemblyTypeName: GameMode, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1362,6 +1363,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee207fb2a2c34284a2e5f789c023044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _addGates: 1
+--- !u!114 &1490842824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490842818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c1c71d8ad5da9438de3b2e5990763f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreStartedOverGui: 1
+  IgnoreIsOverGui: 0
+  RequiredSelectable: {fileID: 0}
+  RequiredTapCount: 0
+  RequiredTapInterval: 0
+  onFinger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 532673806}
+        m_MethodName: SetGameMode
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1490842823}
+          m_ObjectArgumentAssemblyTypeName: GameMode, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCount:
+    m_PersistentCalls:
+      m_Calls: []
+  ScreenDepth:
+    Conversion: 1
+    Camera: {fileID: 0}
+    Object: {fileID: 0}
+    Layers:
+      serializedVersion: 2
+      m_Bits: 4294967291
+    Distance: 0
+  onWorld:
+    m_PersistentCalls:
+      m_Calls: []
+  onScreen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1615331473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2353968562978425913, guid: 52ff34a70d23045cd9f70ad84a01ebec,

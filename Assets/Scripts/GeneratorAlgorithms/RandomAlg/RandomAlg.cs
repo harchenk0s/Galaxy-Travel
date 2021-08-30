@@ -5,11 +5,12 @@ using UnityEngine;
 public class RandomAlg : GenerationAlgorithm
 {
     [SerializeField] private RandomAlgParameters _parameters;
-    private string _parametersPath = "RandomParameters";
+    private string _parametersPath = "RandomAlgParameters";
 
     private new void Awake()
     {
         base.Awake();
+        _parametersPath = PlayerPrefs.GetString("RandomAlg", "RandomAlgParameters");
         _parameters = Resources.Load(_parametersPath) as RandomAlgParameters;
         _prefabs = _parameters.Prefabs;
     }

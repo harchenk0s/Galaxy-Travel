@@ -12,6 +12,7 @@ public class LevelBuilder : MonoBehaviour
     private IEnumerator _generationCourutine;
     private Ship _ship;
     private bool _addGates = false;
+    private GameMode _gameMode;
 
     public UnityEvent EndLevelEvent;
 
@@ -33,10 +34,15 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
-    public void StartGenerate(GameMode mode)
+    public void SetGameMode(GameMode gameMode)
     {
-        _waves = mode.GetWaves();
-        _addGates = mode.AddGates;
+        _gameMode = gameMode;
+    }
+
+    public void StartGenerate()
+    {
+        _waves = _gameMode.GetWaves();
+        _addGates = _gameMode.AddGates;
 
         if (_generationCourutine == null)
             _generationCourutine = GenerationCourutine();
@@ -53,13 +59,13 @@ public class LevelBuilder : MonoBehaviour
             if (_addGates)
             {
                 GateWaveReset();
-                _gateWave.StartWave(100, _garbageGenerator);
+                _gateWave.StartWave(_ship.CurrentPercentSpeed, _garbageGenerator);
                 yield return new WaitUntil(() => _gateWave.IsWaveEnd);
             }
 
             wave.StartWave(_ship.CurrentPercentSpeed, _garbageGenerator);
             yield return new WaitUntil(() => wave.IsWaveEnd);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSecondsRealtime(4);
         }
 
         EndLevelEvent.Invoke();
