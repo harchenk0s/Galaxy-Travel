@@ -18,6 +18,7 @@ public class Ship : MonoBehaviour
     private Transform _pointerTransform = null;
     private float _currentSpeed = 0;
     private int _currentArmor;
+    private IEnumerator _changingSpeedCourutine = null;
 
     public UnityEvent SlowDownEvent;
     public UnityEvent SpeedUpEvent;
@@ -61,12 +62,12 @@ public class Ship : MonoBehaviour
     public void ResetShip()
     {
         _currentArmor = _maxArmor;
-        StartCoroutine(ChangingSpeedCourutine(0));
+        ChangeSpeed(0);
     }
 
     public void StartMove()
     {
-        StartCoroutine(ChangingSpeedCourutine(_maxSpeed / 2));
+        ChangeSpeed(_maxSpeed / 2);
     }
 
     private void Awake()
@@ -130,8 +131,19 @@ public class Ship : MonoBehaviour
         else if (other.TryGetComponent<SpaceGate>(out spaceGate))
         {
             float targetSpeed = _maxSpeed * spaceGate.BoostPercent / 100;
-            StartCoroutine(ChangingSpeedCourutine(targetSpeed));
+            ChangeSpeed(targetSpeed);
         }
+    }
+
+    private void ChangeSpeed(float targetSpeed)
+    {
+        if(_changingSpeedCourutine != null)
+        {
+            StopCoroutine(_changingSpeedCourutine);
+        }
+
+        _changingSpeedCourutine = ChangingSpeedCourutine(targetSpeed);
+        StartCoroutine(_changingSpeedCourutine);
     }
 
     private IEnumerator ChangingSpeedCourutine(float targetSpeed)
