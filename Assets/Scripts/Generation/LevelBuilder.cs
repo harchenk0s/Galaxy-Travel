@@ -28,7 +28,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void Start()
     {
-        if(_garbageGenerator == null)
+        if (_garbageGenerator == null)
         {
             throw new UnityException("No GarbageGenerator");
         }
@@ -44,10 +44,6 @@ public class LevelBuilder : MonoBehaviour
         _waves = _gameMode.GetWaves();
         _addGates = _gameMode.AddGates;
         _generationCourutine = GenerationCourutine();
-        //if (_generationCourutine == null)
-        //    _generationCourutine = GenerationCourutine();
-        //else
-        //    StopCoroutine(_generationCourutine);
 
         StartCoroutine(_generationCourutine);
     }

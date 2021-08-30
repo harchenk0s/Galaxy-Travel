@@ -48,7 +48,6 @@ public class Pointer : MonoBehaviour
         {
             throw new UnityException("Object of control not choose");
         }
-
         if(_pointerBorders == null)
         {
             throw new UnityException("Add PointerBorders on scene");
