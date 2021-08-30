@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Level : MonoBehaviour
+public class LevelBuilder : MonoBehaviour
 {
     [SerializeField] private Generator _garbageGenerator;
 
@@ -31,29 +31,11 @@ public class Level : MonoBehaviour
         {
             throw new UnityException("No GarbageGenerator");
         }
-
-        if (PlayerPrefs.GetInt("FirstLaunch", 1) == 1)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCows", 10f));
-            }
-        }
     }
 
     public void StartGenerate(GameMode mode)
     {
         _waves = mode.GetWaves();
-
-        if(_waves.Count == 0)
-        {
-            
-        }
-        else
-        {
-            PlayerPrefs.SetInt("FirstLaunch", 0);
-            PlayerPrefs.Save();
-        }
 
         if (_generationCourutine == null)
             _generationCourutine = GenerationCourutine();
