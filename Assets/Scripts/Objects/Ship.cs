@@ -9,12 +9,13 @@ public class ChangeSpeedEvent : UnityEvent<float> { }
 [Serializable]
 public class ChangeArmorEvent : UnityEvent<int> { }
 
+[RequireComponent(typeof(Rigidbody))]
 public class Ship : MonoBehaviour
 {
     [SerializeField] private int _maxSpeed = 300;
     [SerializeField] private float _handling = 10f;
     [SerializeField] private int _maxArmor = 10;
-    [SerializeField] [Range(1, 15)] private int _rotationSpeed = 5;
+    [SerializeField] [Range(0, 15)] private int _rotationSpeed = 5;
     
     private Pointer _pointer = null;
     private Transform _pointerTransform = null;
@@ -132,7 +133,7 @@ public class Ship : MonoBehaviour
         {
             ShipHit();
         }
-        else if (other.TryGetComponent<SpaceGate>(out spaceGate))
+        else if (other.TryGetComponent(out spaceGate))
         {
             float targetSpeed = _maxSpeed * spaceGate.BoostPercent / 100;
             ChangeSpeed(targetSpeed);
