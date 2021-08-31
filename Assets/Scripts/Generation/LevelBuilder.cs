@@ -19,6 +19,7 @@ public class LevelBuilder : MonoBehaviour
     private void Awake()
     {
         _ship = FindObjectOfType<Ship>();
+        _ship.ShipDeadEvent.AddListener(GameOver);
     }
 
     private void GateWaveReset()
@@ -44,7 +45,6 @@ public class LevelBuilder : MonoBehaviour
         _waves = _gameMode.GetWaves();
         _addGates = _gameMode.AddGates;
         _generationCourutine = GenerationCourutine();
-
         StartCoroutine(_generationCourutine);
     }
 
@@ -66,6 +66,13 @@ public class LevelBuilder : MonoBehaviour
         }
 
         EndLevelEvent.Invoke();
+        _waves.Clear();
+        _ship.ResetShip();
+    }
+
+    private void GameOver()
+    {
+        StopCoroutine(_generationCourutine);
         _waves.Clear();
         _ship.ResetShip();
     }

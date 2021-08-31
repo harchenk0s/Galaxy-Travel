@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OnlyCows
   m_EditorClassIdentifier: 
   _prefabs:
-  - {fileID: 6150506103305692271, guid: e3f5068dd401a41d49c541fbdf9f1a9d, type: 3}
+  - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
   _delayRange: {x: 0.2, y: 0.5}

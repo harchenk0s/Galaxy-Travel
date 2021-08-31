@@ -6,6 +6,8 @@ using System.Collections;
 
 [Serializable]
 public class ChangeSpeedEvent : UnityEvent<float> { }
+[Serializable]
+public class ChangeArmorEvent : UnityEvent<int> { }
 
 public class Ship : MonoBehaviour
 {
@@ -20,9 +22,10 @@ public class Ship : MonoBehaviour
     private int _currentArmor;
     private IEnumerator _changingSpeedCourutine = null;
 
+    public ChangeSpeedEvent ChangeSpeedEvent;
+    public ChangeArmorEvent ChangeArmorEvent;
     public UnityEvent SlowDownEvent;
     public UnityEvent SpeedUpEvent;
-    public ChangeSpeedEvent ChangeSpeedEvent;
     public UnityEvent ShipHitEvent;
     public UnityEvent ShipDeadEvent;
 
@@ -46,6 +49,7 @@ public class Ship : MonoBehaviour
             if(value >= 0)
             {
                 _currentArmor = Mathf.Clamp(value, 0, _maxArmor);
+                ChangeArmorEvent.Invoke(_currentArmor);
             }
             else
             {
@@ -61,7 +65,7 @@ public class Ship : MonoBehaviour
 
     public void ResetShip()
     {
-        _currentArmor = _maxArmor;
+        CurrentArmor = _maxArmor;
         ChangeSpeed(0);
     }
 
@@ -74,8 +78,8 @@ public class Ship : MonoBehaviour
     {
         _pointer = FindObjectOfType<Pointer>();
         _handling /= 100;
-        _currentArmor = _maxArmor;
-        _currentSpeed = 0;
+        CurrentArmor = _maxArmor;
+        CurrentSpeed = 0;
     }
 
     private void Start()
