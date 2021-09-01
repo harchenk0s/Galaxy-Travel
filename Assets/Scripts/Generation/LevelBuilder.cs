@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class LevelBuilder : MonoBehaviour
 {
     [SerializeField] private Generator _garbageGenerator;
+    [SerializeField] private GameMode _defaultGameMode;
 
     private List<Wave> _waves = new List<Wave>();
     private Wave _gateWave;
@@ -20,6 +21,7 @@ public class LevelBuilder : MonoBehaviour
     {
         _ship = FindObjectOfType<Ship>();
         _ship.ShipDeadEvent.AddListener(GameOver);
+        _gameMode = _defaultGameMode;
     }
 
     private void GateWaveReset()
