@@ -59,6 +59,9 @@ TextureImporter:
   - first:
       213: -6219808557722904330
     second: GUITexture_18
+  - first:
+      213: 8142438123312084730
+    second: GUITexture_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -88,7 +91,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -353,7 +356,7 @@ TextureImporter:
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 54, y: 0, z: 52, w: 0}
+      border: {x: 54, y: 25, z: 52, w: 28}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -437,7 +440,7 @@ TextureImporter:
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 52, y: 25, z: 51, w: 26}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -521,7 +524,7 @@ TextureImporter:
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 52, y: 26, z: 52, w: 26}
       outline: []
       physicsShape: []
       tessellationDetail: 0
