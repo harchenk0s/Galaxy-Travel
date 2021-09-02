@@ -10,7 +10,6 @@ public class ChangeShipEvent : UnityEvent<GameObject> { }
 public class LevelBuilder : MonoBehaviour
 {
     [SerializeField] private Generator _garbageGenerator = null;
-    [SerializeField] private GameMode _defaultGameMode = null;
 
     private List<Wave> _waves = new List<Wave>();
     private Wave _gateWave;
@@ -26,9 +25,10 @@ public class LevelBuilder : MonoBehaviour
     {
         _ship = Resources.Load<Ship>(PlayerPrefs.GetString("Ship"));
         _ship = Instantiate(_ship, Vector3.zero, Quaternion.identity);
+        _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString("Mode"));
+        _gameMode = Instantiate(_gameMode, Vector3.zero, Quaternion.identity);
         ChangeShipEvent.Invoke(_ship.gameObject);
         _ship.ShipDeadEvent.AddListener(GameOver);
-        _gameMode = _defaultGameMode;
     }
 
     private void GateWaveReset()
@@ -44,8 +44,9 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
-    public void SetGameMode(GameMode gameMode)
+    public void ChangeGameMode(GameMode gameMode)
     {
+        Destroy(_gameMode.gameObject);
         _gameMode = gameMode;
     }
 

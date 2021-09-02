@@ -16,3 +16,4 @@ MonoBehaviour:
   _price: 90000
   _picture: {fileID: 0}
   _prefab: {fileID: 7636228863985406225, guid: 05bea97f1ba5b4a48bad3aee8d5b8f3f, type: 3}
+  _isBuyed: 0

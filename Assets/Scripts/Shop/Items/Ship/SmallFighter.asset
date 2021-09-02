@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d76b5e74565c4059b45059f70974526, type: 3}
   m_Name: SmallFighter
   m_EditorClassIdentifier: 
-  _name: Smallfighter
-  _price: 1500
+  _name: Small Fighter
+  _price: 0
   _picture: {fileID: 0}
   _prefab: {fileID: 2353968562978425913, guid: 52ff34a70d23045cd9f70ad84a01ebec, type: 3}
-  _isBuyed: 1
+  _isBuyed: 0

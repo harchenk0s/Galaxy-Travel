@@ -9,9 +9,9 @@ public class ShopItem : ScriptableObject
     [SerializeField] private int _price;
     [SerializeField] private Sprite _picture;
     [SerializeField] private GameObject _prefab;
+    [SerializeField] private bool _isBuyed = false;
 
     private LevelBuilder _levelBuilder;
-    private bool _isBuyed = false;
 
     public bool IsBuyed => _isBuyed;
     public string Name => _name;
