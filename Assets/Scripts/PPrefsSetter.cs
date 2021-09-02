@@ -6,14 +6,16 @@ public class PPrefsSetter : MonoBehaviour
 {
     private void Awake()
     {
-        int countLaunches = PlayerPrefs.GetInt("FirstLaunch", 1);
-        PlayerPrefs.SetString("CenterAlh", "CenterAlgDefault");
+        int countLaunches = PlayerPrefs.GetInt("CountLaunches", 0);
 
-        if (countLaunches != 1)
+        countLaunches++;
+
+        if (countLaunches == 1)
         {
-            countLaunches++;
+            PlayerPrefs.SetString("CenterAlg", "CenterAlgDefault");
+            PlayerPrefs.SetString("Ship", "SmallFighter");
+            PlayerPrefs.SetString("Mode", "Classic");
             PlayerPrefs.SetInt("CountLaunches", countLaunches);
-            PlayerPrefs.SetString("GridRandomAlg", "GridRandomAlgDefault");
             PlayerPrefs.Save();
         }
     }

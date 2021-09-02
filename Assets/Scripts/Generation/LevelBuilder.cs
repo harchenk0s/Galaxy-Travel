@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
+[Serializable]
+public class ChangeShipEvent : UnityEvent<GameObject> { }
 
 public class LevelBuilder : MonoBehaviour
 {
@@ -16,10 +20,13 @@ public class LevelBuilder : MonoBehaviour
     private GameMode _gameMode;
 
     public UnityEvent EndLevelEvent;
+    public ChangeShipEvent ChangeShipEvent;
 
     private void Awake()
     {
-        _ship = FindObjectOfType<Ship>();
+        _ship = Resources.Load<Ship>(PlayerPrefs.GetString("Ship"));
+        _ship = Instantiate(_ship, Vector3.zero, Quaternion.identity);
+        ChangeShipEvent.Invoke(_ship.gameObject);
         _ship.ShipDeadEvent.AddListener(GameOver);
         _gameMode = _defaultGameMode;
     }
@@ -48,6 +55,22 @@ public class LevelBuilder : MonoBehaviour
         _addGates = _gameMode.AddGates;
         _generationCourutine = GenerationCourutine();
         StartCoroutine(_generationCourutine);
+    }
+
+    public void ChangeShip(GameObject ship)
+    {
+        if (ship.TryGetComponent<Ship>(out _))
+        {
+            _ship.gameObject.SetActive(false);
+            PlayerPrefs.SetString("Ship", ship.name);
+            PlayerPrefs.Save();
+            GameObject newShip = Instantiate(ship, Vector3.zero, Quaternion.identity);
+            Debug.Log(PlayerPrefs.GetString("Ship"));
+            Destroy(_ship.gameObject);
+            _ship = newShip.GetComponent<Ship>();
+            ChangeShipEvent.Invoke(_ship.gameObject);
+            
+        }
     }
 
     private IEnumerator GenerationCourutine()

@@ -42,12 +42,13 @@ public class Pointer : MonoBehaviour
         _pointerBorders = FindObjectOfType<PointerBorders>();
     }
 
+    public void SetObjectOfControl(GameObject objectOfControl)
+    {
+        _objectOfControl = objectOfControl;
+    }
+
     private void Start()
     {
-        if(_objectOfControl == null)
-        {
-            throw new UnityException("Object of control not choose");
-        }
         if(_pointerBorders == null)
         {
             throw new UnityException("Add PointerBorders on scene");
