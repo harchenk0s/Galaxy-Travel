@@ -7,8 +7,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Pool))]
 public class Generator : MonoBehaviour
 {
-    [SerializeField] private GenerationAlgorithm _algorithm;
-    [SerializeField] private WaveEnder _waveEnder;
+    [SerializeField] private GenerationAlgorithm _algorithm = null;
+    [SerializeField] private WaveEnder _waveEnder = null;
 
     private Pool _pool;
     private IEnumerator _generationCorutine;

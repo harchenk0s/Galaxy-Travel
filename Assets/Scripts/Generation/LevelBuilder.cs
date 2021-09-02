@@ -9,8 +9,8 @@ public class ChangeShipEvent : UnityEvent<GameObject> { }
 
 public class LevelBuilder : MonoBehaviour
 {
-    [SerializeField] private Generator _garbageGenerator;
-    [SerializeField] private GameMode _defaultGameMode;
+    [SerializeField] private Generator _garbageGenerator = null;
+    [SerializeField] private GameMode _defaultGameMode = null;
 
     private List<Wave> _waves = new List<Wave>();
     private Wave _gateWave;

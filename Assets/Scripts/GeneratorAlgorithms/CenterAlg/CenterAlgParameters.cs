@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewRandomParam", menuName = "AlgorithmParameters/Center")]
+[CreateAssetMenu(fileName = "NewRandomParam", menuName = "AlgorithmParameters/Center", order = 51)]
 public class CenterAlgParameters : AlgorithmParameters
 {
 

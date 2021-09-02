@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class ObjectPooler : MonoBehaviour
 {
-    [SerializeField] private Pool _garbagePool;
-    [SerializeField] private WaveEnder _waveEnder;
+    [SerializeField] private Pool _garbagePool = null;
+    [SerializeField] private WaveEnder _waveEnder = null;
 
     private void Start()
     {

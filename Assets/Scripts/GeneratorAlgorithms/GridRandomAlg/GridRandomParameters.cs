@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewRandomParam", menuName = "AlgorithmParameters/GridRandom")]
+[CreateAssetMenu(fileName = "NewRandomParam", menuName = "AlgorithmParameters/GridRandom", order = 51)]
 public class GridRandomParameters : AlgorithmParameters
 {
     [SerializeField] [Min(1)] private int _Columns = 1;
