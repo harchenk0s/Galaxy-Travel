@@ -66,7 +66,6 @@ public class LevelBuilder : MonoBehaviour
             PlayerPrefs.SetString("Ship", ship.name);
             PlayerPrefs.Save();
             GameObject newShip = Instantiate(ship, Vector3.zero, Quaternion.identity);
-            Debug.Log(PlayerPrefs.GetString("Ship"));
             Destroy(_ship.gameObject);
             _ship = newShip.GetComponent<Ship>();
             ChangeShipEvent.Invoke(_ship.gameObject);

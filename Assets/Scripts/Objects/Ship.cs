@@ -21,11 +21,11 @@ public class Ship : MonoBehaviour
     private Transform _pointerTransform = null;
     private float _currentSpeed = 0;
     private int _currentArmor;
-    private IEnumerator _changingSpeedCourutine = null;
+    private IEnumerator _changingSpeedCoroutine = null;
 
     public ChangeSpeedEvent ChangeSpeedEvent;
     public ChangeArmorEvent ChangeArmorEvent;
-    public UnityEvent SlowDownEvent;
+    public UnityEvent SpeedDownEvent;
     public UnityEvent SpeedUpEvent;
     public UnityEvent ShipHitEvent;
     public UnityEvent ShipDeadEvent;
@@ -111,6 +111,8 @@ public class Ship : MonoBehaviour
     private void OnDestroy()
     {
         ChangeSpeedEvent.RemoveAllListeners();
+        SpeedUpEvent.RemoveAllListeners();
+        SpeedDownEvent.RemoveAllListeners();
     }
 
     private void ShipHit(Garbage garbage)
@@ -121,7 +123,6 @@ public class Ship : MonoBehaviour
             ShipHitEvent.Invoke();
             garbage.Explosion();
         }
-        
     }
 
     private void ShipDead()
@@ -148,22 +149,22 @@ public class Ship : MonoBehaviour
 
     private void ChangeSpeed(float targetSpeed)
     {
-        if(_changingSpeedCourutine != null)
+        if(_changingSpeedCoroutine != null)
         {
-            StopCoroutine(_changingSpeedCourutine);
+            StopCoroutine(_changingSpeedCoroutine);
         }
 
-        _changingSpeedCourutine = ChangingSpeedCourutine(targetSpeed);
-        StartCoroutine(_changingSpeedCourutine);
-    }
-
-    private IEnumerator ChangingSpeedCourutine(float targetSpeed)
-    {
         if (targetSpeed > CurrentSpeed)
             SpeedUpEvent.Invoke();
         else
-            SlowDownEvent.Invoke();
+            SpeedDownEvent.Invoke();
 
+        _changingSpeedCoroutine = ChangingSpeedCouroutine(targetSpeed);
+        StartCoroutine(_changingSpeedCoroutine);
+    }
+
+    private IEnumerator ChangingSpeedCouroutine(float targetSpeed)
+    {
         while(CurrentSpeed != targetSpeed)
         {
             CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, 2);
