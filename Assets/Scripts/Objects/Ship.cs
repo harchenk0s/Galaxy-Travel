@@ -16,7 +16,7 @@ public class Ship : MonoBehaviour
     [SerializeField] private float _handling = 10f;
     [SerializeField] private int _maxArmor = 10;
     [SerializeField] [Range(0, 15)] private int _rotationSpeed = 5;
-    
+
     private Pointer _pointer = null;
     private Transform _pointerTransform = null;
     private float _currentSpeed = 0;
@@ -113,10 +113,15 @@ public class Ship : MonoBehaviour
         ChangeSpeedEvent.RemoveAllListeners();
     }
 
-    private void ShipHit()
+    private void ShipHit(Garbage garbage)
     {
-        CurrentArmor--;
-        ShipHitEvent.Invoke();
+        if (CurrentArmor > 0)
+        {
+            CurrentArmor--;
+            ShipHitEvent.Invoke();
+            garbage.Explosion();
+        }
+        
     }
 
     private void ShipDead()
@@ -128,10 +133,11 @@ public class Ship : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SpaceGate spaceGate;
+        Garbage garbage;
 
-        if(other.TryGetComponent<Garbage>(out _))
+        if(other.TryGetComponent(out garbage))
         {
-            ShipHit();
+            ShipHit(garbage);
         }
         else if (other.TryGetComponent(out spaceGate))
         {

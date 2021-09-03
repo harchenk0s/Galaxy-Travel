@@ -7,6 +7,7 @@ public class ShopItem : ScriptableObject
 {
     [SerializeField] private string _name;
     [SerializeField] private int _price;
+    [SerializeField] private Sprite _pictureShadow;
     [SerializeField] private Sprite _picture;
     [SerializeField] private GameObject _prefab;
     [SerializeField] private bool _isBuyed = false;
@@ -17,6 +18,16 @@ public class ShopItem : ScriptableObject
     public string Name => _name;
     public int Price => _price;
     public GameObject Prefab => _prefab;
+    public Sprite Picture
+    {
+        get
+        {
+            if (_isBuyed)
+                return _picture;
+            else
+                return _pictureShadow;
+        }
+    }
 
     public void Buy()
     {
