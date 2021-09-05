@@ -547,10 +547,10 @@ RectTransform:
   m_Father: {fileID: 1490842819}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.24272384, y: 0.273}
-  m_AnchorMax: {x: 0.76486844, y: 0.6264404}
-  m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: -10.2, y: 2.5}
+  m_AnchorMin: {x: 0.21700001, y: 0.35167095}
+  m_AnchorMax: {x: 0.79600006, y: 0.5383162}
+  m_AnchoredPosition: {x: -3, y: 3.4999847}
+  m_SizeDelta: {x: -10.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &521005440
 MonoBehaviour:
@@ -583,7 +583,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Double Tap to begin!
+  m_Text: Tap to begin!
 --- !u!222 &521005441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -647,6 +647,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  GameOverEvent:
+    m_PersistentCalls:
+      m_Calls: []
   ChangeShipEvent:
     m_PersistentCalls:
       m_Calls:
@@ -894,6 +897,7 @@ GameObject:
   - component: {fileID: 602104339}
   - component: {fileID: 602104338}
   - component: {fileID: 602104337}
+  - component: {fileID: 602104336}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -901,6 +905,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &602104336
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602104335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee6b40628acb84910a8dc249683fa9d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!81 &602104337
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1986,7 +2009,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294147733}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e95e9751ef70d4222a41fc11277173e2, type: 3}
   m_Name: 
@@ -2335,7 +2358,7 @@ MonoBehaviour:
   _borderPoints:
   - {fileID: 989596270}
   - {fileID: 913565859}
-  DrawGizmos: 0
+  DrawGizmos: 1
   LinesColor: {r: 0, g: 1, b: 0, a: 1}
   PointsColor: {r: 1, g: 0, b: 0, a: 1}
   DrawGrid: 1
@@ -2501,7 +2524,7 @@ MonoBehaviour:
   IgnoreStartedOverGui: 1
   IgnoreIsOverGui: 1
   RequiredSelectable: {fileID: 0}
-  RequiredTapCount: 2
+  RequiredTapCount: 0
   RequiredTapInterval: 0
   onFinger:
     m_PersistentCalls:
@@ -2527,17 +2550,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1294147735}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 560281781}
         m_MethodName: SetActive
