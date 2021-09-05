@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: lidya
   _price: 9999999
+  _pictureShadow: {fileID: 0}
   _picture: {fileID: 0}
   _prefab: {fileID: 533614581724025575, guid: 2f998e88328634eb0b5c4381c830e151, type: 3}
   _isBuyed: 1

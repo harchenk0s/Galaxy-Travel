@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d76b5e74565c4059b45059f70974526, type: 3}
-  m_Name: Fatty
+  m_Name: CowMode
   m_EditorClassIdentifier: 
-  _name: Fatty
+  _name: Cow Mode
   _price: 5000
+  _pictureShadow: {fileID: 0}
   _picture: {fileID: 0}
-  _prefab: {fileID: 1769087025216028077, guid: 20d6ec423079941f581379f5f409b419, type: 3}
-  _isBuyed: 1
+  _prefab: {fileID: 2693068408324560853, guid: 206131bfe74cf4a38944215712a85ab5, type: 3}
+  _isBuyed: 0
