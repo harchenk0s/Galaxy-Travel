@@ -25,7 +25,7 @@ public class Generator : MonoBehaviour
     {
         if(newAlgorithm.BaseType == typeof(GenerationAlgorithm))
         {
-            if(TryGetComponent<GenerationAlgorithm>(out _algorithm))
+            if(TryGetComponent(out _algorithm))
             {
                 Destroy(_algorithm);
             }

@@ -110,7 +110,10 @@ public class Ship : MonoBehaviour
 
     private void OnDestroy()
     {
+        ShipDeadEvent.RemoveAllListeners();
+        ShipHitEvent.RemoveAllListeners();
         ChangeSpeedEvent.RemoveAllListeners();
+        ChangeArmorEvent.RemoveAllListeners();
         SpeedUpEvent.RemoveAllListeners();
         SpeedDownEvent.RemoveAllListeners();
     }
@@ -119,15 +122,16 @@ public class Ship : MonoBehaviour
     {
         if (CurrentArmor > 0)
         {
-            CurrentArmor--;
             ShipHitEvent.Invoke();
             garbage.Explosion();
         }
+
+        CurrentArmor--;
     }
 
     private void ShipDead()
     {
-        Debug.LogError("Ship dead!");
+        ChangeSpeed(0);
         ShipDeadEvent.Invoke();
     }
 

@@ -19,6 +19,7 @@ public class LevelBuilder : MonoBehaviour
     private GameMode _gameMode;
 
     public UnityEvent EndLevelEvent;
+    public UnityEvent GameOverEvent;
     public ChangeShipEvent ChangeShipEvent;
 
     private void Awake()
@@ -69,7 +70,7 @@ public class LevelBuilder : MonoBehaviour
             Destroy(_ship.gameObject);
             _ship = newShip.GetComponent<Ship>();
             ChangeShipEvent.Invoke(_ship.gameObject);
-            
+            _ship.ShipDeadEvent.AddListener(GameOver);
         }
     }
 
@@ -94,9 +95,10 @@ public class LevelBuilder : MonoBehaviour
         _waves.Clear();
         _ship.ResetShip();
     }
-
+    
     private void GameOver()
     {
+        GameOverEvent.Invoke();
         StopCoroutine(_generationCourutine);
         _waves.Clear();
         _ship.ResetShip();
