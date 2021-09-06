@@ -5,27 +5,44 @@ using UnityEngine.Events;
 
 public class ScoreCounter : MonoBehaviour
 {
-    [SerializeField] private float _pointFactor;
-    [SerializeField] private int _startPoints;
+    [SerializeField] private float _scoreFactor;
+    [SerializeField] private int _startScore;
 
-    protected float _points;
+    protected float _score;
     protected int _numberCollisions;
     protected ShipEvents _shipEvents;
     protected LevelBuilder _levelBuilder;
 
     private IEnumerator _countingCoroutine = null;
     private bool _counting = true;
+    private int _hitCount = 0;
 
-    public FloatEvent PointsChangeEvent;
+    public FloatEvent ScoreChangeEvent;
     
-    public float Points
+    public float Score
     {
-        get { return (int)Mathf.Clamp(_points, 0, float.PositiveInfinity); }
+        get { return (int)Mathf.Clamp(_score, 0, float.PositiveInfinity); }
         private set
         {
-            _points = value;
-            PointsChangeEvent.Invoke(Points);
+            _score = value;
+            ScoreChangeEvent.Invoke(Score);
         }
+    }
+
+    public virtual Score GetScore()
+    {
+        int rating = 0;
+        int totalScore = (int)Score;
+        int hitModifireValue = _hitCount == 0 ? 500 : _hitCount * 100 * -1;
+
+        Modifier hitModifier = new Modifier($"Hits count: {_hitCount}", hitModifireValue);
+
+        rating = _hitCount == 0 ? 3 : 2;
+
+        if (_score + hitModifireValue < _startScore / 2)
+            rating--;
+
+        return new Score(rating, totalScore, new List<Modifier> { hitModifier });
     }
 
     protected virtual void Start()
@@ -34,11 +51,12 @@ public class ScoreCounter : MonoBehaviour
         _levelBuilder.StartGameEvent.AddListener(StartCounting);
         _levelBuilder.EndLevelEvent.AddListener(EndCounting);
         _levelBuilder.GameOverEvent.AddListener(GameOver);
+        _shipEvents.ShipHitEvent.AddListener(ShipHit);
     }
 
     protected virtual void StartCounting()
     {
-        Points = _startPoints;
+        Score = _startScore;
 
         if(_countingCoroutine != null)
         {
@@ -57,14 +75,19 @@ public class ScoreCounter : MonoBehaviour
 
     protected virtual void GameOver()
     {
-        Points = 0;
+        Score = 0;
+    }
+
+    private void ShipHit()
+    {
+        _hitCount++;
     }
 
     private IEnumerator CountingCoroutine()
     {
         while (_counting)
         {
-            Points -= _pointFactor;
+            Score -= _scoreFactor;
             yield return new WaitForFixedUpdate();
         }
         _countingCoroutine = null;
@@ -72,6 +95,6 @@ public class ScoreCounter : MonoBehaviour
 
     private void OnDestroy()
     {
-        PointsChangeEvent.RemoveAllListeners();
+        ScoreChangeEvent.RemoveAllListeners();
     }
 }

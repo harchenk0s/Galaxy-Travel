@@ -83,6 +83,7 @@ public class LevelBuilder : MonoBehaviour
     {
         GameOverEvent.Invoke();
         StopCoroutine(_generationCourutine);
+        _garbageGenerator.StopGenerate();
         _waves.Clear();
         _ship.Reset();
     }
