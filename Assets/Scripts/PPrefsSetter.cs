@@ -12,6 +12,7 @@ public class PPrefsSetter : MonoBehaviour
 
         if (countLaunches == 1)
         {
+            PlayerPrefs.SetInt("Wallet", 0);
             PlayerPrefs.SetString("CenterAlg", "CenterAlgDefault");
             PlayerPrefs.SetString("Ship", "SmallFighter");
             PlayerPrefs.SetString("Mode", "ClassicMode");

@@ -12,7 +12,15 @@ public class ShipView : ItemView
 
     private void ChangeShip()
     {
-        _shopItem.Buy();
-        _levelBuilder.ChangeShip(_object);
+        if (_shopItem.IsBuyed)
+            _levelBuilder.ChangeShip(_object);
+        else
+        {
+            if (_shopItem.Buy(_shopItem.Price))
+            {
+                _levelBuilder.ChangeShip(_object);
+                ChangeButtonText("Choose");
+            }  
+        }
     }
 }

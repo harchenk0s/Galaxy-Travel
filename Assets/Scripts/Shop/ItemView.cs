@@ -21,8 +21,13 @@ public class ItemView : MonoBehaviour
     public virtual void Render(ShopItem shopItem)
     {
         _shopItem = shopItem;
-        _buttonText.text = _shopItem.Price.ToString();
+        _buttonText.text = _shopItem.IsBuyed ? "Choose" : _shopItem.Price.ToString();
         _object = _shopItem.Prefab;
         _name.text = _shopItem.Name;
+    }
+
+    protected void ChangeButtonText(string text)
+    {
+        _buttonText.text = text;
     }
 }

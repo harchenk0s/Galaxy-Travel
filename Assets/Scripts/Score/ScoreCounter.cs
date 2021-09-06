@@ -13,6 +13,7 @@ public class ScoreCounter : MonoBehaviour
     protected int _numberCollisions;
     protected ShipEvents _shipEvents;
     protected LevelBuilder _levelBuilder;
+    protected bool _isWin = true;
 
     private IEnumerator _countingCoroutine = null;
     private bool _counting = true;
@@ -33,17 +34,18 @@ public class ScoreCounter : MonoBehaviour
     public virtual Score GetScore()
     {
         int rating = 0;
-        int totalScore = (int)Score;
+        int score = (int)Score;
         int hitModifireValue = _hitCount == 0 ? _noHitBonus : _hitCount * _hitPenalty * -1;
+        int totalScore = score + hitModifireValue;
 
-        Modifier hitModifier = new Modifier($"Hits count: {_hitCount}", hitModifireValue);
+        Modifier hitModifier = new Modifier($"{_hitCount} Hits: ", hitModifireValue);
 
         rating = _hitCount == 0 ? 3 : 2;
 
         if (_score + hitModifireValue < _startScore / 2)
             rating--;
 
-        return new Score(rating, totalScore, new List<Modifier> { hitModifier });
+        return new Score(_isWin, rating, score, totalScore, new List<Modifier> { hitModifier });
     }
 
     protected virtual void Start()
@@ -59,6 +61,8 @@ public class ScoreCounter : MonoBehaviour
     protected virtual void StartCounting()
     {
         Score = _startScore;
+        _hitCount = 0;
+        _numberCollisions = 0;
 
         if(_countingCoroutine != null)
         {
@@ -73,10 +77,12 @@ public class ScoreCounter : MonoBehaviour
     protected virtual void EndCounting()
     {
         _counting = false;
+        _isWin = true;
     }
 
     protected virtual void Defeat()
     {
+        _isWin = false;
         Score = 0;
     }
 
@@ -93,6 +99,7 @@ public class ScoreCounter : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         _countingCoroutine = null;
+        _isWin = true;
     }
 
     private void OnDestroy()

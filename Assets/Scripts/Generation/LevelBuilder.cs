@@ -50,6 +50,8 @@ public class LevelBuilder : MonoBehaviour
 
     public void ChangeGameMode(GameMode gameMode)
     {
+        PlayerPrefs.SetString("Mode", gameMode.name);
+        PlayerPrefs.Save();
         Destroy(_gameMode.gameObject);
         _gameMode = gameMode;
         ChangeGameModeEvent.Invoke(gameMode.gameObject);

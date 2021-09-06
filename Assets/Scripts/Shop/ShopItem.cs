@@ -29,9 +29,11 @@ public class ShopItem : ScriptableObject
         }
     }
 
-    public void Buy()
+    public bool Buy(int price)
     {
-        _isBuyed = !_isBuyed;
+        Wallet wallet = FindObjectOfType<Wallet>();
+        _isBuyed = wallet.Buy(price);
+        return _isBuyed;
     }
 
     private void Awake()
