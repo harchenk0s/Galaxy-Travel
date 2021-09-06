@@ -20,7 +20,7 @@ public class LevelBuilder : MonoBehaviour
 
     public UnityEvent StartGameEvent;
     public UnityEvent EndLevelEvent;
-    public UnityEvent GameOverEvent;
+    public UnityEvent DefeatEvent;
     public GameObjectEvent ChangeShipEvent;
     public GameObjectEvent ChangeGameModeEvent;
 
@@ -31,7 +31,7 @@ public class LevelBuilder : MonoBehaviour
         _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString("Mode"));
         _gameMode = Instantiate(_gameMode, Vector3.zero, Quaternion.identity);
         ChangeShipEvent.Invoke(_ship.gameObject);
-        _ship.ShipDeadEvent.AddListener(GameOver);
+        _ship.ShipDeadEvent.AddListener(Defeat);
     }
 
     private void GateWaveReset()
@@ -75,15 +75,24 @@ public class LevelBuilder : MonoBehaviour
             Destroy(_ship.gameObject);
             _ship = newShip.GetComponent<Ship>();
             ChangeShipEvent.Invoke(_ship.gameObject);
-            _ship.ShipDeadEvent.AddListener(GameOver);
+            _ship.ShipDeadEvent.AddListener(Defeat);
         }
     }
 
-    private void GameOver()
+    private void Defeat()
     {
-        GameOverEvent.Invoke();
+        DefeatEvent.Invoke();
         StopCoroutine(_generationCourutine);
         _garbageGenerator.StopGenerate();
+    }
+
+    private void Win()
+    {
+        EndLevelEvent.Invoke();
+    }
+
+    private void Reset()
+    {
         _waves.Clear();
         _ship.Reset();
     }
@@ -104,9 +113,6 @@ public class LevelBuilder : MonoBehaviour
             wave.StartWave(_ship.CurrentPercentSpeed, _garbageGenerator);
             yield return new WaitUntil(() => wave.IsWaveEnd);
         }
-
-        EndLevelEvent.Invoke();
-        _waves.Clear();
-        _ship.Reset();
+        Win();
     }
 }

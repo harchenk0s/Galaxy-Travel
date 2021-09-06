@@ -48,9 +48,10 @@ public class ScoreCounter : MonoBehaviour
     protected virtual void Start()
     {
         _levelBuilder = FindObjectOfType<LevelBuilder>();
+        _shipEvents = FindObjectOfType<ShipEvents>();
         _levelBuilder.StartGameEvent.AddListener(StartCounting);
         _levelBuilder.EndLevelEvent.AddListener(EndCounting);
-        _levelBuilder.GameOverEvent.AddListener(GameOver);
+        _levelBuilder.DefeatEvent.AddListener(Defeat);
         _shipEvents.ShipHitEvent.AddListener(ShipHit);
     }
 
@@ -73,7 +74,7 @@ public class ScoreCounter : MonoBehaviour
         _counting = false;
     }
 
-    protected virtual void GameOver()
+    protected virtual void Defeat()
     {
         Score = 0;
     }

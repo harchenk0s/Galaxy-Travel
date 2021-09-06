@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addGates: 1
+  _waveCount: 3
+  _durationWave: 10
 --- !u!114 &8357958660569013507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17f5de2ca3e94438a744b6c574501d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointFactor: 0.5
-  _startPoints: 5000
-  PointsChangeEvent:
+  _scoreFactor: 0.5
+  _startScore: 5000
+  ScoreChangeEvent:
     m_PersistentCalls:
       m_Calls: []

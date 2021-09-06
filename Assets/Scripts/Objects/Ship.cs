@@ -9,19 +9,22 @@ public class FloatEvent : UnityEvent<float> { }
 [Serializable]
 public class IntEvent : UnityEvent<int> { }
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class Ship : MonoBehaviour
 {
     [SerializeField] private int _maxSpeed = 300;
     [SerializeField] private float _handling = 0.1f;
     [SerializeField] private int _maxArmor = 10;
     [SerializeField] [Range(0, 15)] private int _rotationSpeed = 5;
+    [SerializeField] private ParticleSystem _explosion;
+    [SerializeField] private GameObject _mesh;
 
     private Pointer _pointer = null;
     private Transform _pointerTransform = null;
     private float _currentSpeed = 0;
     private int _currentArmor;
     private IEnumerator _changingSpeedCoroutine = null;
+    private Collider _collider;
 
     public FloatEvent ChangeSpeedEvent;
     public IntEvent ChangeArmorEvent;
@@ -66,6 +69,8 @@ public class Ship : MonoBehaviour
 
     public void Reset()
     {
+        _collider.enabled = true;
+        _mesh.SetActive(true);
         CurrentArmor = _maxArmor;
         ChangeSpeed(0);
     }
@@ -77,6 +82,7 @@ public class Ship : MonoBehaviour
 
     private void Awake()
     {
+        _collider = GetComponent<Collider>();
         _pointer = FindObjectOfType<Pointer>();
         CurrentArmor = _maxArmor;
         CurrentSpeed = 0;
@@ -130,6 +136,9 @@ public class Ship : MonoBehaviour
 
     private void ShipDead()
     {
+        _collider.enabled = false;
+        _mesh.SetActive(false);
+        _explosion.Play();
         ChangeSpeed(0);
         ShipDeadEvent.Invoke();
     }
