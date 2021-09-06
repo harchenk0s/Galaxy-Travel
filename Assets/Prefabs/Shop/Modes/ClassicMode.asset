@@ -17,4 +17,4 @@ MonoBehaviour:
   _pictureShadow: {fileID: 0}
   _picture: {fileID: 0}
   _prefab: {fileID: 3695844630683272605, guid: 3789e42604dbd430ea5af5278e2abd91, type: 3}
-  _isBuyed: 0
+  _isBuyed: 1

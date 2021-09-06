@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreFactor: 0.5
   _startScore: 10000
-  _hitPenalty: 500
+  _hitPenalty: 2000
   _noHitBonus: 1000
   ScoreChangeEvent:
     m_PersistentCalls:

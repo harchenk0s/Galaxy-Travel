@@ -16,8 +16,8 @@ public class GUIElementAnimation : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Opened() => OpenEvent.Invoke();
-    private void Closed() => CloseEvent.Invoke();
+    public void Opened() => OpenEvent.Invoke();
+    public void Closed() => CloseEvent.Invoke();
 
     public void Open()
     {

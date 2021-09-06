@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d76b5e74565c4059b45059f70974526, type: 3}
   m_Name: SciFi
   m_EditorClassIdentifier: 
-  _name: lidya
-  _price: 9999999
+  _name: SpaceWorm
+  _price: 20000
   _pictureShadow: {fileID: 0}
   _picture: {fileID: 0}
   _prefab: {fileID: 533614581724025575, guid: 2f998e88328634eb0b5c4381c830e151, type: 3}
-  _isBuyed: 1
+  _isBuyed: 0

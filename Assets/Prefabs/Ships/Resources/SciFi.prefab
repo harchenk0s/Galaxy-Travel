@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3547884855049576692}
   - component: {fileID: 6667653806098453801}
   - component: {fileID: 5645617088035000829}
-  - component: {fileID: 2532608689323506112}
+  - component: {fileID: 8368313815988414899}
   m_Layer: 0
   m_Name: SciFi
   m_TagString: Untagged
@@ -62,10 +62,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a050904c7e4894192838a29a5ed559fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 300
-  _handling: 0.1
+  _maxSpeed: 750
+  _handling: 0.05
   _maxArmor: 10
   _rotationSpeed: 5
+  _explosion: {fileID: 4584257386758980579, guid: 85a389ff8b83842b19b5ba38e7fbb46d,
+    type: 3}
+  _mesh: {fileID: 5254780159745833891}
   ChangeSpeedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -84,8 +87,8 @@ MonoBehaviour:
   ShipDeadEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!65 &2532608689323506112
-BoxCollider:
+--- !u!64 &8368313815988414899
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,9 +97,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6187606914662817290, guid: fe523584b3db043c88ddb9694fb0b66f, type: 3}
 --- !u!1 &5254780159745833891
 GameObject:
   m_ObjectHideFlags: 0
