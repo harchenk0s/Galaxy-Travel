@@ -69,6 +69,7 @@ public class Ship : MonoBehaviour
 
     public void Reset()
     {
+        _pointerTransform.position = Vector3.zero;
         _collider.enabled = true;
         _mesh.SetActive(true);
         CurrentArmor = _maxArmor;

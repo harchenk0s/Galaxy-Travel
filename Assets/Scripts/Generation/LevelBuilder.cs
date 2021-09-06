@@ -79,6 +79,12 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        _waves.Clear();
+        _ship.Reset();
+    }
+
     private void Defeat()
     {
         DefeatEvent.Invoke();
@@ -89,12 +95,6 @@ public class LevelBuilder : MonoBehaviour
     private void Win()
     {
         EndLevelEvent.Invoke();
-    }
-
-    private void Reset()
-    {
-        _waves.Clear();
-        _ship.Reset();
     }
 
     private IEnumerator GenerationCourutine()

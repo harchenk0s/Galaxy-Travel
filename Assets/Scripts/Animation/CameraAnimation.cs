@@ -6,6 +6,7 @@ using UnityEngine;
 public class CameraAnimation : MonoBehaviour
 {
     private Animator _animator;
+    private bool test = true;
 
     private void Awake()
     {
