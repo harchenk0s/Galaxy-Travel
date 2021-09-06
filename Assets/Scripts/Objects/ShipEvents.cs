@@ -7,8 +7,8 @@ public class ShipEvents : MonoBehaviour
 {
     private Ship _ship = null;
 
-    public ChangeSpeedEvent ChangeSpeedEvent;
-    public ChangeArmorEvent ChangeArmorEvent;
+    public FloatEvent ChangeSpeedEvent;
+    public IntEvent ChangeArmorEvent;
     public UnityEvent SpeedDownEvent;
     public UnityEvent SpeedUpEvent;
     public UnityEvent ShipHitEvent;

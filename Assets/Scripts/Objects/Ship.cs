@@ -5,9 +5,9 @@ using System;
 using System.Collections;
 
 [Serializable]
-public class ChangeSpeedEvent : UnityEvent<float> { }
+public class FloatEvent : UnityEvent<float> { }
 [Serializable]
-public class ChangeArmorEvent : UnityEvent<int> { }
+public class IntEvent : UnityEvent<int> { }
 
 [RequireComponent(typeof(Rigidbody))]
 public class Ship : MonoBehaviour
@@ -23,8 +23,8 @@ public class Ship : MonoBehaviour
     private int _currentArmor;
     private IEnumerator _changingSpeedCoroutine = null;
 
-    public ChangeSpeedEvent ChangeSpeedEvent;
-    public ChangeArmorEvent ChangeArmorEvent;
+    public FloatEvent ChangeSpeedEvent;
+    public IntEvent ChangeArmorEvent;
     public UnityEvent SpeedDownEvent;
     public UnityEvent SpeedUpEvent;
     public UnityEvent ShipHitEvent;
@@ -64,7 +64,7 @@ public class Ship : MonoBehaviour
         get { return CurrentSpeed * 100 / _maxSpeed; }
     }
 
-    public void ResetShip()
+    public void Reset()
     {
         CurrentArmor = _maxArmor;
         ChangeSpeed(0);

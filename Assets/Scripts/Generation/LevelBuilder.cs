@@ -18,6 +18,7 @@ public class LevelBuilder : MonoBehaviour
     private bool _addGates = false;
     private GameMode _gameMode;
 
+    public UnityEvent StartGameEvent;
     public UnityEvent EndLevelEvent;
     public UnityEvent GameOverEvent;
     public ChangeShipEvent ChangeShipEvent;
@@ -56,6 +57,7 @@ public class LevelBuilder : MonoBehaviour
         _waves = _gameMode.GetWaves();
         _addGates = _gameMode.AddGates;
         _generationCourutine = GenerationCourutine();
+        StartGameEvent.Invoke();
         StartCoroutine(_generationCourutine);
     }
 
@@ -72,6 +74,14 @@ public class LevelBuilder : MonoBehaviour
             ChangeShipEvent.Invoke(_ship.gameObject);
             _ship.ShipDeadEvent.AddListener(GameOver);
         }
+    }
+
+    private void GameOver()
+    {
+        GameOverEvent.Invoke();
+        StopCoroutine(_generationCourutine);
+        _waves.Clear();
+        _ship.Reset();
     }
 
     private IEnumerator GenerationCourutine()
@@ -93,14 +103,6 @@ public class LevelBuilder : MonoBehaviour
 
         EndLevelEvent.Invoke();
         _waves.Clear();
-        _ship.ResetShip();
-    }
-    
-    private void GameOver()
-    {
-        GameOverEvent.Invoke();
-        StopCoroutine(_generationCourutine);
-        _waves.Clear();
-        _ship.ResetShip();
+        _ship.Reset();
     }
 }
