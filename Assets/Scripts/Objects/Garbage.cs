@@ -7,12 +7,18 @@ public class Garbage : MonoBehaviour
 {
     [SerializeField] private float _minRotationSpeed = -200f;
     [SerializeField] private float _maxRotationSpeed = 200;
+    [SerializeField] private int _strength = 1;
     [SerializeField] private ParticleSystem _explosionEffect = null;
     [SerializeField] private GameObject _garbageObject = null;
 
     private float _rotationSpeed;
     private Vector3 _rotationVector;
     private Rigidbody _rigidbody;
+
+    public int Strength
+    {
+        get { return Mathf.Clamp(_strength, 1, 100); }
+    }
 
     public void Explosion()
     {

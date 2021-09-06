@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 600
-  _handling: 10
+  _handling: 0.1
   _maxArmor: 10
   _rotationSpeed: 5
   ChangeSpeedEvent:

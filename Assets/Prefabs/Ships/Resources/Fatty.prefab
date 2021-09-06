@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 300
-  _handling: 10
+  _handling: 0.1
   _maxArmor: 10
   _rotationSpeed: 5
   ChangeSpeedEvent:
@@ -83,7 +83,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  SlowDownEvent:
+  SpeedDownEvent:
     m_PersistentCalls:
       m_Calls: []
   SpeedUpEvent:

@@ -47,6 +47,13 @@ public class Generator : MonoBehaviour
         _waveEnder.gameObject.SetActive(true);
     }
 
+    public void StopGenerate()
+    {
+        StopCoroutine(_generationCorutine);
+        _generationCorutine = null;
+        _algorithm.StopGenerate();
+    }
+
     public void GetBorders(out Vector2 minBorders, out Vector2 maxBorders)
     {
         PointerBorders pointerBorders = FindObjectOfType<PointerBorders>();

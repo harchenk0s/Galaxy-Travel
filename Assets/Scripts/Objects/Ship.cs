@@ -13,7 +13,7 @@ public class IntEvent : UnityEvent<int> { }
 public class Ship : MonoBehaviour
 {
     [SerializeField] private int _maxSpeed = 300;
-    [SerializeField] private float _handling = 10f;
+    [SerializeField] private float _handling = 0.1f;
     [SerializeField] private int _maxArmor = 10;
     [SerializeField] [Range(0, 15)] private int _rotationSpeed = 5;
 
@@ -78,7 +78,6 @@ public class Ship : MonoBehaviour
     private void Awake()
     {
         _pointer = FindObjectOfType<Pointer>();
-        _handling /= 100;
         CurrentArmor = _maxArmor;
         CurrentSpeed = 0;
     }
@@ -126,7 +125,7 @@ public class Ship : MonoBehaviour
             garbage.Explosion();
         }
 
-        CurrentArmor--;
+        CurrentArmor -= garbage.Strength;
     }
 
     private void ShipDead()

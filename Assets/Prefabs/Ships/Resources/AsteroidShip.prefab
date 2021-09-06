@@ -30,6 +30,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minRotationSpeed: -200
   _maxRotationSpeed: 200
+  _strength: 1
   _explosionEffect: {fileID: 3880535057715705980}
   _garbageObject: {fileID: 1934499068285196745}
 --- !u!1 &7636228863985406225
@@ -80,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 600
-  _handling: 5.1
+  _handling: 0.05
   _maxArmor: 99999
   _rotationSpeed: 0
   ChangeSpeedEvent:
