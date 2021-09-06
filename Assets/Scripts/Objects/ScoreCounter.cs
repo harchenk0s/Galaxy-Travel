@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class ScoreCounter : MonoBehaviour
 {
     [SerializeField] private float _pointFactor;
+    [SerializeField] private int _startPoints;
 
     protected float _points;
     protected int _numberCollisions;
@@ -17,7 +18,7 @@ public class ScoreCounter : MonoBehaviour
 
     public FloatEvent PointsChangeEvent;
     
-    public int Points
+    public float Points
     {
         get { return (int)Mathf.Clamp(_points, 0, float.PositiveInfinity); }
         private set
@@ -32,10 +33,13 @@ public class ScoreCounter : MonoBehaviour
         _levelBuilder = FindObjectOfType<LevelBuilder>();
         _levelBuilder.StartGameEvent.AddListener(StartCounting);
         _levelBuilder.EndLevelEvent.AddListener(EndCounting);
+        _levelBuilder.GameOverEvent.AddListener(GameOver);
     }
 
     protected virtual void StartCounting()
     {
+        Points = _startPoints;
+
         if(_countingCoroutine != null)
         {
             StopCoroutine(_countingCoroutine);
@@ -51,13 +55,23 @@ public class ScoreCounter : MonoBehaviour
         _counting = false;
     }
 
+    protected virtual void GameOver()
+    {
+        Points = 0;
+    }
+
     private IEnumerator CountingCoroutine()
     {
         while (_counting)
         {
-            _points -= _pointFactor;
+            Points -= _pointFactor;
             yield return new WaitForFixedUpdate();
         }
         _countingCoroutine = null;
+    }
+
+    private void OnDestroy()
+    {
+        PointsChangeEvent.RemoveAllListeners();
     }
 }

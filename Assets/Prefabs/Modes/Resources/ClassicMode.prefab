@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7586853898130753859}
   - component: {fileID: 670141221619345658}
+  - component: {fileID: 8357958660569013507}
   m_Layer: 0
   m_Name: ClassicMode
   m_TagString: Untagged
@@ -44,3 +45,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addGates: 1
+--- !u!114 &8357958660569013507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695844630683272605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17f5de2ca3e94438a744b6c574501d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointFactor: 0.5
+  _startPoints: 5000
+  PointsChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public class ChangeShipEvent : UnityEvent<GameObject> { }
+public class GameObjectEvent : UnityEvent<GameObject> { }
 
 public class LevelBuilder : MonoBehaviour
 {
@@ -21,7 +21,8 @@ public class LevelBuilder : MonoBehaviour
     public UnityEvent StartGameEvent;
     public UnityEvent EndLevelEvent;
     public UnityEvent GameOverEvent;
-    public ChangeShipEvent ChangeShipEvent;
+    public GameObjectEvent ChangeShipEvent;
+    public GameObjectEvent ChangeGameModeEvent;
 
     private void Awake()
     {
@@ -44,12 +45,14 @@ public class LevelBuilder : MonoBehaviour
         {
             throw new UnityException("No GarbageGenerator");
         }
+        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
     }
 
     public void ChangeGameMode(GameMode gameMode)
     {
         Destroy(_gameMode.gameObject);
         _gameMode = gameMode;
+        ChangeGameModeEvent.Invoke(gameMode.gameObject);
     }
 
     public void StartGenerate()

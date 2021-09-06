@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ClassicMode : GameMode
 {
+    [SerializeField] private int _waveCount = 3;
+    [SerializeField] private float _durationWave = 10f;
+
     private void Awake()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < _waveCount; i++)
         {
-            _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", 10f));
+            _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", _durationWave));
         }
     }
 }
