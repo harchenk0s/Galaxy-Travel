@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Modifier
 {
-    public string Name { get; }
+    public string Text { get; }
     public int Value { get; }
 
-    public Modifier(string name, int value)
+    public Modifier(string text, int value)
     {
-        Name = name;
+        Text = text;
         Value = value;
     }
 }

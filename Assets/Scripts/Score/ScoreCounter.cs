@@ -5,9 +5,10 @@ using UnityEngine.Events;
 
 public class ScoreCounter : MonoBehaviour
 {
-    [SerializeField] private float _scoreFactor;
-    [SerializeField] private int _startScore;
-
+    [SerializeField] private float _scoreFactor = 0.5f;
+    [SerializeField] private int _startScore = 5000;
+    [SerializeField] private int _hitPenalty = 100;
+    [SerializeField] private int _noHitBonus = 500;
     protected float _score;
     protected int _numberCollisions;
     protected ShipEvents _shipEvents;
@@ -21,7 +22,7 @@ public class ScoreCounter : MonoBehaviour
     
     public float Score
     {
-        get { return (int)Mathf.Clamp(_score, 0, float.PositiveInfinity); }
+        get { return Mathf.Clamp(_score, 0, float.PositiveInfinity); }
         private set
         {
             _score = value;
@@ -33,7 +34,7 @@ public class ScoreCounter : MonoBehaviour
     {
         int rating = 0;
         int totalScore = (int)Score;
-        int hitModifireValue = _hitCount == 0 ? 500 : _hitCount * 100 * -1;
+        int hitModifireValue = _hitCount == 0 ? _noHitBonus : _hitCount * _hitPenalty * -1;
 
         Modifier hitModifier = new Modifier($"Hits count: {_hitCount}", hitModifireValue);
 
