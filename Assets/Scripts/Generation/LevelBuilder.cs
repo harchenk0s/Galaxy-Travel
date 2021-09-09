@@ -52,18 +52,9 @@ public class LevelBuilder : MonoBehaviour
     {
         PlayerPrefs.SetString("Mode", gameMode.name);
         PlayerPrefs.Save();
+        ChangeGameModeEvent.Invoke(gameMode.gameObject);
         Destroy(_gameMode.gameObject);
         _gameMode = gameMode;
-        ChangeGameModeEvent.Invoke(gameMode.gameObject);
-    }
-
-    public void StartGenerate()
-    {
-        _waves = _gameMode.GetWaves();
-        _addGates = _gameMode.AddGates;
-        _generationCourutine = GenerationCourutine();
-        StartGameEvent.Invoke();
-        StartCoroutine(_generationCourutine);
     }
 
     public void ChangeShip(GameObject ship)
@@ -79,6 +70,15 @@ public class LevelBuilder : MonoBehaviour
             ChangeShipEvent.Invoke(_ship.gameObject);
             _ship.ShipDeadEvent.AddListener(Defeat);
         }
+    }
+
+    public void StartGenerate()
+    {
+        _waves = _gameMode.GetWaves();
+        _addGates = _gameMode.AddGates;
+        _generationCourutine = GenerationCourutine();
+        StartGameEvent.Invoke();
+        StartCoroutine(_generationCourutine);
     }
 
     public void Reset()
