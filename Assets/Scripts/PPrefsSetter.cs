@@ -15,6 +15,7 @@ public class PPrefsSetter : MonoBehaviour
             PlayerPrefs.SetInt("Wallet", 0);
             PlayerPrefs.SetString("CenterAlg", "CenterAlgDefault");
             PlayerPrefs.SetString("Ship", "SmallFighter");
+            PlayerPrefs.SetString("ShipDefault", "SmallFighter");
             PlayerPrefs.SetString("Mode", "ClassicMode");
             PlayerPrefs.SetInt("CountLaunches", countLaunches);
             PlayerPrefs.Save();
