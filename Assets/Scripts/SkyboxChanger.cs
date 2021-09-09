@@ -9,5 +9,7 @@ public class SkyboxChanger : MonoBehaviour
     public void ChangeToRandom()
     {
         RenderSettings.skybox = _skyboxes[Random.Range(0, _skyboxes.Count - 1)];
+        Texture2D texture = (Texture2D)RenderSettings.skybox.GetTexture("_FrontTex");
+        RenderSettings.fogColor = texture.GetPixel(texture.width / 2, texture.height / 2);
     }
 }
