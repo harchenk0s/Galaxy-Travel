@@ -3,50 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ScoreCounter : MonoBehaviour
+public abstract class ScoreCounter : MonoBehaviour
 {
-    [SerializeField] private float _scoreFactor = 0.5f;
-    [SerializeField] private int _startScore = 5000;
-    [SerializeField] private int _hitPenalty = 100;
-    [SerializeField] private int _noHitBonus = 500;
+    [SerializeField] protected int _startScore = 5000;
+
     protected float _score;
     protected int _numberCollisions;
     protected ShipEvents _shipEvents;
     protected LevelBuilder _levelBuilder;
     protected bool _isWin = true;
 
-    private IEnumerator _countingCoroutine = null;
-    private bool _counting = true;
-    private int _hitCount = 0;
-
     public FloatEvent ScoreChangeEvent;
     
     public float Score
     {
         get { return Mathf.Clamp(_score, 0, float.PositiveInfinity); }
-        private set
+        protected set
         {
             _score = value;
             ScoreChangeEvent.Invoke(Score);
         }
     }
 
-    public virtual Score GetScore()
-    {
-        int rating = 0;
-        int score = (int)Score;
-        int hitModifireValue = _hitCount == 0 ? _noHitBonus : _hitCount * _hitPenalty * -1;
-        int totalScore = score + hitModifireValue;
+    public abstract Score GetScore();
 
-        Modifier hitModifier = new Modifier($"{_hitCount} Hits: ", hitModifireValue);
+    protected abstract void EndCounting();
 
-        rating = _hitCount == 0 ? 3 : 2;
+    protected abstract void StartCounting();
 
-        if (_score + hitModifireValue < _startScore / 2)
-            rating--;
-
-        return new Score(_isWin, rating, score, totalScore, new List<Modifier> { hitModifier });
-    }
+    protected abstract void Defeat();
 
     protected virtual void Start()
     {
@@ -58,48 +43,9 @@ public class ScoreCounter : MonoBehaviour
         _shipEvents.ShipHitEvent.AddListener(ShipHit);
     }
 
-    protected virtual void StartCounting()
+    protected virtual void ShipHit()
     {
-        Score = _startScore;
-        _hitCount = 0;
-        _numberCollisions = 0;
-
-        if(_countingCoroutine != null)
-        {
-            StopCoroutine(_countingCoroutine);
-        }
-
-        _countingCoroutine = CountingCoroutine();
-        _counting = true;
-        StartCoroutine(_countingCoroutine);
-    }
-
-    protected virtual void EndCounting()
-    {
-        _counting = false;
-        _isWin = true;
-    }
-
-    protected virtual void Defeat()
-    {
-        _isWin = false;
-        Score = 0;
-    }
-
-    private void ShipHit()
-    {
-        _hitCount++;
-    }
-
-    private IEnumerator CountingCoroutine()
-    {
-        while (_counting)
-        {
-            Score -= _scoreFactor;
-            yield return new WaitForFixedUpdate();
-        }
-        _countingCoroutine = null;
-        _isWin = true;
+        _numberCollisions++;
     }
 
     private void OnDestroy()
