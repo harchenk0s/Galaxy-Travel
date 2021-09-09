@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4891829829600376390}
   - component: {fileID: 495830029690636414}
-  - component: {fileID: -1802596016557398373}
+  - component: {fileID: 5101887052408502306}
   m_Layer: 0
   m_Name: CowMode
   m_TagString: Untagged
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addGates: 1
---- !u!114 &-1802596016557398373
+--- !u!114 &5101887052408502306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,13 +54,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2693068408324560853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c17f5de2ca3e94438a744b6c574501d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2780640da7f1142fa9700cae37799f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreFactor: 0.5
-  _startScore: 10000
-  _hitPenalty: 2000
-  _noHitBonus: 1000
+  _startScore: 5000
   ScoreChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+  _scoreFactor: 0.5
+  _hitPenalty: 1000
+  _noHitBonus: 3000

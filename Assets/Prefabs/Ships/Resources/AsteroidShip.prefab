@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a050904c7e4894192838a29a5ed559fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 600
+  _maxSpeed: 225
   _handling: 0.05
   _maxArmor: 99999
   _rotationSpeed: 0

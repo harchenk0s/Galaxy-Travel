@@ -89,9 +89,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4831667627467262449}
   - component: {fileID: 7457782529836585743}
-  - component: {fileID: 5600447582018340746}
   - component: {fileID: 2954057449398076464}
   - component: {fileID: 4444954471865680396}
+  - component: {fileID: -804651660441960788}
   m_Layer: 0
   m_Name: ShipGarbage2
   m_TagString: Untagged
@@ -131,20 +131,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &5600447582018340746
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8455175987769261026}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3192079569790587774, guid: 0b931fec881e2404bac183325158d90a, type: 3}
 --- !u!114 &2954057449398076464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a36a443a2f32456e969e83ec2704822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &-804651660441960788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455175987769261026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.014606, y: 3.3840485, z: 7.831211}
+  m_Center: {x: 0.06876755, y: 0.0000019073486, z: 0.022924423}
 --- !u!1001 &6342810523762225398
 PrefabInstance:
   m_ObjectHideFlags: 0

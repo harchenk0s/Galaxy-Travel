@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7586853898130753859}
   - component: {fileID: 670141221619345658}
-  - component: {fileID: 8357958660569013507}
+  - component: {fileID: -6083629936564796277}
   m_Layer: 0
   m_Name: ClassicMode
   m_TagString: Untagged
@@ -47,7 +47,7 @@ MonoBehaviour:
   _addGates: 1
   _waveCount: 3
   _durationWave: 10
---- !u!114 &8357958660569013507
+--- !u!114 &-6083629936564796277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,11 +56,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3695844630683272605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c17f5de2ca3e94438a744b6c574501d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2780640da7f1142fa9700cae37799f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreFactor: 0.5
   _startScore: 5000
   ScoreChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+  _scoreFactor: 0.5
+  _hitPenalty: 300
+  _noHitBonus: 1000
