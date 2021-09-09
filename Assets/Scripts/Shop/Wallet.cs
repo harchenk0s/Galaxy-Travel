@@ -25,7 +25,7 @@ public class Wallet : MonoBehaviour
     public void Add(int value)
     {
         int wallet = PlayerPrefs.GetInt("Wallet", 0);
-        PlayerPrefs.SetInt("Wallet", wallet + value);
+        PlayerPrefs.SetInt("Wallet", Mathf.Clamp(wallet + value, 0, 999999));
         PlayerPrefs.Save();
         WalletChange.Invoke(GetWallet());
     }
