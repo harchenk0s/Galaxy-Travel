@@ -1,13 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
-using System;
 using System.Collections;
-
-[Serializable]
-public class FloatEvent : UnityEvent<float> { }
-[Serializable]
-public class IntEvent : UnityEvent<int> { }
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class Ship : MonoBehaviour
@@ -19,10 +12,11 @@ public class Ship : MonoBehaviour
     [SerializeField] private ParticleSystem _explosion;
     [SerializeField] private GameObject _mesh;
 
-    private Pointer _pointer = null;
-    private Transform _pointerTransform = null;
+    private float _startSpeed = 100;
     private float _currentSpeed = 0;
     private int _currentArmor;
+    private Pointer _pointer = null;
+    private Transform _pointerTransform = null;
     private IEnumerator _changingSpeedCoroutine = null;
     private Collider _collider;
 
@@ -32,6 +26,16 @@ public class Ship : MonoBehaviour
     public UnityEvent SpeedUpEvent;
     public UnityEvent ShipHitEvent;
     public UnityEvent ShipDeadEvent;
+
+    public float StartSpeed
+    {
+        get { return _startSpeed; }
+
+        set
+        {
+            _startSpeed = Mathf.Clamp(value, 150, _maxSpeed);
+        }
+    }
 
     public float CurrentSpeed
     {
@@ -78,7 +82,7 @@ public class Ship : MonoBehaviour
 
     public void StartMove()
     {
-        ChangeSpeed(_maxSpeed / 2);
+        CurrentSpeed = StartSpeed;
     }
 
     private void Awake()
@@ -180,7 +184,7 @@ public class Ship : MonoBehaviour
     {
         while(CurrentSpeed != targetSpeed)
         {
-            CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, 2);
+            CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, 4);
             yield return null;
         }
     }

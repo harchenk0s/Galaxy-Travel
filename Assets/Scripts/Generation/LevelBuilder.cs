@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable]
-public class GameObjectEvent : UnityEvent<GameObject> { }
-
 public class LevelBuilder : MonoBehaviour
 {
     [SerializeField] private Generator _garbageGenerator = null;
@@ -74,6 +71,7 @@ public class LevelBuilder : MonoBehaviour
 
     public void StartGenerate()
     {
+        _ship.StartMove();
         _waves = _gameMode.GetWaves();
         _addGates = _gameMode.AddGates;
         _generationCourutine = GenerationCourutine();
@@ -85,6 +83,11 @@ public class LevelBuilder : MonoBehaviour
     {
         _waves.Clear();
         _ship.Reset();
+    }
+
+    public void ChangeStartSpeed(float speed)
+    {
+        _ship.StartSpeed = speed;
     }
 
     private void Defeat()
@@ -101,8 +104,6 @@ public class LevelBuilder : MonoBehaviour
 
     private IEnumerator GenerationCourutine()
     {
-        _ship.StartMove();
-
         foreach (Wave wave in _waves)
         {
             if (_addGates)

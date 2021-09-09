@@ -1,40 +1,53 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AsteroidJohnMode : GameMode
 {
     [SerializeField] GameObject _asteroidShip;
     [SerializeField] float _duration = 50f;
 
-    private LevelBuilder _levelBuidler;
     private bool _changeMode = false;
-    
+    private LevelBuilder _levelBuilder;
+
     private void Awake()
     {
-        _levelBuidler = FindObjectOfType<LevelBuilder>();
-        _levelBuidler.ChangeShip(_asteroidShip);
-        _levelBuidler.ChangeShipEvent.AddListener(ChangeShipToAsteroid);
-        _levelBuidler.ChangeGameModeEvent.AddListener((_) => _changeMode = true);
+        _levelBuilder = FindObjectOfType<LevelBuilder>();
+        _levelBuilder.ChangeShip(_asteroidShip);
+        _levelBuilder.ChangeShipEvent.AddListener(ChangeShipToAsteroid);
+        _levelBuilder.ChangeGameModeEvent.AddListener(ChangeShipOnDestroy);
         _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomShips", _duration));
+    }
+
+    private void Start()
+    {
+        _levelBuilder.ChangeStartSpeed(9999);
     }
 
     private void ChangeShipToAsteroid(GameObject _)
     {
-        _levelBuidler.ChangeShipEvent.RemoveListener(ChangeShipToAsteroid);
-        _levelBuidler.ChangeShip(_asteroidShip);
-        _levelBuidler.ChangeShipEvent.AddListener(ChangeShipToAsteroid);
+        _levelBuilder.ChangeShipEvent.RemoveListener(ChangeShipToAsteroid);
+        _levelBuilder.ChangeShip(_asteroidShip);
+        _levelBuilder.ChangeShipEvent.AddListener(ChangeShipToAsteroid);
+    }
+
+    private void ChangeShipOnDestroy(GameObject mode)
+    {
+        if(mode != gameObject)
+        {
+            _changeMode = true;
+        }
     }
 
     private void OnDestroy()
     {
-        _levelBuidler.ChangeGameModeEvent.RemoveListener((_) => _changeMode = true);
-        _levelBuidler.ChangeShipEvent.RemoveListener(ChangeShipToAsteroid);
+        if(_levelBuilder != null)
+        {
+            _levelBuilder.ChangeGameModeEvent.RemoveListener(ChangeShipOnDestroy);
+            _levelBuilder.ChangeShipEvent.RemoveListener(ChangeShipToAsteroid);
+        }
 
         if (_changeMode)
         {
-            _levelBuidler.ChangeShip(Resources.Load<GameObject>(PlayerPrefs.GetString("ShipDefault")));
+            _levelBuilder.ChangeShip(Resources.Load<GameObject>(PlayerPrefs.GetString("ShipDefault")));
         }
-
     }
 }
