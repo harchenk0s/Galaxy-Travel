@@ -21,34 +21,6 @@ public class LevelBuilder : MonoBehaviour
     public GameObjectEvent ChangeShipEvent;
     public GameObjectEvent ChangeGameModeEvent;
 
-    private void Awake()
-    {
-        _ship = Resources.Load<Ship>(PlayerPrefs.GetString("Ship"));
-        _ship = Instantiate(_ship, Vector3.zero, Quaternion.identity);
-        _ship.name = PlayerPrefs.GetString("Ship");
-        _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString("Mode"));
-        _gameMode = Instantiate(_gameMode, Vector3.zero, Quaternion.identity);
-        _gameMode.name = PlayerPrefs.GetString("Mode");
-        ChangeShipEvent.Invoke(_ship.gameObject);
-        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
-        _ship.ShipDeadEvent.AddListener(Defeat);
-        _ship.StartSpeed = _gameMode.StartSpeed;
-    }
-
-    private void GateWaveReset()
-    {
-        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 1f);
-    }
-
-    private void Start()
-    {
-        if (_garbageGenerator == null)
-        {
-            throw new UnityException("No GarbageGenerator");
-        }
-        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
-    }
-
     public void ChangeGameMode(GameMode gameMode)
     {
         PlayerPrefs.SetString("Mode", gameMode.name);
@@ -90,6 +62,34 @@ public class LevelBuilder : MonoBehaviour
     {
         _waves.Clear();
         _ship.Reset();
+    }
+
+    private void Awake()
+    {
+        _ship = Resources.Load<Ship>(PlayerPrefs.GetString("Ship"));
+        _ship = Instantiate(_ship, Vector3.zero, Quaternion.identity);
+        _ship.name = PlayerPrefs.GetString("Ship");
+        _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString("Mode"));
+        _gameMode = Instantiate(_gameMode, Vector3.zero, Quaternion.identity);
+        _gameMode.name = PlayerPrefs.GetString("Mode");
+        ChangeShipEvent.Invoke(_ship.gameObject);
+        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
+        _ship.ShipDeadEvent.AddListener(Defeat);
+        _ship.StartSpeed = _gameMode.StartSpeed;
+    }
+
+    private void GateWaveReset()
+    {
+        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 1f);
+    }
+
+    private void Start()
+    {
+        if (_garbageGenerator == null)
+        {
+            throw new UnityException("No GarbageGenerator");
+        }
+        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
     }
 
     private void Defeat()

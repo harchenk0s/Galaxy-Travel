@@ -8,20 +8,6 @@ public class ScoreCounterJohnMode : ScoreCounter
 
     private int _countExtraBonus = 0;
 
-    protected override void StartCounting()
-    {
-        Score = _startScore;
-    }
-
-    protected override void ShipHit()
-    {
-        base.ShipHit();
-        Score += _hitBonus;
-
-        if (_numberCollisions % 10 == 0)
-            _countExtraBonus++;
-    }
-
     public override Score GetScore()
     {
         int score = (int)Score;
@@ -34,10 +20,10 @@ public class ScoreCounterJohnMode : ScoreCounter
 
         int rating = 0;
 
-        if(_numberCollisions > 10)
+        if (_numberCollisions > 10)
         {
             rating++;
-            if(_numberCollisions > 50)
+            if (_numberCollisions > 50)
             {
                 rating++;
                 if (_numberCollisions > 80)
@@ -48,6 +34,20 @@ public class ScoreCounterJohnMode : ScoreCounter
         _isWin = rating == 0 ? false : true;
 
         return new Score(_isWin, rating, score, totalScore, new List<Modifier> { hitModifier, randomModifire });
+    }
+
+    protected override void StartCounting()
+    {
+        Score = _startScore;
+    }
+
+    protected override void ShipHit()
+    {
+        base.ShipHit();
+        Score += _hitBonus;
+
+        if (_numberCollisions % 10 == 0)
+            _countExtraBonus++;
     }
 
     protected override void EndCounting() { }

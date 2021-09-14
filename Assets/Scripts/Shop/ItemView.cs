@@ -29,13 +29,13 @@ public class ItemView : MonoBehaviour
         _icon.sprite = _shopItem.Picture;
     }
 
-    private void RefreshIcon()
-    {
-        _icon.sprite = _shopItem.Picture;
-    }
-
     protected void ChangeButtonText(string text)
     {
         _buttonText.text = text;
+    }
+
+    private void RefreshIcon()
+    {
+        _icon.sprite = _shopItem.Picture;
     }
 }

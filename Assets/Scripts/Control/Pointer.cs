@@ -37,14 +37,14 @@ public class Pointer : MonoBehaviour
         StartCoroutine(_returnToObject);
     }
 
-    private void Awake()
-    {
-        _pointerBorders = FindObjectOfType<PointerBorders>();
-    }
-
     public void SetObjectOfControl(GameObject objectOfControl)
     {
         _objectOfControl = objectOfControl;
+    }
+
+    private void Awake()
+    {
+        _pointerBorders = FindObjectOfType<PointerBorders>();
     }
 
     private void Start()

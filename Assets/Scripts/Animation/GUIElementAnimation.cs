@@ -11,11 +11,6 @@ public class GUIElementAnimation : MonoBehaviour
     public UnityEvent OpenEvent;
     public UnityEvent CloseEvent;
 
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
     public void Opened() => OpenEvent.Invoke();
     public void Closed() => CloseEvent.Invoke();
 
@@ -27,5 +22,10 @@ public class GUIElementAnimation : MonoBehaviour
     public void Close()
     {
         _animator.SetTrigger("CloseTrigger");
+    }
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
     }
 }

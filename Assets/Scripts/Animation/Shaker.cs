@@ -12,11 +12,6 @@ public class Shaker : MonoBehaviour
     private Animator _animator;
     private bool _isAnimatorExist = false;
 
-    private void Awake()
-    {
-        _isAnimatorExist = TryGetComponent(out _animator);
-    }
-
     public void Shake()
     {
         Shake(_duration, _magnitude, _noize);
@@ -32,6 +27,11 @@ public class Shaker : MonoBehaviour
 
         _shakeCoroutine = ShakeCoroutine(duration, magnitude, noize);
         StartCoroutine(_shakeCoroutine);
+    }
+
+    private void Awake()
+    {
+        _isAnimatorExist = TryGetComponent(out _animator);
     }
 
     private IEnumerator ShakeCoroutine(float duration, float magnitude, float noize)
