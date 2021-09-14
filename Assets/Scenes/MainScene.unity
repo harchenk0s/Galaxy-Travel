@@ -4415,7 +4415,7 @@ MonoBehaviour:
   _borderPoints:
   - {fileID: 989596270}
   - {fileID: 913565859}
-  DrawGizmos: 1
+  DrawGizmos: 0
   LinesColor: {r: 0, g: 1, b: 0, a: 1}
   PointsColor: {r: 1, g: 0, b: 0, a: 1}
   DrawGrid: 1
