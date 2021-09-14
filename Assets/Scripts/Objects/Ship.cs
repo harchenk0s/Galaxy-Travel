@@ -48,6 +48,11 @@ public class Ship : MonoBehaviour
         }
     }
 
+    public int MaxArmor
+    {
+        get { return _maxArmor; }
+    }
+
     public int CurrentArmor
     {
         get { return _currentArmor; }
