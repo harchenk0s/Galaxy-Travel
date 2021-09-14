@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d76b5e74565c4059b45059f70974526, type: 3}
+  m_Name: SurvivalMode
+  m_EditorClassIdentifier: 
+  _name: Survival
+  _price: 9000
+  _pictureShadow: {fileID: 21300000, guid: 8f7f1d14f1e694ef99bcd6d8f4127b17, type: 3}
+  _picture: {fileID: 21300000, guid: 8f7f1d14f1e694ef99bcd6d8f4127b17, type: 3}
+  _prefab: {fileID: 457012958853290574, guid: 46e4015e452b6494db6cb1eba08feda8, type: 3}
+  _isBuyed: 1
+  BuyEvent:
+    m_PersistentCalls:
+      m_Calls: []
