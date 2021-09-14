@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Fatty
   _price: 5000
-  _pictureShadow: {fileID: 0}
-  _picture: {fileID: 0}
+  _pictureShadow: {fileID: 21300000, guid: b51ec0540c12e4448b16918c12587a7a, type: 3}
+  _picture: {fileID: 21300000, guid: a4163fe557d64455d8a34d5c8db31097, type: 3}
   _prefab: {fileID: 1769087025216028077, guid: 20d6ec423079941f581379f5f409b419, type: 3}
   _isBuyed: 1
+  BuyEvent:
+    m_PersistentCalls:
+      m_Calls: []

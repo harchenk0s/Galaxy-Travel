@@ -25,9 +25,12 @@ public class LevelBuilder : MonoBehaviour
     {
         _ship = Resources.Load<Ship>(PlayerPrefs.GetString("Ship"));
         _ship = Instantiate(_ship, Vector3.zero, Quaternion.identity);
+        _ship.name = PlayerPrefs.GetString("Ship");
         _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString("Mode"));
         _gameMode = Instantiate(_gameMode, Vector3.zero, Quaternion.identity);
+        _gameMode.name = PlayerPrefs.GetString("Mode");
         ChangeShipEvent.Invoke(_ship.gameObject);
+        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
         _ship.ShipDeadEvent.AddListener(Defeat);
     }
 
@@ -64,6 +67,7 @@ public class LevelBuilder : MonoBehaviour
             GameObject newShip = Instantiate(ship, Vector3.zero, Quaternion.identity);
             Destroy(_ship.gameObject);
             _ship = newShip.GetComponent<Ship>();
+            _ship.name = ship.name;
             ChangeShipEvent.Invoke(_ship.gameObject);
             _ship.ShipDeadEvent.AddListener(Defeat);
         }

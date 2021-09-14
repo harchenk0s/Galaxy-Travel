@@ -45,7 +45,7 @@ public class ShopItem : ScriptableObject
     public bool Buy(int price)
     {
         Wallet wallet = FindObjectOfType<Wallet>();
-        _isBuyed = wallet.Buy(price);
+        IsBuyed = wallet.Buy(price);
         return _isBuyed;
     }
 

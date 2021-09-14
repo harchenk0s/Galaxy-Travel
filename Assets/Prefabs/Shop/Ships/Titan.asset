@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d76b5e74565c4059b45059f70974526, type: 3}
-  m_Name: AsteroidJohnMode
+  m_Name: Titan
   m_EditorClassIdentifier: 
-  _name: Asteroid John
-  _price: 15000
-  _pictureShadow: {fileID: 21300000, guid: b902d57e9710e4b22a52e04c6f6ac01d, type: 3}
-  _picture: {fileID: 21300000, guid: b902d57e9710e4b22a52e04c6f6ac01d, type: 3}
-  _prefab: {fileID: 8509572935378941364, guid: 18a0872a82085411e834a7928ab4a8c2, type: 3}
-  _isBuyed: 1
+  _name: Titan
+  _price: 50000
+  _pictureShadow: {fileID: 21300000, guid: e759fc2925d6c4589be6164d1be79d6a, type: 3}
+  _picture: {fileID: 21300000, guid: 1d8f42c1bd22d4cc38110c46e5c78e94, type: 3}
+  _prefab: {fileID: 5207575090423617633, guid: f37f078cc30f14bcaac4b06f603bcd8a, type: 3}
+  _isBuyed: 0
   BuyEvent:
     m_PersistentCalls:
       m_Calls: []

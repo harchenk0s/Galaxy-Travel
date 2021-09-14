@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Smallfighter
   _price: 1500
-  _pictureShadow: {fileID: 0}
-  _picture: {fileID: 0}
+  _pictureShadow: {fileID: 21300000, guid: a531061f476a341839a106ad73d105e5, type: 3}
+  _picture: {fileID: 21300000, guid: a531061f476a341839a106ad73d105e5, type: 3}
   _prefab: {fileID: 2353968562978425913, guid: 52ff34a70d23045cd9f70ad84a01ebec, type: 3}
   _isBuyed: 1
+  BuyEvent:
+    m_PersistentCalls:
+      m_Calls: []

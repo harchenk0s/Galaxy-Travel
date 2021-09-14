@@ -63,10 +63,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a050904c7e4894192838a29a5ed559fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 300
-  _handling: 0.1
+  _maxSpeed: 400
+  _handling: 0.04
   _maxArmor: 10
-  _rotationSpeed: 5
+  _rotationSpeed: 4
   _explosion: {fileID: 739544557819589978}
   _mesh: {fileID: 6183936401956566436}
   ChangeSpeedEvent:

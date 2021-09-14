@@ -23,7 +23,7 @@ public class ModeView : ItemView
             if (_shopItem.Buy(_shopItem.Price))
             {
                 var gameMode = Instantiate(_object);
-                gameMode.name = _object.name;
+                gameMode.name = _shopItem.Name;
                 _levelBuilder.ChangeGameMode(gameMode.GetComponent<GameMode>());
                 ChangeButtonText("Choose");
             }

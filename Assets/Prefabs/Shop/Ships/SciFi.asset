@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: SpaceWorm
   _price: 20000
-  _pictureShadow: {fileID: 0}
-  _picture: {fileID: 0}
+  _pictureShadow: {fileID: 21300000, guid: d66c65dda75b94b169ccd32d2dc661d0, type: 3}
+  _picture: {fileID: 21300000, guid: e583653c4c6474f3c86a0fa55790d681, type: 3}
   _prefab: {fileID: 533614581724025575, guid: 2f998e88328634eb0b5c4381c830e151, type: 3}
   _isBuyed: 0
+  BuyEvent:
+    m_PersistentCalls:
+      m_Calls: []

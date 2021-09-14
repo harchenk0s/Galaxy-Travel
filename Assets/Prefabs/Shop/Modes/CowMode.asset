@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Cow Mode
   _price: 5000
-  _pictureShadow: {fileID: 0}
-  _picture: {fileID: 0}
+  _pictureShadow: {fileID: 21300000, guid: ab80363932eda47a4bec76b1cbb46a9b, type: 3}
+  _picture: {fileID: 21300000, guid: ab80363932eda47a4bec76b1cbb46a9b, type: 3}
   _prefab: {fileID: 2693068408324560853, guid: 206131bfe74cf4a38944215712a85ab5, type: 3}
   _isBuyed: 1
+  BuyEvent:
+    m_PersistentCalls:
+      m_Calls: []
