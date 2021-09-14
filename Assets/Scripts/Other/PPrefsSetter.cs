@@ -21,14 +21,4 @@ public class PPrefsSetter : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-
-    private void Update()
-    {
-        //TODO Delete this!
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.Save();
-        }
-    }
 }

@@ -21,14 +21,7 @@ public class Wallet : MonoBehaviour
             return false;
         }
     }
-    //TODO: DELETE UPDATE
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Add(100000);
-        }
-    }
+
     public void Add(int value)
     {
         int wallet = PlayerPrefs.GetInt("Wallet", 0);
