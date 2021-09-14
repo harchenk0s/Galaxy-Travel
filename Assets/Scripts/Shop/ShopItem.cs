@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "new item", menuName = "ShopItems", order = 51)]
 public class ShopItem : ScriptableObject
@@ -14,10 +15,22 @@ public class ShopItem : ScriptableObject
 
     private LevelBuilder _levelBuilder;
 
-    public bool IsBuyed => _isBuyed;
+    public UnityEvent BuyEvent;
+
+    public bool IsBuyed
+    {
+        get { return _isBuyed; }
+        private set
+        {
+            _isBuyed = value;
+            BuyEvent.Invoke();
+        }
+    }
+
     public string Name => _name;
     public int Price => _price;
     public GameObject Prefab => _prefab;
+
     public Sprite Picture
     {
         get

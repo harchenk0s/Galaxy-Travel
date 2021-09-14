@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -451,3 +451,4 @@ MonoBehaviour:
   _object: {fileID: 0}
   _buyButton: {fileID: 7152604855467167472}
   _name: {fileID: 2545294228631526709}
+  _icon: {fileID: 8218063508049053502}
