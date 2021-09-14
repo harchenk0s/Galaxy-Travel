@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AsteroidJohnMode
   m_EditorClassIdentifier: 
   _name: Asteroid John
-  _price: 0
+  _price: 15000
   _pictureShadow: {fileID: 0}
   _picture: {fileID: 0}
   _prefab: {fileID: 8509572935378941364, guid: 18a0872a82085411e834a7928ab4a8c2, type: 3}
-  _isBuyed: 0
+  _isBuyed: 1

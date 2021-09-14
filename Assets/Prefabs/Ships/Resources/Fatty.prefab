@@ -192,6 +192,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 4584257386758980579, guid: 85a389ff8b83842b19b5ba38e7fbb46d,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6633836124860873258, guid: 85a389ff8b83842b19b5ba38e7fbb46d,
         type: 3}
       propertyPath: m_LocalPosition.x
