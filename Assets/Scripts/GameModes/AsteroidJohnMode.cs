@@ -17,11 +17,6 @@ public class AsteroidJohnMode : GameMode
         _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomShips", _duration));
     }
 
-    private void Start()
-    {
-        _levelBuilder.ChangeStartSpeed(9999);
-    }
-
     private void ChangeShipToAsteroid(GameObject _)
     {
         _levelBuilder.ChangeShipEvent.RemoveListener(ChangeShipToAsteroid);

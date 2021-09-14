@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addGates: 1
+  _startSpeed: 200
   _waveCount: 3
   _durationWave: 10
 --- !u!114 &-6083629936564796277

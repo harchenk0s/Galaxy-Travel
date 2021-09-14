@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class CowMode : GameMode
 {
-    private void Start()
-    {
-        LevelBuilder levelBuilder = FindObjectOfType<LevelBuilder>();
-        levelBuilder.ChangeStartSpeed(200);
-    }
-
     private void Awake()
     {
         _waves.Add(new Wave(typeof(RandomAlg), "OnlyCowsRandom", 10f));

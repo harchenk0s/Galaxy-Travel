@@ -17,6 +17,7 @@ public class Generator : MonoBehaviour
 
     public void GenerateWave(float duration)
     {
+        _pool.CreateObjects(_algorithm.GetPrefabsList());
         _generationCorutine = GeneratingWaveCorutine(duration);
         StartCoroutine(_generationCorutine);
     }
@@ -25,13 +26,13 @@ public class Generator : MonoBehaviour
     {
         if(newAlgorithm.BaseType == typeof(GenerationAlgorithm))
         {
-            if(TryGetComponent(out _algorithm))
+            if (TryGetComponent(out _algorithm))
             {
                 Destroy(_algorithm);
             }
-            
-            _algorithm = (GenerationAlgorithm)gameObject.AddComponent(newAlgorithm);
+
             _pool.Clear();
+            _algorithm = (GenerationAlgorithm)gameObject.AddComponent(newAlgorithm);
             _pool.CreateObjects(_algorithm.GetPrefabsList());
         }
     }

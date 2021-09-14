@@ -24,7 +24,6 @@ public class Wave
         _duration += _duration * (100 - speedCorrectionPercent) / 100;
         PlayerPrefs.SetString(_algorithm.ToString(), _parameters);
         PlayerPrefs.Save();
-
         _generator.EndWaveEvent.AddListener(EndWave);
         _generator.ChangeAlgorithm(_algorithm);
         _generator.GenerateWave(_duration);

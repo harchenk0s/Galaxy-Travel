@@ -1728,6 +1728,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 34d6fd47742ce47c3a78af4adaa9f155, type: 2}
   - {fileID: 11400000, guid: 80b87662d2557436d83deabe65a5374f, type: 2}
   - {fileID: 11400000, guid: c8490ec9693ab4cb7b69e53dac226eef, type: 2}
+  - {fileID: 11400000, guid: 7be82023bfcef4c6cabbe8c5cb5d2d4f, type: 2}
   _template: {fileID: 6863821946956187927, guid: 7721a181238e249f48c67a9b33a0f28e,
     type: 3}
   _itemContainer: {fileID: 321691185}
@@ -6182,17 +6183,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1250969860}
-        m_MethodName: Clear
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 532673806}
         m_MethodName: Reset
         m_Mode: 1
@@ -6217,6 +6207,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 532673810}
         m_MethodName: ChangeToRandom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1250969860}
+        m_MethodName: Clear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addGates: 1
+  _startSpeed: 200
 --- !u!114 &5101887052408502306
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,6 +32,7 @@ public class LevelBuilder : MonoBehaviour
         ChangeShipEvent.Invoke(_ship.gameObject);
         ChangeGameModeEvent.Invoke(_gameMode.gameObject);
         _ship.ShipDeadEvent.AddListener(Defeat);
+        _ship.StartSpeed = _gameMode.StartSpeed;
     }
 
     private void GateWaveReset()
@@ -55,6 +56,7 @@ public class LevelBuilder : MonoBehaviour
         ChangeGameModeEvent.Invoke(gameMode.gameObject);
         Destroy(_gameMode.gameObject);
         _gameMode = gameMode;
+        _ship.StartSpeed = _gameMode.StartSpeed;
     }
 
     public void ChangeShip(GameObject ship)
@@ -68,6 +70,7 @@ public class LevelBuilder : MonoBehaviour
             Destroy(_ship.gameObject);
             _ship = newShip.GetComponent<Ship>();
             _ship.name = ship.name;
+            _ship.StartSpeed = _gameMode.StartSpeed;
             ChangeShipEvent.Invoke(_ship.gameObject);
             _ship.ShipDeadEvent.AddListener(Defeat);
         }
@@ -75,9 +78,9 @@ public class LevelBuilder : MonoBehaviour
 
     public void StartGenerate()
     {
-        _ship.StartMove();
         _waves = _gameMode.GetWaves();
         _addGates = _gameMode.AddGates;
+        _ship.StartMove();
         _generationCourutine = GenerationCourutine();
         StartGameEvent.Invoke();
         StartCoroutine(_generationCourutine);
@@ -87,11 +90,6 @@ public class LevelBuilder : MonoBehaviour
     {
         _waves.Clear();
         _ship.Reset();
-    }
-
-    public void ChangeStartSpeed(float speed)
-    {
-        _ship.StartSpeed = speed;
     }
 
     private void Defeat()

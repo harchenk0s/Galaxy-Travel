@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addGates: 0
+  _startSpeed: 999
   _asteroidShip: {fileID: 7636228863985406225, guid: 05bea97f1ba5b4a48bad3aee8d5b8f3f,
     type: 3}
   _duration: 30
