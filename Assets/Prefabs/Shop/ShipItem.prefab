@@ -447,8 +447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc72b13afbc54fee8e7db1d0bd6e84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonText: {fileID: 6783072853740745025}
-  _object: {fileID: 0}
-  _buyButton: {fileID: 7152604855467167472}
-  _name: {fileID: 2545294228631526709}
-  _icon: {fileID: 8218063508049053502}
+  ButtonText: {fileID: 6783072853740745025}
+  Object: {fileID: 0}
+  BuyButton: {fileID: 7152604855467167472}
+  Name: {fileID: 2545294228631526709}
+  Icon: {fileID: 8218063508049053502}

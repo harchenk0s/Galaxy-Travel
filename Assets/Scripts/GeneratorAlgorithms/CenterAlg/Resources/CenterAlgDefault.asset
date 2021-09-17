@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b8ceaad3aea4f3893650a4e8ac8dbd, type: 3}
   m_Name: CenterAlgDefault
   m_EditorClassIdentifier: 
-  _prefabs:
+  Prefabs:
   - {fileID: 5626680295503351846, guid: a54999d6b041344e5b1bb9df974efce9, type: 3}

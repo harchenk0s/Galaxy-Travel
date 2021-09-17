@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7f4f8e595104a079c9f91e6cdc870c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addGates: 1
-  _startSpeed: 200
+  AddGates: 1
+  StartSpeed: 200
 --- !u!114 &5101887052408502306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2780640da7f1142fa9700cae37799f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startScore: 5000
+  StartScore: 5000
   ScoreChangeEvent:
     m_PersistentCalls:
       m_Calls: []

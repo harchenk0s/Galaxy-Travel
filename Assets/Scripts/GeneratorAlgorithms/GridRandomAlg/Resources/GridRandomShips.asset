@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e797ffa65cd44c4b7aa935223fda17, type: 3}
   m_Name: GridRandomShips
   m_EditorClassIdentifier: 
-  _prefabs:
+  Prefabs:
+  - {fileID: 7927259005784445089, guid: 8bd081cb16aa141dca581324a14d06d3, type: 3}
   - {fileID: 8455175987769261026, guid: 8d012cac6291f4fbe88ef58efa3021ee, type: 3}
   - {fileID: 7927259005784445089, guid: 8bd081cb16aa141dca581324a14d06d3, type: 3}
+  - {fileID: 8455175987769261026, guid: 8d012cac6291f4fbe88ef58efa3021ee, type: 3}
+  - {fileID: 7927259005784445089, guid: 8bd081cb16aa141dca581324a14d06d3, type: 3}
+  - {fileID: 8455175987769261026, guid: 8d012cac6291f4fbe88ef58efa3021ee, type: 3}
   _Columns: 4
   _Rows: 4
   _delayRange: {x: 0.1, y: 0.3}

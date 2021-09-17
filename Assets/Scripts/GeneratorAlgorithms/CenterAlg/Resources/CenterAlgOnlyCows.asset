@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e797ffa65cd44c4b7aa935223fda17, type: 3}
-  m_Name: OnlyCowsGrid
+  m_Script: {fileID: 11500000, guid: 21b8ceaad3aea4f3893650a4e8ac8dbd, type: 3}
+  m_Name: CenterAlgOnlyCows
   m_EditorClassIdentifier: 
-  _prefabs:
+  Prefabs:
   - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
-  _Columns: 3
-  _Rows: 3
-  _delayRange: {x: 0.1, y: 0.3}

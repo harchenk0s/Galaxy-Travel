@@ -235,10 +235,10 @@ RectTransform:
   m_Father: {fileID: 7587638720735017879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.116000004, y: 0.28561226}
+  m_AnchorMax: {x: 0.8757117, y: 0.76536745}
+  m_AnchoredPosition: {x: 1, y: -2.5}
+  m_SizeDelta: {x: 58, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7153054014765991594
 CanvasRenderer:
@@ -447,8 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a3a2cdce6134123be7522250ae3fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonText: {fileID: 6783072853740745025}
-  _object: {fileID: 0}
-  _buyButton: {fileID: 7152604855467167472}
-  _name: {fileID: 2545294228631526709}
-  _icon: {fileID: 8218063508049053502}
+  ButtonText: {fileID: 6783072853740745025}
+  BuyButton: {fileID: 7152604855467167472}
+  Name: {fileID: 2545294228631526709}
+  Icon: {fileID: 8218063508049053502}

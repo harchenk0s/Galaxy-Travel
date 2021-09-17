@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e797ffa65cd44c4b7aa935223fda17, type: 3}
   m_Name: GridRandomAlgDefault
   m_EditorClassIdentifier: 
-  _prefabs:
+  Prefabs:
   - {fileID: 1078770126447878116, guid: 4559e03bbf34c49afaaa95eb67217b6d, type: 3}
   - {fileID: 4091703752886643911, guid: 01ec13c573aac461e9ce314eb37c77c7, type: 3}
   - {fileID: 5492692176541059239, guid: 810c7a2a3150a4b7f94d9990b1810907, type: 3}

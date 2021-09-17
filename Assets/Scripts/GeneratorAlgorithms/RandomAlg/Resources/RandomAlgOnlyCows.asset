@@ -10,8 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad0ece796d0b9428fa979605a492a5de, type: 3}
-  m_Name: OnlyCows
+  m_Name: RandomAlgOnlyCows
   m_EditorClassIdentifier: 
-  _prefabs:
+  Prefabs:
+  - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
+  - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
+  - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
+  - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
+  - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
   - {fileID: 5770443691164480620, guid: 0eaa03991aff54f38b565cc45c4a1de2, type: 3}
   _delayRange: {x: 0.2, y: 0.5}

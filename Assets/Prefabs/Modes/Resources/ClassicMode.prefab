@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee207fb2a2c34284a2e5f789c023044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addGates: 1
-  _startSpeed: 200
+  AddGates: 1
+  StartSpeed: 200
   _waveCount: 3
   _durationWave: 10
 --- !u!114 &-6083629936564796277
@@ -60,10 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2780640da7f1142fa9700cae37799f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startScore: 5000
+  StartScore: 5000
   ScoreChangeEvent:
     m_PersistentCalls:
       m_Calls: []
   _scoreFactor: 0.5
-  _hitPenalty: 300
+  _hitPenalty: 100
   _noHitBonus: 1000
