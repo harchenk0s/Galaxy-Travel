@@ -7,21 +7,21 @@ public class ShipEvents : MonoBehaviour
 {
     private Ship _ship = null;
 
-    public FloatEvent ChangeSpeedEvent;
-    public IntEvent ChangeArmorEvent;
-    public UnityEvent SpeedDownEvent;
-    public UnityEvent SpeedUpEvent;
-    public UnityEvent ShipHitEvent;
-    public UnityEvent ShipDeadEvent;
+    public FloatEvent ChangedSpeed;
+    public IntEvent ChangedArmor;
+    public UnityEvent SpeedDowned;
+    public UnityEvent SpeedUped;
+    public UnityEvent ShipHited;
+    public UnityEvent ShipDied;
 
     public void ChangeShip(GameObject ship)
     {
         _ship = ship.GetComponent<Ship>();
-        _ship.ChangeSpeedEvent.AddListener(ChangeSpeedEvent.Invoke);
-        _ship.ChangeArmorEvent.AddListener(ChangeArmorEvent.Invoke);
-        _ship.SpeedDownEvent.AddListener(SpeedDownEvent.Invoke);
-        _ship.SpeedUpEvent.AddListener(SpeedUpEvent.Invoke);
-        _ship.ShipHitEvent.AddListener(ShipHitEvent.Invoke);
-        _ship.ShipDeadEvent.AddListener(ShipDeadEvent.Invoke);
+        _ship.ChangedSpeed.AddListener(ChangedSpeed.Invoke);
+        _ship.ChangedArmor.AddListener(ChangedArmor.Invoke);
+        _ship.SpeedDowned.AddListener(SpeedDowned.Invoke);
+        _ship.SpeedUped.AddListener(SpeedUped.Invoke);
+        _ship.ShipHited.AddListener(ShipHited.Invoke);
+        _ship.ShipDied.AddListener(ShipDied.Invoke);
     }
 }

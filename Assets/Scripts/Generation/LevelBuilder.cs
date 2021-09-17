@@ -15,17 +15,17 @@ public class LevelBuilder : MonoBehaviour
     private bool _addGates = false;
     private GameMode _gameMode;
 
-    public UnityEvent StartGameEvent;
-    public UnityEvent EndLevelEvent;
-    public UnityEvent DefeatEvent;
-    public GameObjectEvent ChangeShipEvent;
-    public GameObjectEvent ChangeGameModeEvent;
+    public UnityEvent GameStarted;
+    public UnityEvent LevelEnded;
+    public UnityEvent Defeated;
+    public GameObjectEvent ShipChanged;
+    public GameObjectEvent GameModeChanged;
 
     public void ChangeGameMode(GameMode gameMode)
     {
         PlayerPrefs.SetString(Strings.PlayerPrefs.Mode, gameMode.name);
         PlayerPrefs.Save();
-        ChangeGameModeEvent.Invoke(gameMode.gameObject);
+        GameModeChanged.Invoke(gameMode.gameObject);
         Destroy(_gameMode.gameObject);
         _gameMode = gameMode;
         _ship.StartSpeed = _gameMode.StartSpeedProperty;
@@ -43,8 +43,8 @@ public class LevelBuilder : MonoBehaviour
             _ship = newShip.GetComponent<Ship>();
             _ship.name = ship.name;
             _ship.StartSpeed = _gameMode.StartSpeedProperty;
-            ChangeShipEvent.Invoke(_ship.gameObject);
-            _ship.ShipDeadEvent.AddListener(Defeat);
+            ShipChanged.Invoke(_ship.gameObject);
+            _ship.ShipDied.AddListener(Defeat);
         }
     }
 
@@ -54,7 +54,7 @@ public class LevelBuilder : MonoBehaviour
         _addGates = _gameMode.AddGatesProperty;
         _ship.StartMove();
         _generationCourutine = GenerationCourutine();
-        StartGameEvent.Invoke();
+        GameStarted.Invoke();
         StartCoroutine(_generationCourutine);
     }
 
@@ -72,9 +72,9 @@ public class LevelBuilder : MonoBehaviour
         _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString(Strings.PlayerPrefs.Mode));
         _gameMode = Instantiate(_gameMode, Vector3.zero, Quaternion.identity);
         _gameMode.name = PlayerPrefs.GetString(Strings.PlayerPrefs.Mode);
-        ChangeShipEvent.Invoke(_ship.gameObject);
-        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
-        _ship.ShipDeadEvent.AddListener(Defeat);
+        ShipChanged.Invoke(_ship.gameObject);
+        GameModeChanged.Invoke(_gameMode.gameObject);
+        _ship.ShipDied.AddListener(Defeat);
         _ship.StartSpeed = _gameMode.StartSpeedProperty;
     }
 
@@ -89,19 +89,19 @@ public class LevelBuilder : MonoBehaviour
         {
             throw new UnityException("No GarbageGenerator");
         }
-        ChangeGameModeEvent.Invoke(_gameMode.gameObject);
+        GameModeChanged.Invoke(_gameMode.gameObject);
     }
 
     private void Defeat()
     {
-        DefeatEvent.Invoke();
+        Defeated.Invoke();
         StopCoroutine(_generationCourutine);
         _garbageGenerator.StopGenerate();
     }
 
     private void Win()
     {
-        EndLevelEvent.Invoke();
+        LevelEnded.Invoke();
     }
 
     private IEnumerator GenerationCourutine()

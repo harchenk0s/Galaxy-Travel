@@ -12,16 +12,16 @@ public class AsteroidJohnMode : GameMode
     {
         _levelBuilder = FindObjectOfType<LevelBuilder>();
         _levelBuilder.ChangeShip(_asteroidShip);
-        _levelBuilder.ChangeShipEvent.AddListener(ChangeShipToAsteroid);
-        _levelBuilder.ChangeGameModeEvent.AddListener(ChangeShipOnDestroy);
+        _levelBuilder.ShipChanged.AddListener(ChangeShipToAsteroid);
+        _levelBuilder.GameModeChanged.AddListener(ChangeShipOnDestroy);
         Waves.Add(new Wave(typeof(GridRandomAlg), Strings.AlgorithmsParameters.GridRandomAlg.GridRandomShips, _duration));
     }
 
     private void ChangeShipToAsteroid(GameObject _)
     {
-        _levelBuilder.ChangeShipEvent.RemoveListener(ChangeShipToAsteroid);
+        _levelBuilder.ShipChanged.RemoveListener(ChangeShipToAsteroid);
         _levelBuilder.ChangeShip(_asteroidShip);
-        _levelBuilder.ChangeShipEvent.AddListener(ChangeShipToAsteroid);
+        _levelBuilder.ShipChanged.AddListener(ChangeShipToAsteroid);
     }
 
     private void ChangeShipOnDestroy(GameObject mode)
@@ -36,8 +36,8 @@ public class AsteroidJohnMode : GameMode
     {
         if(_levelBuilder != null)
         {
-            _levelBuilder.ChangeGameModeEvent.RemoveListener(ChangeShipOnDestroy);
-            _levelBuilder.ChangeShipEvent.RemoveListener(ChangeShipToAsteroid);
+            _levelBuilder.GameModeChanged.RemoveListener(ChangeShipOnDestroy);
+            _levelBuilder.ShipChanged.RemoveListener(ChangeShipToAsteroid);
         }
 
         if (_changeMode)

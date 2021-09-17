@@ -8,11 +8,11 @@ public class GUIElementAnimation : MonoBehaviour
 {
     private Animator _animator;
 
-    public UnityEvent OpenEvent;
-    public UnityEvent CloseEvent;
+    public UnityEvent Opened;
+    public UnityEvent Closed;
 
-    public void Opened() => OpenEvent.Invoke();
-    public void Closed() => CloseEvent.Invoke();
+    private void OpenedInvoke() => Opened.Invoke();
+    private void ClosedInvoke() => Closed.Invoke();
 
     public void Open()
     {

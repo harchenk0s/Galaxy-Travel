@@ -12,17 +12,17 @@ public class SyncShipSpeed : MonoBehaviour
     public void ChangeShip(GameObject ship)
     {
         _ship = ship.GetComponent<Ship>();
-        _ship.ChangeSpeedEvent.AddListener(OnChangeSpeed);
+        _ship.ChangedSpeed.AddListener(OnChangeSpeed);
     }
 
     private void Awake()
     {
         LevelBuilder levelBuilder = FindObjectOfType<LevelBuilder>();
-        levelBuilder.ChangeShipEvent.AddListener(ChangeShip);
+        levelBuilder.ShipChanged.AddListener(ChangeShip);
         _rigidbody = GetComponent<Rigidbody>();
         _ship = FindObjectOfType<Ship>();
         _speed = _ship.CurrentSpeed;
-        _ship.ChangeSpeedEvent.AddListener(OnChangeSpeed);
+        _ship.ChangedSpeed.AddListener(OnChangeSpeed);
     }
 
     private void OnEnable()
@@ -43,6 +43,6 @@ public class SyncShipSpeed : MonoBehaviour
 
     private void OnDestroy()
     {
-        _ship.ChangeSpeedEvent.RemoveListener(OnChangeSpeed);
+        _ship.ChangedSpeed.RemoveListener(OnChangeSpeed);
     }
 }

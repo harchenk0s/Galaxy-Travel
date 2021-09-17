@@ -37,10 +37,10 @@ public abstract class ScoreCounter : MonoBehaviour
     {
         LevelBuilder = FindObjectOfType<LevelBuilder>();
         ShipEvents = FindObjectOfType<ShipEvents>();
-        LevelBuilder.StartGameEvent.AddListener(StartCounting);
-        LevelBuilder.EndLevelEvent.AddListener(EndCounting);
-        LevelBuilder.DefeatEvent.AddListener(Defeat);
-        ShipEvents.ShipHitEvent.AddListener(ShipHit);
+        LevelBuilder.GameStarted.AddListener(StartCounting);
+        LevelBuilder.LevelEnded.AddListener(EndCounting);
+        LevelBuilder.Defeated.AddListener(Defeat);
+        ShipEvents.ShipHited.AddListener(ShipHit);
     }
 
     protected virtual void ShipHit()

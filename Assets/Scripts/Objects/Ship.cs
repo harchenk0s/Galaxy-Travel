@@ -20,12 +20,12 @@ public class Ship : MonoBehaviour
     private IEnumerator _changingSpeedCoroutine = null;
     private Collider _collider;
 
-    public FloatEvent ChangeSpeedEvent;
-    public IntEvent ChangeArmorEvent;
-    public UnityEvent SpeedDownEvent;
-    public UnityEvent SpeedUpEvent;
-    public UnityEvent ShipHitEvent;
-    public UnityEvent ShipDeadEvent;
+    public FloatEvent ChangedSpeed;
+    public IntEvent ChangedArmor;
+    public UnityEvent SpeedDowned;
+    public UnityEvent SpeedUped;
+    public UnityEvent ShipHited;
+    public UnityEvent ShipDied;
 
     public float StartSpeed
     {
@@ -44,7 +44,7 @@ public class Ship : MonoBehaviour
         private set
         {
             _currentSpeed = Mathf.Clamp(value, 0, _maxSpeed);
-            ChangeSpeedEvent.Invoke(_currentSpeed);
+            ChangedSpeed.Invoke(_currentSpeed);
         }
     }
 
@@ -62,7 +62,7 @@ public class Ship : MonoBehaviour
             if(value >= 0)
             {
                 _currentArmor = Mathf.Clamp(value, 0, _maxArmor);
-                ChangeArmorEvent.Invoke(_currentArmor);
+                ChangedArmor.Invoke(_currentArmor);
             }
             else
             {
@@ -125,19 +125,19 @@ public class Ship : MonoBehaviour
 
     private void OnDestroy()
     {
-        ShipDeadEvent.RemoveAllListeners();
-        ShipHitEvent.RemoveAllListeners();
-        ChangeSpeedEvent.RemoveAllListeners();
-        ChangeArmorEvent.RemoveAllListeners();
-        SpeedUpEvent.RemoveAllListeners();
-        SpeedDownEvent.RemoveAllListeners();
+        ShipDied.RemoveAllListeners();
+        ShipHited.RemoveAllListeners();
+        ChangedSpeed.RemoveAllListeners();
+        ChangedArmor.RemoveAllListeners();
+        SpeedUped.RemoveAllListeners();
+        SpeedDowned.RemoveAllListeners();
     }
 
     private void ShipHit(Garbage garbage)
     {
         if (CurrentArmor > 0)
         {
-            ShipHitEvent.Invoke();
+            ShipHited.Invoke();
             garbage.Explosion();
         }
 
@@ -150,7 +150,7 @@ public class Ship : MonoBehaviour
         _mesh.SetActive(false);
         _explosion.Play();
         ChangeSpeed(0);
-        ShipDeadEvent.Invoke();
+        ShipDied.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -177,9 +177,9 @@ public class Ship : MonoBehaviour
         }
 
         if (targetSpeed > CurrentSpeed)
-            SpeedUpEvent.Invoke();
+            SpeedUped.Invoke();
         else
-            SpeedDownEvent.Invoke();
+            SpeedDowned.Invoke();
 
         _changingSpeedCoroutine = ChangingSpeedCouroutine(targetSpeed);
         StartCoroutine(_changingSpeedCoroutine);

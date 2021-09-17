@@ -17,9 +17,9 @@ public class GUIView : MonoBehaviour
     {
         _levelBuilder = FindObjectOfType<LevelBuilder>();
         _ship = FindObjectOfType<Ship>();
-        _levelBuilder.ChangeGameModeEvent.AddListener(OnChangeScoreCounter);
-        _levelBuilder.ChangeShipEvent.AddListener(OnChangeShip);
-        _levelBuilder.StartGameEvent.AddListener(InitializeFields);
+        _levelBuilder.GameModeChanged.AddListener(OnChangeScoreCounter);
+        _levelBuilder.ShipChanged.AddListener(OnChangeShip);
+        _levelBuilder.GameStarted.AddListener(InitializeFields);
     }
 
     private void InitializeFields()
@@ -27,8 +27,8 @@ public class GUIView : MonoBehaviour
         _speedSlider.value = _ship.CurrentPercentSpeed / 100;
         _armorSlider.maxValue = _ship.MaxArmor;
         _armorSlider.value = _ship.CurrentArmor;
-        _ship.ChangeArmorEvent.AddListener(ChangeArmor);
-        _ship.ChangeSpeedEvent.AddListener(ChangeSpeed);
+        _ship.ChangedArmor.AddListener(ChangeArmor);
+        _ship.ChangedSpeed.AddListener(ChangeSpeed);
     }
 
     private void OnChangeShip(GameObject ship)
