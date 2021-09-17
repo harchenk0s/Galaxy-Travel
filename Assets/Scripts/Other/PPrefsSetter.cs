@@ -21,4 +21,12 @@ public class PPrefsSetter : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerPrefs.SetInt("CountLaunches", 0);
+        }
+    }
 }

@@ -31,21 +31,18 @@ public class LevelBuilder : MonoBehaviour
         _ship.StartSpeed = _gameMode.StartSpeedProperty;
     }
 
-    public void ChangeShip(GameObject ship)
+    public void ChangeShip(Ship ship)
     {
-        if (ship.TryGetComponent<Ship>(out _))
-        {
-            _ship.gameObject.SetActive(false);
-            PlayerPrefs.SetString(Strings.PlayerPrefs.Ship, ship.name);
-            PlayerPrefs.Save();
-            GameObject newShip = Instantiate(ship, Vector3.zero, Quaternion.identity);
-            Destroy(_ship.gameObject);
-            _ship = newShip.GetComponent<Ship>();
-            _ship.name = ship.name;
-            _ship.StartSpeed = _gameMode.StartSpeedProperty;
-            ShipChanged.Invoke(_ship.gameObject);
-            _ship.ShipDied.AddListener(Defeat);
-        }
+        _ship.gameObject.SetActive(false);
+        PlayerPrefs.SetString(Strings.PlayerPrefs.Ship, ship.gameObject.name);
+        PlayerPrefs.Save();
+        GameObject newShip = Instantiate(ship.gameObject, Vector3.zero, Quaternion.identity);
+        Destroy(_ship.gameObject);
+        _ship = newShip.GetComponent<Ship>();
+        _ship.name = ship.name;
+        _ship.StartSpeed = _gameMode.StartSpeedProperty;
+        ShipChanged.Invoke(_ship.gameObject);
+        _ship.ShipDied.AddListener(Defeat);
     }
 
     public void StartGenerate()

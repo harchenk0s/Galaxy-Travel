@@ -5,37 +5,37 @@ using UnityEngine;
 [RequireComponent(typeof(Generator))]
 public abstract class GenerationAlgorithm : MonoBehaviour
 {
-    protected List<GameObject> _prefabs = new List<GameObject>();
-    protected Generator _generator;
-    protected Vector2 _minBorders = Vector2.zero;
-    protected Vector2 _maxBorders = Vector2.zero;
-    protected bool isBusy = false;
+    protected List<GameObject> Prefabs = new List<GameObject>();
+    protected Generator Generator;
+    protected Vector2 MinBorders = Vector2.zero;
+    protected Vector2 MaxBorders = Vector2.zero;
+    protected bool IsBusy = false;
 
     private IEnumerator _generationCorutine;
 
     public void StartGenerate()
     {
         _generationCorutine = GenerationCorutine();
-        isBusy = true;
+        IsBusy = true;
         StartCoroutine(_generationCorutine);
     }
 
     public void StopGenerate()
     {
-        isBusy = false;
+        IsBusy = false;
         StopCoroutine(_generationCorutine);
-        _generator.SpawnWaveEnder();
+        Generator.SpawnWaveEnder();
     }
 
     public List<GameObject> GetPrefabsList()
     {
-        return _prefabs;
+        return Prefabs;
     }
 
     protected void Awake()
     {
-        _generator = GetComponent<Generator>();
-        _generator.GetBorders(out _minBorders, out _maxBorders);
+        Generator = GetComponent<Generator>();
+        Generator.GetBorders(out MinBorders, out MaxBorders);
         _generationCorutine = GenerationCorutine();
     }
 

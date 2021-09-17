@@ -12,8 +12,8 @@ public class RandomAlg : GenerationAlgorithm
         while (true)
         {
             Vector2 position =
-                new Vector2(Random.Range(_minBorders.x, _maxBorders.x), Random.Range(_minBorders.y, _maxBorders.y));
-            _generator.Spawn(position);
+                new Vector2(Random.Range(MinBorders.x, MaxBorders.x), Random.Range(MinBorders.y, MaxBorders.y));
+            Generator.Spawn(position);
             yield return new WaitForSecondsRealtime(Random.Range(_parameters.DelayRange.x, _parameters.DelayRange.y));
         }
     }
@@ -29,7 +29,7 @@ public class RandomAlg : GenerationAlgorithm
             _parameters = Resources.Load<RandomAlgParameters>(_parametersPathDefault);
         }
 
-        _prefabs = _parameters.PrefabsList;
+        Prefabs = _parameters.PrefabsList;
     }
 
     private void OnDestroy()

@@ -13,10 +13,10 @@ public class GridRandomAlg : GenerationAlgorithm
 
     protected override IEnumerator GenerationCorutine()
     {
-        while (isBusy)
+        while (IsBusy)
         {
             Vector2 position = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
-            _generator.Spawn(position);
+            Generator.Spawn(position);
             yield return new WaitForSeconds(Random.Range(_parameters.DelayRange.x, _parameters.DelayRange.y));
         }
     }
@@ -37,7 +37,7 @@ public class GridRandomAlg : GenerationAlgorithm
         {
             _parameters = Resources.Load<GridRandomParameters>(_parametersPathDefault);
         }
-        _prefabs = _parameters.PrefabsList;
+        Prefabs = _parameters.PrefabsList;
         InitializeGrid();
     }
 
@@ -46,11 +46,11 @@ public class GridRandomAlg : GenerationAlgorithm
         _columns = new float[_parameters.Columns];
         _rows = new float[_parameters.Rows];
 
-        float height = _maxBorders.y - _minBorders.y;
-        float width = _maxBorders.x - _minBorders.x;
+        float height = MaxBorders.y - MinBorders.y;
+        float width = MaxBorders.x - MinBorders.x;
 
-        _columns[0] = _minBorders.x + width / (_parameters.Columns * 2);
-        _rows[0] = _minBorders.y + height / (_parameters.Rows * 2);
+        _columns[0] = MinBorders.x + width / (_parameters.Columns * 2);
+        _rows[0] = MinBorders.y + height / (_parameters.Rows * 2);
 
         for (int i = 1; i < _columns.Length; i++)
         {

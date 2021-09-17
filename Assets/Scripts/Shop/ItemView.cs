@@ -11,22 +11,22 @@ public class ItemView : MonoBehaviour
     [SerializeField] protected Image Icon;
 
     protected GameObject Object;
-    protected LevelBuilder _levelBuilder;
-    protected ShopItem _shopItem;
+    protected LevelBuilder LevelBuilder;
+    protected ShopItem ShopItem;
 
     public void SetLevelBuilder(LevelBuilder levelBuilder)
     {
-        _levelBuilder = levelBuilder;
+        LevelBuilder = levelBuilder;
     }
 
     public virtual void Render(ShopItem shopItem)
     {
-        _shopItem = shopItem;
-        _shopItem.BuyEvent.AddListener(RefreshIcon);
-        ButtonText.text = _shopItem.IsBuyed ? "Choose" : _shopItem.Price.ToString();
-        Object = _shopItem.Prefab;
-        Name.text = _shopItem.Name;
-        Icon.sprite = _shopItem.Picture;
+        ShopItem = shopItem;
+        ShopItem.BuyEvent.AddListener(RefreshIcon);
+        ButtonText.text = ShopItem.IsBuyed ? "Choose" : ShopItem.Price.ToString();
+        Object = ShopItem.Prefab;
+        Name.text = ShopItem.Name;
+        Icon.sprite = ShopItem.Picture;
     }
 
     protected void ChangeButtonText(string text)
@@ -36,6 +36,6 @@ public class ItemView : MonoBehaviour
 
     private void RefreshIcon()
     {
-        Icon.sprite = _shopItem.Picture;
+        Icon.sprite = ShopItem.Picture;
     }
 }

@@ -10,11 +10,11 @@ public class CenterAlg : GenerationAlgorithm
 
     protected override IEnumerator GenerationCorutine()
     {
-        Vector2 center = new Vector2((_maxBorders.x + _minBorders.x) / 2, (_maxBorders.y + _minBorders.y) / 2);
+        Vector2 center = new Vector2((MaxBorders.x + MinBorders.x) / 2, (MaxBorders.y + MinBorders.y) / 2);
 
-        _generator.Spawn(center);
+        Generator.Spawn(center);
         yield return new WaitForSecondsRealtime(1);
-        _generator.SpawnWaveEnder();
+        Generator.SpawnWaveEnder();
         yield return null;
     }
 
@@ -34,6 +34,6 @@ public class CenterAlg : GenerationAlgorithm
         {
             Resources.Load<CenterAlgParameters>(_parametersPathDefault);
         }
-        _prefabs = _parameters.PrefabsList;
+        Prefabs = _parameters.PrefabsList;
     }
 }
