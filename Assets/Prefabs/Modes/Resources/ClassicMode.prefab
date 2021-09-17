@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AddGates: 1
   StartSpeed: 200
-  _waveCount: 3
+  _waveCount: 2
   _durationWave: 10
 --- !u!114 &-6083629936564796277
 MonoBehaviour:
@@ -66,4 +66,4 @@ MonoBehaviour:
       m_Calls: []
   _scoreFactor: 0.5
   _hitPenalty: 100
-  _noHitBonus: 1000
+  _noHitBonus: 3000

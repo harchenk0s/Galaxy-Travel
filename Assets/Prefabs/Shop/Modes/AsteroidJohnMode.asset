@@ -17,7 +17,7 @@ MonoBehaviour:
   _pictureShadow: {fileID: 21300000, guid: b902d57e9710e4b22a52e04c6f6ac01d, type: 3}
   _picture: {fileID: 21300000, guid: b902d57e9710e4b22a52e04c6f6ac01d, type: 3}
   _prefab: {fileID: 8509572935378941364, guid: 18a0872a82085411e834a7928ab4a8c2, type: 3}
-  _isBuyed: 1
+  _isBuyed: 0
   BuyEvent:
     m_PersistentCalls:
       m_Calls: []
