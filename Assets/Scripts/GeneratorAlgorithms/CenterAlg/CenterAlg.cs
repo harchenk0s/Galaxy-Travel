@@ -6,7 +6,7 @@ public class CenterAlg : GenerationAlgorithm
 {
     [SerializeField] private CenterAlgParameters _parameters;
 
-    private string _parametersPathDefault = "CenterAlgDefault";
+    private string _parametersPathDefault = Strings.AlgorithmsParameters.CenterAlg.CenterAlgDefault;
 
     protected override IEnumerator GenerationCorutine()
     {
@@ -27,13 +27,13 @@ public class CenterAlg : GenerationAlgorithm
     private new void Awake()
     {
         base.Awake();
-        string parametersPath = PlayerPrefs.GetString("CenterAlg");
+        string parametersPath = PlayerPrefs.GetString(Strings.Algorithms.CenterAlg);
         _parameters = Resources.Load<CenterAlgParameters>(parametersPath);
 
         if(_parameters == null)
         {
             Resources.Load<CenterAlgParameters>(_parametersPathDefault);
         }
-        _prefabs = _parameters.Prefabs;
+        _prefabs = _parameters.PrefabsList;
     }
 }

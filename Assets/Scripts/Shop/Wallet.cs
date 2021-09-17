@@ -11,7 +11,7 @@ public class Wallet : MonoBehaviour
     {
         if(price <= GetWallet())
         {
-            PlayerPrefs.SetInt("Wallet", GetWallet() - price);
+            PlayerPrefs.SetInt(Strings.PlayerPrefs.Wallet, GetWallet() - price);
             PlayerPrefs.Save();
             WalletChange.Invoke(GetWallet());
             return true;
@@ -24,14 +24,14 @@ public class Wallet : MonoBehaviour
 
     public void Add(int value)
     {
-        int wallet = PlayerPrefs.GetInt("Wallet", 0);
-        PlayerPrefs.SetInt("Wallet", Mathf.Clamp(wallet + value, 0, 999999));
+        int wallet = PlayerPrefs.GetInt(Strings.PlayerPrefs.Wallet, 0);
+        PlayerPrefs.SetInt(Strings.PlayerPrefs.Wallet, Mathf.Clamp(wallet + value, 0, 999999));
         PlayerPrefs.Save();
         WalletChange.Invoke(GetWallet());
     }
 
     public int GetWallet()
     {
-        return PlayerPrefs.GetInt("Wallet", 0);
+        return PlayerPrefs.GetInt(Strings.PlayerPrefs.Wallet, 0);
     }
 }

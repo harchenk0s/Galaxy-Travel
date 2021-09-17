@@ -11,7 +11,7 @@ public class ClassicMode : GameMode
     {
         for (int i = 0; i < _waveCount; i++)
         {
-            _waves.Add(new Wave(typeof(GridRandomAlg), "GridRandomAlgDefault", _durationWave));
+            Waves.Add(new Wave(typeof(GridRandomAlg), Strings.AlgorithmsParameters.GridRandomAlg.GridRandomAlgDefault, _durationWave));
         }
     }
 }

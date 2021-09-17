@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomAlg : GenerationAlgorithm
 {
     [SerializeField] private RandomAlgParameters _parameters;
-    private string _parametersPathDefault = "RandomAlgDefault";
+    private string _parametersPathDefault = Strings.AlgorithmsParameters.RandomAlg.RandomAlgDefault;
 
     protected override IEnumerator GenerationCorutine()
     {
@@ -21,7 +21,7 @@ public class RandomAlg : GenerationAlgorithm
     private new void Awake()
     {
         base.Awake();
-        string parametersPath = PlayerPrefs.GetString("RandomAlg");
+        string parametersPath = PlayerPrefs.GetString(Strings.Algorithms.RandomAlg);
         _parameters = Resources.Load<RandomAlgParameters>(parametersPath);
 
         if(_parameters == null)
@@ -29,7 +29,7 @@ public class RandomAlg : GenerationAlgorithm
             _parameters = Resources.Load<RandomAlgParameters>(_parametersPathDefault);
         }
 
-        _prefabs = _parameters.Prefabs;
+        _prefabs = _parameters.PrefabsList;
     }
 
     private void OnDestroy()

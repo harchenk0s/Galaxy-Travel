@@ -9,3 +9,4 @@ public class RandomAlgParameters : AlgorithmParameters
 
     public Vector2 DelayRange => _delayRange;
 }
+

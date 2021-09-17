@@ -23,12 +23,12 @@ public class LevelBuilder : MonoBehaviour
 
     public void ChangeGameMode(GameMode gameMode)
     {
-        PlayerPrefs.SetString("Mode", gameMode.name);
+        PlayerPrefs.SetString(Strings.PlayerPrefs.Mode, gameMode.name);
         PlayerPrefs.Save();
         ChangeGameModeEvent.Invoke(gameMode.gameObject);
         Destroy(_gameMode.gameObject);
         _gameMode = gameMode;
-        _ship.StartSpeed = _gameMode.StartSpeed;
+        _ship.StartSpeed = _gameMode.StartSpeedProperty;
     }
 
     public void ChangeShip(GameObject ship)
@@ -36,13 +36,13 @@ public class LevelBuilder : MonoBehaviour
         if (ship.TryGetComponent<Ship>(out _))
         {
             _ship.gameObject.SetActive(false);
-            PlayerPrefs.SetString("Ship", ship.name);
+            PlayerPrefs.SetString(Strings.PlayerPrefs.Ship, ship.name);
             PlayerPrefs.Save();
             GameObject newShip = Instantiate(ship, Vector3.zero, Quaternion.identity);
             Destroy(_ship.gameObject);
             _ship = newShip.GetComponent<Ship>();
             _ship.name = ship.name;
-            _ship.StartSpeed = _gameMode.StartSpeed;
+            _ship.StartSpeed = _gameMode.StartSpeedProperty;
             ChangeShipEvent.Invoke(_ship.gameObject);
             _ship.ShipDeadEvent.AddListener(Defeat);
         }
@@ -51,7 +51,7 @@ public class LevelBuilder : MonoBehaviour
     public void StartGenerate()
     {
         _waves = _gameMode.GetWaves();
-        _addGates = _gameMode.AddGates;
+        _addGates = _gameMode.AddGatesProperty;
         _ship.StartMove();
         _generationCourutine = GenerationCourutine();
         StartGameEvent.Invoke();
@@ -66,21 +66,21 @@ public class LevelBuilder : MonoBehaviour
 
     private void Awake()
     {
-        _ship = Resources.Load<Ship>(PlayerPrefs.GetString("Ship"));
+        _ship = Resources.Load<Ship>(PlayerPrefs.GetString(Strings.PlayerPrefs.Ship));
         _ship = Instantiate(_ship, Vector3.zero, Quaternion.identity);
-        _ship.name = PlayerPrefs.GetString("Ship");
-        _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString("Mode"));
+        _ship.name = PlayerPrefs.GetString(Strings.PlayerPrefs.Ship);
+        _gameMode = Resources.Load<GameMode>(PlayerPrefs.GetString(Strings.PlayerPrefs.Mode));
         _gameMode = Instantiate(_gameMode, Vector3.zero, Quaternion.identity);
-        _gameMode.name = PlayerPrefs.GetString("Mode");
+        _gameMode.name = PlayerPrefs.GetString(Strings.PlayerPrefs.Mode);
         ChangeShipEvent.Invoke(_ship.gameObject);
         ChangeGameModeEvent.Invoke(_gameMode.gameObject);
         _ship.ShipDeadEvent.AddListener(Defeat);
-        _ship.StartSpeed = _gameMode.StartSpeed;
+        _ship.StartSpeed = _gameMode.StartSpeedProperty;
     }
 
     private void GateWaveReset()
     {
-        _gateWave = new Wave(typeof(CenterAlg), "CenterAlgDefault", 1f);
+        _gateWave = new Wave(typeof(CenterAlg), Strings.AlgorithmsParameters.CenterAlg.CenterAlgDefault, 1f);
     }
 
     private void Start()

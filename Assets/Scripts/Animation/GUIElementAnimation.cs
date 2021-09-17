@@ -21,7 +21,7 @@ public class GUIElementAnimation : MonoBehaviour
 
     public void Close()
     {
-        _animator.SetTrigger("CloseTrigger");
+        _animator.SetTrigger(Strings.Animation.CloseTrigger);
     }
 
     private void Awake()

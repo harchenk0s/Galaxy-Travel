@@ -6,6 +6,6 @@ public class SurvivalMode : GameMode
 {
     private void Awake()
     {
-        _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyAsteroids", 5000f));
+        Waves.Add(new Wave(typeof(GridRandomAlg),Strings.AlgorithmsParameters.GridRandomAlg.GridRandomOnlyAsteroids, 5000f));
     }
 }

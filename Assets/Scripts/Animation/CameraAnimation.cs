@@ -9,8 +9,8 @@ public class CameraAnimation : MonoBehaviour
 
     public void ChangeView()
     {
-        bool isGameView = _animator.GetBool("IsGameView");
-        _animator.SetBool("IsGameView", !isGameView);
+        bool isGameView = _animator.GetBool(Strings.Animation.IsGameView);
+        _animator.SetBool(Strings.Animation.IsGameView, !isGameView);
     }
     private void Awake()
     {

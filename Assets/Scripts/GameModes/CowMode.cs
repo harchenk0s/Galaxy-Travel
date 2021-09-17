@@ -6,8 +6,8 @@ public class CowMode : GameMode
 {
     private void Awake()
     {
-        _waves.Add(new Wave(typeof(RandomAlg), "OnlyCowsRandom", 10f));
-        _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCowsGrid", 10f));
-        _waves.Add(new Wave(typeof(GridRandomAlg), "OnlyCowsGrid", 15f));
+        Waves.Add(new Wave(typeof(RandomAlg), Strings.AlgorithmsParameters.RandomAlg.RandomAlgOnlyCows, 10f));
+        Waves.Add(new Wave(typeof(GridRandomAlg), Strings.AlgorithmsParameters.GridRandomAlg.GridRandomOnlyCows, 10f));
+        Waves.Add(new Wave(typeof(GridRandomAlg), Strings.AlgorithmsParameters.GridRandomAlg.GridRandomOnlyCows, 15f));
     }
 }

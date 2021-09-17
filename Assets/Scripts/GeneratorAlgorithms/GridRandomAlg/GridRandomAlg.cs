@@ -6,7 +6,7 @@ public class GridRandomAlg : GenerationAlgorithm
 {
     [SerializeField] private GridRandomParameters _parameters;
 
-    private string _parametersPathDefault = "GridRandomAlgDefault";
+    private string _parametersPathDefault = Strings.AlgorithmsParameters.GridRandomAlg.GridRandomAlgDefault;
     private float[] _columns;
     private float[] _rows;
     private List<Vector2> _spawnPoints = new List<Vector2>();
@@ -30,14 +30,14 @@ public class GridRandomAlg : GenerationAlgorithm
     private new void Awake()
     {
         base.Awake();
-        string parametersPath = PlayerPrefs.GetString("GridRandomAlg");
+        string parametersPath = PlayerPrefs.GetString(Strings.Algorithms.GridRandomAlg);
         _parameters = Resources.Load<GridRandomParameters>(parametersPath);
 
         if(_parameters == null)
         {
             _parameters = Resources.Load<GridRandomParameters>(_parametersPathDefault);
         }
-        _prefabs = _parameters.Prefabs;
+        _prefabs = _parameters.PrefabsList;
         InitializeGrid();
     }
 
@@ -71,3 +71,4 @@ public class GridRandomAlg : GenerationAlgorithm
         }
     }
 }
+

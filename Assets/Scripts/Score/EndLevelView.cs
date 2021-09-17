@@ -13,6 +13,8 @@ public class EndLevelView : MonoBehaviour
     [SerializeField] private GameObject _modifireContainer;
     [SerializeField] private GameObject _goldStar;
     [SerializeField] private GameObject _star1, _star2, _star3;
+    [SerializeField] private string _winMessage = "YOU WIN!";
+    [SerializeField] private string _defeatMessage = "DEFEAT";
 
     private Score _score;
     private ScoreCollector _scoreCollector;
@@ -26,7 +28,7 @@ public class EndLevelView : MonoBehaviour
 
         _scoreCollector.CollectScore();
 
-        _status.text = _score.IsWin ? "YOU WIN!" : "DEFEAT";
+        _status.text = _score.IsWin ? _winMessage : _defeatMessage;
         _scoreText.text = _score.CleanScore == 0 ? "" : _score.CleanScore.ToString();
 
         if (_score.IsWin)
