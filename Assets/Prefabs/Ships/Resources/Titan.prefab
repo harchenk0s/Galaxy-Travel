@@ -162,22 +162,22 @@ MonoBehaviour:
   _rotationSpeed: 5
   _explosion: {fileID: 6950476227037625980}
   _mesh: {fileID: 2012774412722297560}
-  ChangeSpeedEvent:
+  ChangedSpeed:
     m_PersistentCalls:
       m_Calls: []
-  ChangeArmorEvent:
+  ChangedArmor:
     m_PersistentCalls:
       m_Calls: []
-  SpeedDownEvent:
+  SpeedDowned:
     m_PersistentCalls:
       m_Calls: []
-  SpeedUpEvent:
+  SpeedUped:
     m_PersistentCalls:
       m_Calls: []
-  ShipHitEvent:
+  ShipHited:
     m_PersistentCalls:
       m_Calls: []
-  ShipDeadEvent:
+  ShipDied:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &6911759356159933855

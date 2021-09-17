@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52dba7ec4df854feb89438f294cb3787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartScore: 5000
+  StartScore: 0
   ScoreChangeEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -14,8 +14,6 @@ public class ShipView : ItemView
     {
         if (_shopItem.IsBuyed)
         {
-            var ship = Instantiate(Object, Vector3.zero, Quaternion.identity);
-            ship.name = Object.name;
             _levelBuilder.ChangeShip(Object);
         }
         else
