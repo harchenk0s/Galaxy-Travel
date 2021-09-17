@@ -15,7 +15,7 @@ public class RisingCounter : ScoreCounter
 
     public override Score GetScore()
     {
-        int score = (int)Score;
+        int score = (int)ScoreProperty;
         int bonus = 0;
         int rating = 0;
 
@@ -38,7 +38,7 @@ public class RisingCounter : ScoreCounter
 
         Modifier rangeModifier = new Modifier("Bonus ", bonus);
 
-        return new Score(_isWin, rating, score, bonus + score, new List<Modifier> { rangeModifier });
+        return new Score(IsWin, rating, score, bonus + score, new List<Modifier> { rangeModifier });
     }
 
     protected override void Defeat()
@@ -49,13 +49,13 @@ public class RisingCounter : ScoreCounter
     protected override void EndCounting()
     {
         _counting = false;
-        _isWin = true;
+        IsWin = true;
     }
 
     protected override void StartCounting()
     {
         _counting = true;
-        Score = _startScore;
+        ScoreProperty = StartScore;
 
         if (_countingCoroutine != null)
         {
@@ -70,7 +70,7 @@ public class RisingCounter : ScoreCounter
     {
         while (_counting)
         {
-            Score += _scoreFactor;
+            ScoreProperty += _scoreFactor;
             yield return new WaitForFixedUpdate();
         }
         _countingCoroutine = null;

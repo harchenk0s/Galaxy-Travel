@@ -7,18 +7,18 @@ public class ShipView : ItemView
     public override void Render(ShopItem shopItem)
     {
         base.Render(shopItem);
-        _buyButton.onClick.AddListener(ChangeShip);
+        BuyButton.onClick.AddListener(ChangeShip);
     }
 
     private void ChangeShip()
     {
         if (_shopItem.IsBuyed)
-            _levelBuilder.ChangeShip(_object);
+            _levelBuilder.ChangeShip(Object);
         else
         {
             if (_shopItem.Buy(_shopItem.Price))
             {
-                _levelBuilder.ChangeShip(_object);
+                _levelBuilder.ChangeShip(Object);
                 ChangeButtonText("Choose");
             }  
         }

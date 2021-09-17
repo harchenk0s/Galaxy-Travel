@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class AlgorithmParameters : ScriptableObject
 {
-    [SerializeField] protected List<GameObject> _prefabs = new List<GameObject>();
+    [SerializeField] protected List<GameObject> Prefabs = new List<GameObject>();
 
-    public List<GameObject> Prefabs => _prefabs;
+    public List<GameObject> PrefabsList => Prefabs;
 }

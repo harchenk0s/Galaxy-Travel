@@ -4,15 +4,15 @@ using UnityEngine;
 
 public abstract class GameMode : MonoBehaviour
 {
-    [SerializeField] protected List<Wave> _waves = new List<Wave>();
-    [SerializeField] protected bool _addGates = true;
-    [SerializeField] protected int _startSpeed;
+    [SerializeField] protected List<Wave> Waves = new List<Wave>();
+    [SerializeField] protected bool AddGates = true;
+    [SerializeField] protected int StartSpeed;
 
-    public bool AddGates => _addGates;
-    public int StartSpeed => _startSpeed;
+    public bool AddGatesProperty => AddGates;
+    public int StartSpeedProperty => StartSpeed;
 
     public List<Wave> GetWaves()
     {
-        return new List<Wave>(_waves);
+        return new List<Wave>(Waves);
     }
 }

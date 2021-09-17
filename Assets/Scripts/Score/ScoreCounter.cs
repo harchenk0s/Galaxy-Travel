@@ -5,23 +5,23 @@ using UnityEngine.Events;
 
 public abstract class ScoreCounter : MonoBehaviour
 {
-    [SerializeField] protected int _startScore = 5000;
+    [SerializeField] protected int StartScore = 5000;
 
-    protected float _score;
-    protected int _numberCollisions;
-    protected ShipEvents _shipEvents;
-    protected LevelBuilder _levelBuilder;
-    protected bool _isWin = true;
+    protected float Score;
+    protected int NumberCollisions;
+    protected ShipEvents ShipEvents;
+    protected LevelBuilder LevelBuilder;
+    protected bool IsWin = true;
 
     public FloatEvent ScoreChangeEvent;
     
-    public float Score
+    public float ScoreProperty
     {
-        get { return Mathf.Clamp(_score, 0, float.PositiveInfinity); }
+        get { return Mathf.Clamp(Score, 0, float.PositiveInfinity); }
         protected set
         {
-            _score = value;
-            ScoreChangeEvent.Invoke(Score);
+            Score = value;
+            ScoreChangeEvent.Invoke(ScoreProperty);
         }
     }
 
@@ -35,17 +35,17 @@ public abstract class ScoreCounter : MonoBehaviour
 
     protected virtual void Start()
     {
-        _levelBuilder = FindObjectOfType<LevelBuilder>();
-        _shipEvents = FindObjectOfType<ShipEvents>();
-        _levelBuilder.StartGameEvent.AddListener(StartCounting);
-        _levelBuilder.EndLevelEvent.AddListener(EndCounting);
-        _levelBuilder.DefeatEvent.AddListener(Defeat);
-        _shipEvents.ShipHitEvent.AddListener(ShipHit);
+        LevelBuilder = FindObjectOfType<LevelBuilder>();
+        ShipEvents = FindObjectOfType<ShipEvents>();
+        LevelBuilder.StartGameEvent.AddListener(StartCounting);
+        LevelBuilder.EndLevelEvent.AddListener(EndCounting);
+        LevelBuilder.DefeatEvent.AddListener(Defeat);
+        ShipEvents.ShipHitEvent.AddListener(ShipHit);
     }
 
     protected virtual void ShipHit()
     {
-        _numberCollisions++;
+        NumberCollisions++;
     }
 
     private void OnDestroy()

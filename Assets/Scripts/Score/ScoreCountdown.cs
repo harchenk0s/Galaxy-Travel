@@ -13,24 +13,24 @@ public class ScoreCountdown : ScoreCounter
 
     public override Score GetScore()
     {
-        int score = (int)Score;
-        int hitModifireValue = _numberCollisions == 0 ? _noHitBonus : _numberCollisions * _hitPenalty * -1;
+        int score = (int)ScoreProperty;
+        int hitModifireValue = NumberCollisions == 0 ? _noHitBonus : NumberCollisions * _hitPenalty * -1;
         int totalScore = score + hitModifireValue;
 
-        Modifier hitModifier = new Modifier($"{_numberCollisions} Hits = ", hitModifireValue);
+        Modifier hitModifier = new Modifier($"{NumberCollisions} Hits = ", hitModifireValue);
 
-        int rating = _numberCollisions == 0 ? 3 : 2;
+        int rating = NumberCollisions == 0 ? 3 : 2;
 
-        if (_score + hitModifireValue < _startScore / 2)
+        if (Score + hitModifireValue < StartScore / 2)
             rating--;
 
-        return new Score(_isWin, rating, score, totalScore, new List<Modifier> { hitModifier });
+        return new Score(IsWin, rating, score, totalScore, new List<Modifier> { hitModifier });
     }
 
     protected override void StartCounting()
     {
-        Score = _startScore;
-        _numberCollisions = 0;
+        ScoreProperty = StartScore;
+        NumberCollisions = 0;
 
         if (_countingCoroutine != null)
         {
@@ -45,23 +45,23 @@ public class ScoreCountdown : ScoreCounter
     protected override void EndCounting()
     {
         _counting = false;
-        _isWin = true;
+        IsWin = true;
     }
 
     protected override void Defeat()
     {
-        _isWin = false;
-        Score = 0;
+        IsWin = false;
+        ScoreProperty = 0;
     }
 
     private IEnumerator CountingCoroutine()
     {
         while (_counting)
         {
-            Score -= _scoreFactor;
+            ScoreProperty -= _scoreFactor;
             yield return new WaitForFixedUpdate();
         }
         _countingCoroutine = null;
-        _isWin = true;
+        IsWin = true;
     }
 }

@@ -10,7 +10,7 @@ public class ScoreCounterJohnMode : ScoreCounter
 
     public override Score GetScore()
     {
-        int score = (int)Score;
+        int score = (int)ScoreProperty;
         int hitModifireValue = _countExtraBonus * 200;
         int coolBouns = Random.Range(100, 500);
         int totalScore = score + hitModifireValue + coolBouns;
@@ -20,33 +20,33 @@ public class ScoreCounterJohnMode : ScoreCounter
 
         int rating = 0;
 
-        if (_numberCollisions > 10)
+        if (NumberCollisions > 10)
         {
             rating++;
-            if (_numberCollisions > 50)
+            if (NumberCollisions > 50)
             {
                 rating++;
-                if (_numberCollisions > 80)
+                if (NumberCollisions > 80)
                     rating++;
             }
         }
 
-        _isWin = rating == 0 ? false : true;
+        IsWin = rating == 0 ? false : true;
 
-        return new Score(_isWin, rating, score, totalScore, new List<Modifier> { hitModifier, randomModifire });
+        return new Score(IsWin, rating, score, totalScore, new List<Modifier> { hitModifier, randomModifire });
     }
 
     protected override void StartCounting()
     {
-        Score = _startScore;
+        ScoreProperty = StartScore;
     }
 
     protected override void ShipHit()
     {
         base.ShipHit();
-        Score += _hitBonus;
+        ScoreProperty += _hitBonus;
 
-        if (_numberCollisions % 10 == 0)
+        if (NumberCollisions % 10 == 0)
             _countExtraBonus++;
     }
 

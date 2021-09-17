@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ItemView : MonoBehaviour
 {
-    [SerializeField] protected Text _buttonText;
-    [SerializeField] protected GameObject _object;
-    [SerializeField] protected Button _buyButton;
-    [SerializeField] protected Text _name;
-    [SerializeField] protected Image _icon;
+    [SerializeField] protected Text ButtonText;
+    [SerializeField] protected Button BuyButton;
+    [SerializeField] protected Text Name;
+    [SerializeField] protected Image Icon;
 
+    protected GameObject Object;
     protected LevelBuilder _levelBuilder;
     protected ShopItem _shopItem;
 
@@ -23,19 +23,19 @@ public class ItemView : MonoBehaviour
     {
         _shopItem = shopItem;
         _shopItem.BuyEvent.AddListener(RefreshIcon);
-        _buttonText.text = _shopItem.IsBuyed ? "Choose" : _shopItem.Price.ToString();
-        _object = _shopItem.Prefab;
-        _name.text = _shopItem.Name;
-        _icon.sprite = _shopItem.Picture;
+        ButtonText.text = _shopItem.IsBuyed ? "Choose" : _shopItem.Price.ToString();
+        Object = _shopItem.Prefab;
+        Name.text = _shopItem.Name;
+        Icon.sprite = _shopItem.Picture;
     }
 
     protected void ChangeButtonText(string text)
     {
-        _buttonText.text = text;
+        ButtonText.text = text;
     }
 
     private void RefreshIcon()
     {
-        _icon.sprite = _shopItem.Picture;
+        Icon.sprite = _shopItem.Picture;
     }
 }
